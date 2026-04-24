@@ -11,20 +11,24 @@
 # Cache lives at memory/.fundamentals-cache/ (committed to git — it's part of memory).
 
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+# Use show-toplevel (worktree root) for scripts/memory; fall back to main repo for .env
+ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
 CACHE_DIR="$ROOT/memory/.fundamentals-cache"
 TTL_DAYS="${TTL_DAYS:-30}"
 mkdir -p "$CACHE_DIR"
 
-# Source .env if present
+# Source .env: check worktree root first, then main repo root
 ENV_FILE="$ROOT/.env"
+if [[ ! -f "$ENV_FILE" ]]; then
+  ENV_FILE="$(dirname "$(git -C "$(dirname "$0")" rev-parse --git-common-dir)")/.env"
+fi
 [[ -f "$ENV_FILE" ]] && { set -a; source "$ENV_FILE"; set +a; }
 
 # Read the roster from UNIVERSE.md — the paragraph after "## Full Nifty 100 roster"
 roster() {
-  awk '/^## Full Nifty 100 roster/,/^##[^#]/' "$ROOT/memory/UNIVERSE.md" \
+  awk '/^## Full Nifty 100 roster/{flag=1; next} flag && /^## /{flag=0} flag' "$ROOT/memory/UNIVERSE.md" \
     | grep -oE '\b[A-Z][A-Z0-9&-]{1,15}\b' \
-    | grep -vE '^(Nifty|NSE|GICS|TTM|ROCE|ROE|CAGR|YoY|RSI|DMA|PEAD)$' \
+    | grep -vE '^(Nifty|NSE|GICS|TTM|ROCE|ROE|CAGR|YoY|RSI|DMA|PEAD|April|March|September|SME)$' \
     | sort -u
 }
 

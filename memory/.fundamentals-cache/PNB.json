@@ -1,0 +1,14 @@
+{
+  "symbol": "PNB",
+  "source": "screener.in",
+  "url": "https://www.screener.in/company/PNB/consolidated/",
+  "market_cap_cr": 129996.0,
+  "current_price": 113.0,
+  "pe": 7.31,
+  "book_value": 130.0,
+  "dividend_yield_pct": 2.56,
+  "roce_pct": 6.32,
+  "roe_pct": 15.2,
+  "face_value": 2.0,
+  "sector": null
+}

@@ -10,7 +10,7 @@
 # can fall back to Perplexity.
 
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(dirname "$(git -C "$(dirname "$0")" rev-parse --git-common-dir)")"
 ENV_FILE="$ROOT/.env"
 [[ -f "$ENV_FILE" ]] && { set -a; source "$ENV_FILE"; set +a; }
 
@@ -32,13 +32,13 @@ fi
 
 HTML=$(curl -fsS -A "$UA" $COOKIE_ARG "$URL" 2>/dev/null || true)
 
-if [[ -z "$HTML" ]] || ! echo "$HTML" | grep -q "company-ratios"; then
+if [[ -z "$HTML" ]] || [[ "$HTML" != *"company-ratios"* ]]; then
   # Try standalone as backup
   URL="https://www.screener.in/company/${sym}/"
   HTML=$(curl -fsS -A "$UA" $COOKIE_ARG "$URL" 2>/dev/null || true)
 fi
 
-if [[ -z "$HTML" ]] || ! echo "$HTML" | grep -q "company-ratios"; then
+if [[ -z "$HTML" ]] || [[ "$HTML" != *"company-ratios"* ]]; then
   echo "SCREENER_PARSE_FAILED symbol=$sym" >&2
   echo "This symbol will be excluded from the universe until Screener returns valid data." >&2
   echo "If many symbols fail in one run, the scraper parser is likely broken — check screener.sh." >&2

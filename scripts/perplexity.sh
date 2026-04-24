@@ -6,7 +6,7 @@
 # Exits 3 if PERPLEXITY_API_KEY unset, so callers can decide to skip or fallback.
 
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(dirname "$(git -C "$(dirname "$0")" rev-parse --git-common-dir)")"
 ENV_FILE="$ROOT/.env"
 [[ -f "$ENV_FILE" ]] && { set -a; source "$ENV_FILE"; set +a; }
 

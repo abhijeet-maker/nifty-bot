@@ -1,0 +1,14 @@
+{
+  "symbol": "BAJFINANCE",
+  "source": "screener.in",
+  "url": "https://www.screener.in/company/BAJFINANCE/consolidated/",
+  "market_cap_cr": 574190.0,
+  "current_price": 922.0,
+  "pe": 31.5,
+  "book_value": 166.0,
+  "dividend_yield_pct": 0.48,
+  "roce_pct": 11.4,
+  "roe_pct": 19.2,
+  "face_value": 1.0,
+  "sector": null
+}
