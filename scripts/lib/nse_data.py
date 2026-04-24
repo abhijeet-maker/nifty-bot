@@ -23,8 +23,8 @@ def get_quote(symbol: str) -> Dict[str, Any]:
     Returns JSON-serializable dict.
     """
     try:
-        # nsepython.get_quote() handles all Akamai auth + cookie rotation
-        quote_data = nsepython.get_quote(symbol)
+        # nsepython.quote_equity() handles all Akamai auth + cookie rotation for equity symbols
+        quote_data = nsepython.quote_equity(symbol)
         
         if not quote_data:
             raise ValueError(f"No data returned for {symbol}")

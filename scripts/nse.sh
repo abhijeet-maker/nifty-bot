@@ -16,4 +16,8 @@ ENV_FILE="$ROOT/.env"
 
 # Delegate to Python module which handles all HTTP + auth
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-python3 "${SCRIPT_DIR}/lib/nse_data.py" "$@"
+PYTHON=python3
+if ! command -v "$PYTHON" >/dev/null 2>&1; then
+  PYTHON=python
+fi
+"${PYTHON}" "${SCRIPT_DIR}/lib/nse_data.py" "$@"
