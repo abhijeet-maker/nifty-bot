@@ -1,0 +1,18 @@
+# NSE data (handles Akamai bot detection, cookie rotation)
+nsepython==2.97
+
+# Yahoo Finance (handles crumb+cookie transparently)
+yfinance==0.2.36
+
+# HTTP + caching (backup for Screener fallback)
+requests==2.31.0
+requests-cache==1.2.0
+
+# JSON + CSV processing
+python-dateutil==2.8.2
+
+# For beautiful soup parsing if Screener HTML scraping
+beautifulsoup4==4.12.2
+
+# Utilities
+python-dotenv==1.0.0

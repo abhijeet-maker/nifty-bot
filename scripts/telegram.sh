@@ -8,7 +8,7 @@
 # and exits 0 — routines never die because of a notification issue.
 
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
 ENV_FILE="$ROOT/.env"
 FALLBACK="$ROOT/scratch/NOTIFICATIONS.md"
 mkdir -p "$(dirname "$FALLBACK")" 2>/dev/null || true

@@ -11,7 +11,7 @@
 # Cache lives at memory/.fundamentals-cache/ (committed to git — it's part of memory).
 
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(git -C "$(dirname "$0")" rev-parse --show-toplevel)"
 CACHE_DIR="$ROOT/memory/.fundamentals-cache"
 TTL_DAYS="${TTL_DAYS:-30}"
 mkdir -p "$CACHE_DIR"
