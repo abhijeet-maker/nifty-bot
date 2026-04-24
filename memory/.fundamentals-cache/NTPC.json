@@ -1,0 +1,14 @@
+{
+  "symbol": "NTPC",
+  "source": "screener.in",
+  "url": "https://www.screener.in/company/NTPC/consolidated/",
+  "market_cap_cr": 389224.0,
+  "current_price": 401.0,
+  "pe": 16.1,
+  "book_value": 198.0,
+  "dividend_yield_pct": 2.08,
+  "roce_pct": 10.8,
+  "roe_pct": 13.1,
+  "face_value": 10.0,
+  "sector": null
+}

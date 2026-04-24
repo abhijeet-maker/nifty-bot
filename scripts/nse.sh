@@ -5,25 +5,16 @@
 #   bash scripts/nse.sh history RELIANCE 250   -> 250 days of closes (for 12-1 momentum)
 #   bash scripts/nse.sh earnings 2026-04-21    -> companies reporting on that date
 #
-# NSE endpoints require cookie priming (they 401 on first request).
-# Yahoo Finance is used for history because NSE limits historical depth.
+# quote/earnings use nsepython (handles NSE cookie auth internally).
+# history uses Yahoo Finance v8 chart API (v7 download is deprecated).
 
 set -euo pipefail
-ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+ROOT="$(dirname "$(git -C "$(dirname "$0")" rev-parse --git-common-dir)")"
 ENV_FILE="$ROOT/.env"
 [[ -f "$ENV_FILE" ]] && { set -a; source "$ENV_FILE"; set +a; }
 
+PYTHON="${PYTHON:-python}"
 UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
-COOKIE_JAR="/tmp/nse-cookies-$$.txt"
-trap 'rm -f "$COOKIE_JAR"' EXIT
-
-nse_prime() {
-  # Hit the homepage first to get cookies NSE requires for API calls.
-  curl -fsS -c "$COOKIE_JAR" -A "$UA" \
-    -H "Accept: text/html,application/xhtml+xml" \
-    -H "Accept-Language: en-US,en;q=0.9" \
-    "https://www.nseindia.com/" > /dev/null
-}
 
 cmd="${1:-}"
 shift || true
@@ -31,20 +22,18 @@ shift || true
 case "$cmd" in
   quote)
     sym="${1:?usage: quote SYMBOL}"
-    nse_prime
-    curl -fsS -b "$COOKIE_JAR" -A "$UA" \
-      -H "Accept: application/json" \
-      -H "Referer: https://www.nseindia.com/get-quotes/equity?symbol=${sym}" \
-      "https://www.nseindia.com/api/quote-equity?symbol=${sym}" \
-    | python3 -c "
-import json, sys
-d = json.load(sys.stdin)
+    "$PYTHON" - "$sym" <<'PYEOF'
+import sys, json
+from nsepython import nse_eq
+sym = sys.argv[1]
+d = nse_eq(sym)
 p = d.get('priceInfo', {})
-m = d.get('metadata', {})
+info = d.get('info', {})
+ind = d.get('industryInfo', {})
 print(json.dumps({
-  'symbol': sym := d.get('info', {}).get('symbol'),
-  'name': d.get('info', {}).get('companyName'),
-  'sector': m.get('industry'),
+  'symbol': info.get('symbol'),
+  'name': info.get('companyName'),
+  'sector': ind.get('industry'),
   'last': p.get('lastPrice'),
   'open': p.get('open'),
   'high': p.get('intraDayHighLow', {}).get('max'),
@@ -57,46 +46,66 @@ print(json.dumps({
   'lower_circuit': p.get('lowerCP'),
   'upper_circuit': p.get('upperCP'),
 }, indent=2))
-"
+PYEOF
     ;;
 
   history)
     sym="${1:?usage: history SYMBOL DAYS}"
     days="${2:-300}"
-    # Yahoo Finance is more reliable for history. NSE's own historical API is rate-limited.
-    # Add .NS suffix for NSE stocks.
+    # Yahoo Finance v8 chart API (v7 /download is deprecated/auth-gated).
+    # Request 2x calendar days to ensure we get enough trading days (markets closed ~30% of days).
     period2=$(date +%s)
-    period1=$(( period2 - days * 86400 ))
+    period1=$(( period2 - days * 2 * 86400 ))
     curl -fsS -A "$UA" \
-      "https://query1.finance.yahoo.com/v7/finance/download/${sym}.NS?period1=${period1}&period2=${period2}&interval=1d&events=history" \
+      -H "Accept: application/json" \
+      "https://query1.finance.yahoo.com/v8/finance/chart/${sym}.NS?interval=1d&period1=${period1}&period2=${period2}" \
     | python3 -c "
-import sys, csv, json
-rows = list(csv.DictReader(sys.stdin))
-out = [{'date': r['Date'], 'close': float(r['Close']), 'volume': int(float(r['Volume']))}
-       for r in rows if r.get('Close') and r['Close'] != 'null']
+import json, sys, datetime
+d = json.load(sys.stdin)
+result = d['chart']['result'][0]
+timestamps = result['timestamp']
+closes = result['indicators']['quote'][0]['close']
+volumes = result['indicators']['quote'][0]['volume']
+out = []
+for ts, c, v in zip(timestamps, closes, volumes):
+    if c is None:
+        continue
+    date = datetime.datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d')
+    out.append({'date': date, 'close': round(float(c), 2), 'volume': int(v or 0)})
 print(json.dumps(out[-int('$days'):]))
 "
     ;;
 
   earnings)
     date_arg="${1:-$(date +%Y-%m-%d)}"
-    nse_prime
-    # NSE results calendar - returns all companies reporting on a given date
-    curl -fsS -b "$COOKIE_JAR" -A "$UA" \
-      -H "Accept: application/json" \
-      -H "Referer: https://www.nseindia.com/companies-listing/corporate-filings-financial-results" \
-      "https://www.nseindia.com/api/corporates-financial-results?index=equities&from_date=${date_arg}&to_date=${date_arg}&period=Quarterly" \
-    | python3 -c "
-import json, sys
+    "$PYTHON" - "$date_arg" <<'PYEOF'
+import sys, json
+from nsepython import nse_results
+date_arg = sys.argv[1]  # YYYY-MM-DD
+# nse_results returns a DataFrame of all filed results; filter by broadCastDate
+df = nse_results('equities', 'Quarterly')
+# broadCastDate format: "DD-Mon-YYYY HH:MM:SS"
+import datetime
 try:
-  d = json.load(sys.stdin)
-  out = [{'symbol': r.get('symbol'), 'company': r.get('companyName'),
-          'period': r.get('period'), 'broadcast': r.get('broadcastTimestamp')}
-         for r in d if r.get('symbol')]
-  print(json.dumps(out, indent=2))
-except Exception as e:
-  print('[]')
-"
+    target = datetime.datetime.strptime(date_arg, '%Y-%m-%d').date()
+except Exception:
+    print('[]'); sys.exit(0)
+
+out = []
+for _, row in df.iterrows():
+    try:
+        bd = datetime.datetime.strptime(str(row.get('broadCastDate', '')).strip(), '%d-%b-%Y %H:%M:%S').date()
+    except Exception:
+        continue
+    if bd == target:
+        out.append({
+            'symbol': row.get('symbol'),
+            'company': row.get('companyName'),
+            'period': row.get('period'),
+            'broadcast': str(row.get('broadCastDate', '')),
+        })
+print(json.dumps(out, indent=2))
+PYEOF
     ;;
 
   momentum)
@@ -113,7 +122,6 @@ if len(h) < 252:
 p_12m = h[-252]['close']
 p_1m  = h[-21]['close']
 mom = (p_1m - p_12m) / p_12m
-# Also 50/200 DMA from today
 import statistics
 dma50  = statistics.mean(c['close'] for c in h[-50:])
 dma200 = statistics.mean(c['close'] for c in h[-200:])
