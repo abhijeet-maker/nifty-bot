@@ -31,3 +31,16 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-04-30 — Pre-market
+_(Pre-market routine did not fire today — no journal entry found at market-open time.)_
+
+### Decision
+HOLD — no candidate identified. Default action per strategy.
+
+### Market-open execution 2026-04-30
+- Pre-market entry absent: no candidate to validate or execute.
+- Default: HOLD. Zero trades this week, 0/5 positions open.
+- No Telegram notification sent (silence on no-op per protocol).
