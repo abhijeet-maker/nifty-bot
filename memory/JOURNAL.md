@@ -31,3 +31,11 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+## 2026-05-01
+
+### Midday 2026-05-01
+- Actions: 0
+- Exits: none
+- Stops tightened: none
+- Portfolio: 0 positions, ₹5,00,000 cash (fully flat)
