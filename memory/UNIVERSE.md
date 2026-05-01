@@ -4,7 +4,8 @@ This file is rebuilt every Friday by the weekly-review routine. Between rebuilds
 it is the ONLY tradable watchlist. If a ticker is not in the filtered table
 below, it is NOT tradable this week, no matter how attractive it looks.
 
-**Last rebuild:** 2026-04-24 (day-0 manual rebuild — 40 of 95 screened pass quality gate)
+**Last rebuild:** 2026-04-24 (fundamentals fresh; momentum NOT refreshed 2026-05-01 — NSE API 403 on all endpoints)
+**Quality screen pass count:** 40 of 95 (normal range 25-50 ✓ — no universe collapse)
 
 ## Filtered tradable universe (passes quality screen)
 
