@@ -31,3 +31,13 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-05-01 — Market holiday (Maharashtra Day)
+
+### Market-open 2026-05-01
+- NSE closed — Maharashtra Day (May 1) public holiday
+- All NSE quotes returning null; no pre-market ran
+- No action taken. No Telegram sent.
+- Next trading day: 2026-05-05 (Monday)
