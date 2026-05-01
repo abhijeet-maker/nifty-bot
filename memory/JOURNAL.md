@@ -31,3 +31,11 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+## 2026-05-01
+
+### EOD 2026-05-01
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50: N/A (NSE 403, Perplexity key absent) → alpha N/A
+- Trades today: 0 | This week: 0 of 2
+- Tomorrow watchlist: run pre-market routine; check UNIVERSE.md for PEAD candidates or 12-1 momentum pullbacks
