@@ -31,3 +31,13 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-05-02 — EOD (Saturday — non-trading day)
+
+### EOD 2026-05-02
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50: N/A — market closed (Saturday)
+- Positions: 0. All cash. No trades placed.
+- Tomorrow watchlist: Monday 2026-05-04 is first live pre-market scan. Check UNIVERSE.md for any names reporting Q4 results next week. NSE holiday calendar to be verified for May.
