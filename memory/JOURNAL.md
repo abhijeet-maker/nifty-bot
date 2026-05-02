@@ -31,3 +31,21 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+## 2026-05-02 — Pre-market
+
+### Status: Weekend — no research
+
+- NSE closed (Saturday). Confirmed via null RELIANCE quote.
+- Exiting silently per procedure.
+
+### ⚠️ Env var alert (action required before next weekday run)
+
+The following environment variables were NOT set in this container:
+- `PERPLEXITY_API_KEY` — MISSING
+- `TELEGRAM_BOT_TOKEN` — MISSING
+- `TELEGRAM_CHAT_ID` — MISSING
+
+Perplexity queries and Telegram notifications will fail on next weekday (Mon 2026-05-04)
+unless these are injected into the container env before the routine fires.
+Check your container/cron env config and ensure all three are exported.
