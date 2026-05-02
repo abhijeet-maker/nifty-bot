@@ -31,3 +31,13 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-05-02 — Pre-market
+_(No pre-market entry found — pre-market routine did not run or produced no output before market-open fired.)_
+
+### Market-open execution 2026-05-02
+- Pre-market decision: absent/HOLD (no entry in journal)
+- Action: no trade. Standing down.
+- Telegram: silent (no-op day).
