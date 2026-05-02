@@ -31,3 +31,11 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+## 2026-05-02
+
+### EOD 2026-05-02
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50: N/A — Perplexity API 403, index close unavailable
+- No trades today. No open positions. First EOD run.
+- Tomorrow watchlist: run pre-market to screen UNIVERSE.md for PEAD/momentum entries
