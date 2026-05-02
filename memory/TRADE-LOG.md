@@ -19,3 +19,18 @@ Format has two kinds of entries:
 
 **Notes:** Seed state. Paper trading launches on the next pre-market routine firing.
 The agent must treat this as "yesterday's equity" for its first day-over-day calculation.
+
+---
+
+## 2026-05-02 — EOD Snapshot
+
+**Equity:** ₹5,00,000.00 | **Cash:** ₹5,00,000.00 (100%) | **Deployed:** 0%
+**Day P&L:** ₹0 (0.00%) | **Nifty 50 day:** N/A (data unavailable) | **Alpha today:** N/A
+**Phase P&L:** ₹0 (0.00% from ₹5,00,000 start)
+
+| Symbol | Sector | Qty | Entry | Close | Unreal % | Stop | Days held |
+|---|---|---|---|---|---|---|---|
+| — | — | — | — | — | — | — | — |
+
+**Trades today:** none
+**Notes:** First live EOD. No positions — cash fully deployed at ₹0. No pre-market routine ran today (seed state). NSE wrapper and Perplexity both returned no data; index benchmarking unavailable. Book unchanged from Day 0 baseline. Watch for pre-market routine to fire and populate first candidate list.
