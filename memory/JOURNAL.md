@@ -31,3 +31,13 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-05-02
+
+### EOD 2026-05-02
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50 Fri +0.49%: alpha -0.49% (cash drag, no positions)
+- Saturday — NSE closed, no trades possible
+- Tomorrow watchlist: none flagged yet; pre-market Monday will screen for PEAD/momentum setups
