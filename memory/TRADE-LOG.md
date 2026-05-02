@@ -19,3 +19,18 @@ Format has two kinds of entries:
 
 **Notes:** Seed state. Paper trading launches on the next pre-market routine firing.
 The agent must treat this as "yesterday's equity" for its first day-over-day calculation.
+
+---
+
+## 2026-05-02 — EOD Snapshot
+
+**Equity:** ₹5,00,000.00 | **Cash:** ₹5,00,000.00 (100%) | **Deployed:** 0%
+**Day P&L:** ₹0 (0.00%) | **Nifty 50 day:** N/A (API 403) | **Alpha today:** N/A
+**Phase P&L:** ₹0 (0.00% from ₹5,00,000 start)
+
+| Symbol | Sector | Qty | Entry | Close | Unreal % | Stop | Days held |
+|---|---|---|---|---|---|---|---|
+| — | — | — | — | — | — | — | — |
+
+**Trades today:** none
+**Notes:** First EOD run. Portfolio fully in cash at seed state. No pre-market routine had fired prior to this EOD, so no candidates were screened and no positions initiated. Perplexity returned 403 — Nifty 50 close unavailable; alpha comparison skipped. Tomorrow: pre-market routine should run first to screen UNIVERSE.md candidates and establish the first watchlist.
