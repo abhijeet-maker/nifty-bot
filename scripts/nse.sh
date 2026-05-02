@@ -13,8 +13,8 @@ ROOT="$(dirname "$(git -C "$(dirname "$0")" rev-parse --git-common-dir)")"
 ENV_FILE="$ROOT/.env"
 [[ -f "$ENV_FILE" ]] && { set -a; source "$ENV_FILE"; set +a; }
 
-PYTHON="${PYTHON:-python}"
-UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+PYTHON="${PYTHON:-python3}"
+UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Safari/537.36"
 
 cmd="${1:-}"
 shift || true
