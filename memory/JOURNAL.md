@@ -31,3 +31,13 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-05-04
+
+### EOD 2026-05-04
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50 (-0.74%): alpha +0.74%
+- No positions open. All-cash. First trading day.
+- Tomorrow watchlist: run pre-market screen for PEAD/momentum-pullback candidates from Nifty 100 universe
