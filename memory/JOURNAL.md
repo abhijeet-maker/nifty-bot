@@ -31,3 +31,14 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-05-05 — Pre-market
+
+_(Not run — first trading day. No pre-market entry exists.)_
+
+### Market-open execution 2026-05-05
+- No pre-market routine had run prior to market-open. No candidate identified.
+- Decision: HOLD. No trade attempted.
+- Portfolio: 0 positions open, 0 trades this week, ₹5,00,000 cash idle.
