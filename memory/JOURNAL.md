@@ -31,3 +31,13 @@ not every block.
 ---
 
 _(Seed — first entry will be written by the first pre-market routine firing.)_
+
+---
+
+## 2026-05-05
+
+### EOD 2026-05-05
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50: N/A — live index data unavailable; Perplexity latest May 4 close 24,027.60 (-0.38%)
+- Trades today: 0 | This week: 0 of 2 max
+- Tomorrow watchlist: Run full pre-market screen — PEAD candidates from recent earnings beats, 12-1 momentum pullback scan across UNIVERSE.md
