@@ -61,3 +61,9 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA divergence between UNIVERSE.md (Yes/Yes on 2026-04-24) and live (No/No on 2026-05-05) is suspicious — flag for Friday weekly review to investigate (corporate action? data issue?).
 - No action expected at open.
 
+### EOD 2026-05-06
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%) — 0 positions, 100% cash
+- Nifty 50 close 24,330.95 (+1.24%) → alpha -1.24% (sat out a strong tape; no setups qualified)
+- Trades today: 0. This week: 0 of 2 max.
+- Tomorrow watchlist: BAJAJ-AUTO + GODREJCP post-market results today → scan for PEAD setups tomorrow pre-market (gap, beat-magnitude, guidance from concall narrative).
+
