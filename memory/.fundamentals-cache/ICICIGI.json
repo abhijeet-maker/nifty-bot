@@ -10,5 +10,8 @@
   "roce_pct": null,
   "roe_pct": null,
   "face_value": null,
-  "sector": null
+  "sector": "Financial Services",
+  "promoter_holding_pct": 51.28,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

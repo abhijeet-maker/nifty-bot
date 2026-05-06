@@ -2,13 +2,17 @@
   "symbol": "BRITANNIA",
   "source": "screener.in",
   "url": "https://www.screener.in/company/BRITANNIA/consolidated/",
-  "market_cap_cr": 138046.0,
-  "current_price": 5730.0,
-  "pe": 57.2,
+  "market_cap_cr": 139568.0,
+  "current_price": 5794.0,
+  "pe": 57.8,
   "book_value": 155.0,
-  "dividend_yield_pct": 1.31,
+  "dividend_yield_pct": 1.29,
   "roce_pct": 53.0,
   "roe_pct": 52.9,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Fast Moving Consumer Goods",
+  "debt_to_equity": 0.59,
+  "promoter_holding_pct": 50.55,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

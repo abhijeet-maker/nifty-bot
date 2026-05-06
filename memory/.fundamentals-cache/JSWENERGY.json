@@ -2,13 +2,17 @@
   "symbol": "JSWENERGY",
   "source": "screener.in",
   "url": "https://www.screener.in/company/JSWENERGY/consolidated/",
-  "market_cap_cr": 95929.0,
-  "current_price": 546.0,
-  "pe": 41.4,
+  "market_cap_cr": 100060.0,
+  "current_price": 569.0,
+  "pe": 43.3,
   "book_value": 167.0,
-  "dividend_yield_pct": 0.37,
+  "dividend_yield_pct": 0.35,
   "roce_pct": 6.49,
   "roe_pct": 7.41,
   "face_value": 10.0,
-  "sector": null
+  "sector": "Power",
+  "debt_to_equity": 2.37,
+  "promoter_holding_pct": 69.41,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

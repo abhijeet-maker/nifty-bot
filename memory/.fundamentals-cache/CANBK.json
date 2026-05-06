@@ -2,13 +2,16 @@
   "symbol": "CANBK",
   "source": "screener.in",
   "url": "https://www.screener.in/company/CANBK/consolidated/",
-  "market_cap_cr": 127869.0,
-  "current_price": 141.0,
-  "pe": 6.34,
+  "market_cap_cr": 122363.0,
+  "current_price": 135.0,
+  "pe": 6.09,
   "book_value": 129.0,
-  "dividend_yield_pct": 2.84,
+  "dividend_yield_pct": 2.93,
   "roce_pct": 6.79,
   "roe_pct": 17.8,
   "face_value": 2.0,
-  "sector": null
+  "sector": "Financial Services",
+  "promoter_holding_pct": 62.93,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

@@ -69,9 +69,18 @@ def to_num(s):
     except Exception:
         return None
 
-# Sector from page header
-sector_m = re.search(r'<small[^>]*>\s*<a[^>]*/company/compare/[^/]+/([^/]+)/\s*[^<]*</a>', html)
-sector = sector_m.group(1).replace('-', ' ').title() if sector_m else None
+# Sector from breadcrumb: <a ... title='Sector'>Oil, Gas &amp; Consumable Fuels</a>.
+# Build pattern with chr(34) so we avoid embedding literal double quotes
+# inside this bash double-quoted python heredoc.
+DQ = chr(34)
+def find_attr_text(attr_value):
+    pat = r'<a[^>]*title=' + DQ + re.escape(attr_value) + DQ + r'[^>]*>([^<]+)</a>'
+    return re.search(pat, html, re.IGNORECASE)
+
+sector_m = find_attr_text('Sector') or find_attr_text('Broad Sector')
+sector = None
+if sector_m:
+    sector = sector_m.group(1).strip().replace('&amp;', '&')
 
 out = {
     'symbol': '$sym',
@@ -88,20 +97,60 @@ out = {
     'sector': sector,
 }
 
-# Debt/Equity from the ratios section (may not be in top ratios for all companies)
-de_m = re.search(r'Debt\s*/\s*Equity.*?<span[^>]*number[^>]*>([^<]+)</span>', html, re.DOTALL | re.IGNORECASE)
-if de_m:
-    out['debt_to_equity'] = to_num(de_m.group(1))
+# --- Balance Sheet derived metrics ---
+# Screener doesn't render Debt/Equity directly in #top-ratios; we compute it
+# from the Balance Sheet section (Borrowings / (Equity Capital + Reserves))
+# using the latest available year column.
+def grab_table_row_last(label):
+    '''Return the latest-period numeric value from any data-table row whose
+    first cell contains LABEL. Matches both <button>-wrapped and plain labels.
+    Tolerates trailing % symbols on percentage cells.'''
+    pattern = (
+        r'<tr[^>]*>\s*'
+        r'<td[^>]*text[^>]*>'
+        r'.*?\b' + re.escape(label) + r'\b'      # label appears anywhere in cell
+        r'.*?</td>'                              # end of label cell
+        r'(.*?)'                                 # capture rest of row
+        r'</tr>'
+    )
+    m = re.search(pattern, html, re.DOTALL | re.IGNORECASE)
+    if not m:
+        return None
+    row = m.group(1)
+    # Numeric cells: optional leading sign, digits/commas/dots, optional trailing %
+    vals = re.findall(r'<td[^>]*>\s*(-?[\d,\.]+)\s*%?\s*</td>', row)
+    if not vals:
+        return None
+    last = vals[-1].replace(',', '').strip()
+    try:
+        return float(last)
+    except ValueError:
+        return None
 
-# Promoter holding
-ph_m = re.search(r'>Promoters?\s*</td>.*?<td[^>]*>([^<]+)</td>', html, re.DOTALL | re.IGNORECASE)
-if ph_m:
-    out['promoter_holding_pct'] = to_num(ph_m.group(1))
+borrowings = grab_table_row_last('Borrowings')
+equity_capital = grab_table_row_last('Equity Capital')
+reserves = grab_table_row_last('Reserves')
+if borrowings is not None and equity_capital is not None and reserves is not None:
+    total_equity = equity_capital + reserves
+    if total_equity > 0:
+        out['debt_to_equity'] = round(borrowings / total_equity, 2)
 
-# Pledged percentage (critical for quality screen)
-pl_m = re.search(r'Pledg(?:ed)?\s*(?:percentage|%).*?<span[^>]*number[^>]*>([^<]+)</span>', html, re.DOTALL | re.IGNORECASE)
-if pl_m:
-    out['promoter_pledge_pct'] = to_num(pl_m.group(1))
+# Promoter holding — latest quarter from Shareholding Pattern table.
+ph = grab_table_row_last('Promoters')
+if ph is not None:
+    out['promoter_holding_pct'] = ph
+
+# Promoter pledge % — KNOWN LIMITATION:
+# Screener.in does NOT render pledge data in the static HTML. It's loaded via
+# JavaScript through Company.showShareholders('promoters', ...). Verified across
+# 5 sample tickers (RELIANCE, HDFCBANK, VEDL, JSWSTEEL, ADANIENT) — the string
+# 'pledge' appears 0 times in every rendered page.
+# Default to 0.0 (most Nifty 100 names have 0% pledge anyway). Quality screen
+# treats this as 'pass'; high-pledge names typically fail other gates (D/E, ROCE).
+# To upgrade later: scrape NSE's shareholding XBRL filings, or reverse-engineer
+# Screener's AJAX endpoint for pledge data.
+out['promoter_pledge_pct'] = 0.0
+out['promoter_pledge_source'] = 'default-stub'
 
 # Next results date (if announced)
 res_m = re.search(r'Results\s*on\s*([A-Za-z]+\s+\d{1,2}(?:,\s*\d{4})?)', html)

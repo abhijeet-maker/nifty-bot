@@ -2,13 +2,17 @@
   "symbol": "GODREJCP",
   "source": "screener.in",
   "url": "https://www.screener.in/company/GODREJCP/consolidated/",
-  "market_cap_cr": 111275.0,
-  "current_price": 1087.0,
-  "pe": 57.3,
+  "market_cap_cr": 111319.0,
+  "current_price": 1088.0,
+  "pe": 57.4,
   "book_value": 119.0,
-  "dividend_yield_pct": 1.84,
+  "dividend_yield_pct": 1.79,
   "roce_pct": 19.2,
   "roe_pct": 15.2,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Fast Moving Consumer Goods",
+  "debt_to_equity": 0.34,
+  "promoter_holding_pct": 53.06,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

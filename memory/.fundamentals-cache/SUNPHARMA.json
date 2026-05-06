@@ -2,13 +2,17 @@
   "symbol": "SUNPHARMA",
   "source": "screener.in",
   "url": "https://www.screener.in/company/SUNPHARMA/consolidated/",
-  "market_cap_cr": 388390.0,
-  "current_price": 1618.0,
-  "pe": 32.0,
+  "market_cap_cr": 443805.0,
+  "current_price": 1850.0,
+  "pe": 36.5,
   "book_value": 324.0,
-  "dividend_yield_pct": 0.99,
+  "dividend_yield_pct": 0.88,
   "roce_pct": 20.2,
   "roe_pct": 16.9,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Healthcare",
+  "debt_to_equity": 0.07,
+  "promoter_holding_pct": 54.48,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

@@ -2,13 +2,17 @@
   "symbol": "CIPLA",
   "source": "screener.in",
   "url": "https://www.screener.in/company/CIPLA/consolidated/",
-  "market_cap_cr": 104612.0,
-  "current_price": 1295.0,
-  "pe": 22.0,
+  "market_cap_cr": 109992.0,
+  "current_price": 1362.0,
+  "pe": 23.1,
   "book_value": 408.0,
-  "dividend_yield_pct": 1.0,
+  "dividend_yield_pct": 0.97,
   "roce_pct": 22.7,
   "roe_pct": 17.8,
   "face_value": 2.0,
-  "sector": null
+  "sector": "Healthcare",
+  "debt_to_equity": 0.01,
+  "promoter_holding_pct": 29.22,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

@@ -2,13 +2,17 @@
   "symbol": "DIVISLAB",
   "source": "screener.in",
   "url": "https://www.screener.in/company/DIVISLAB/consolidated/",
-  "market_cap_cr": 168354.0,
-  "current_price": 6342.0,
-  "pe": 66.5,
+  "market_cap_cr": 178554.0,
+  "current_price": 6726.0,
+  "pe": 70.5,
   "book_value": 581.0,
-  "dividend_yield_pct": 0.47,
+  "dividend_yield_pct": 0.45,
   "roce_pct": 20.4,
   "roe_pct": 15.4,
   "face_value": 2.0,
-  "sector": null
+  "sector": "Healthcare",
+  "debt_to_equity": 0.01,
+  "promoter_holding_pct": 51.88,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

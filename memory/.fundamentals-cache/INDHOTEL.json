@@ -2,13 +2,17 @@
   "symbol": "INDHOTEL",
   "source": "screener.in",
   "url": "https://www.screener.in/company/INDHOTEL/consolidated/",
-  "market_cap_cr": 90879.0,
-  "current_price": 638.0,
-  "pe": 50.3,
+  "market_cap_cr": 94238.0,
+  "current_price": 662.0,
+  "pe": 52.2,
   "book_value": 81.3,
   "dividend_yield_pct": 0.35,
   "roce_pct": 17.2,
   "roe_pct": 16.1,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Consumer Services",
+  "debt_to_equity": 0.28,
+  "promoter_holding_pct": 38.12,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

@@ -2,13 +2,17 @@
   "symbol": "HINDZINC",
   "source": "screener.in",
   "url": "https://www.screener.in/company/HINDZINC/consolidated/",
-  "market_cap_cr": 248723.0,
-  "current_price": 589.0,
-  "pe": 18.0,
+  "market_cap_cr": 265160.0,
+  "current_price": 628.0,
+  "pe": 19.2,
   "book_value": 53.6,
-  "dividend_yield_pct": 4.93,
+  "dividend_yield_pct": 1.73,
   "roce_pct": 69.6,
   "roe_pct": 76.8,
   "face_value": 2.0,
-  "sector": null
+  "sector": "Metals & Mining",
+  "debt_to_equity": 0.39,
+  "promoter_holding_pct": 60.71,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

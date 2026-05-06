@@ -2,13 +2,17 @@
   "symbol": "TATAPOWER",
   "source": "screener.in",
   "url": "https://www.screener.in/company/TATAPOWER/consolidated/",
-  "market_cap_cr": 138886.0,
-  "current_price": 434.0,
-  "pe": 36.7,
+  "market_cap_cr": 140531.0,
+  "current_price": 440.0,
+  "pe": 37.2,
   "book_value": 118.0,
-  "dividend_yield_pct": 0.52,
+  "dividend_yield_pct": 0.51,
   "roce_pct": 10.8,
   "roe_pct": 11.0,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Power",
+  "debt_to_equity": 1.86,
+  "promoter_holding_pct": 46.86,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

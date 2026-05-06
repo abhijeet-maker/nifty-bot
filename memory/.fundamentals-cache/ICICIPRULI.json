@@ -2,13 +2,17 @@
   "symbol": "ICICIPRULI",
   "source": "screener.in",
   "url": "https://www.screener.in/company/ICICIPRULI/consolidated/",
-  "market_cap_cr": 74486.0,
-  "current_price": 514.0,
-  "pe": 46.3,
+  "market_cap_cr": 79457.0,
+  "current_price": 548.0,
+  "pe": 49.4,
   "book_value": 94.0,
-  "dividend_yield_pct": 0.17,
+  "dividend_yield_pct": 0.16,
   "roce_pct": 10.1,
   "roe_pct": 12.6,
   "face_value": 10.0,
-  "sector": null
+  "sector": "Financial Services",
+  "debt_to_equity": 0.19,
+  "promoter_holding_pct": 72.8,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

@@ -2,13 +2,17 @@
   "symbol": "TRENT",
   "source": "screener.in",
   "url": "https://www.screener.in/company/TRENT/consolidated/",
-  "market_cap_cr": 152242.0,
-  "current_price": 4280.0,
-  "pe": 87.6,
+  "market_cap_cr": 150816.0,
+  "current_price": 4242.0,
+  "pe": 86.7,
   "book_value": 196.0,
-  "dividend_yield_pct": 0.12,
+  "dividend_yield_pct": 0.15,
   "roce_pct": 27.8,
   "roe_pct": 27.9,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Consumer Services",
+  "debt_to_equity": 0.37,
+  "promoter_holding_pct": 37.01,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

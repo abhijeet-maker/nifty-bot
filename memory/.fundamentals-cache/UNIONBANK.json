@@ -2,13 +2,16 @@
   "symbol": "UNIONBANK",
   "source": "screener.in",
   "url": "https://www.screener.in/company/UNIONBANK/consolidated/",
-  "market_cap_cr": 135160.0,
-  "current_price": 177.0,
-  "pe": 6.96,
+  "market_cap_cr": 126184.0,
+  "current_price": 165.0,
+  "pe": 6.48,
   "book_value": 175.0,
-  "dividend_yield_pct": 2.68,
+  "dividend_yield_pct": 2.85,
   "roce_pct": 6.3,
   "roe_pct": 15.7,
   "face_value": 10.0,
-  "sector": null
+  "sector": "Financial Services",
+  "promoter_holding_pct": 74.76,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

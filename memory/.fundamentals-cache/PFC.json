@@ -2,13 +2,16 @@
   "symbol": "PFC",
   "source": "screener.in",
   "url": "https://www.screener.in/company/PFC/consolidated/",
-  "market_cap_cr": 154940.0,
-  "current_price": 470.0,
-  "pe": 6.14,
+  "market_cap_cr": 150897.0,
+  "current_price": 457.0,
+  "pe": 5.94,
   "book_value": 385.0,
-  "dividend_yield_pct": 3.37,
+  "dividend_yield_pct": 3.42,
   "roce_pct": 9.73,
   "roe_pct": 21.0,
   "face_value": 10.0,
-  "sector": null
+  "sector": "Financial Services",
+  "promoter_holding_pct": 55.99,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

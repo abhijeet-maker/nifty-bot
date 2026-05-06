@@ -2,13 +2,17 @@
   "symbol": "PIDILITIND",
   "source": "screener.in",
   "url": "https://www.screener.in/company/PIDILITIND/consolidated/",
-  "market_cap_cr": 142336.0,
-  "current_price": 1399.0,
-  "pe": 61.5,
+  "market_cap_cr": 143791.0,
+  "current_price": 1413.0,
+  "pe": 62.1,
   "book_value": 93.9,
-  "dividend_yield_pct": 0.72,
+  "dividend_yield_pct": 0.73,
   "roce_pct": 29.8,
   "roe_pct": 23.0,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Chemicals",
+  "debt_to_equity": 0.05,
+  "promoter_holding_pct": 69.32,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

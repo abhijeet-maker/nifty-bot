@@ -2,13 +2,17 @@
   "symbol": "ADANIGREEN",
   "source": "screener.in",
   "url": "https://www.screener.in/company/ADANIGREEN/consolidated/",
-  "market_cap_cr": 202034.0,
-  "current_price": 1227.0,
-  "pe": 112.0,
+  "market_cap_cr": 220038.0,
+  "current_price": 1336.0,
+  "pe": 121.0,
   "book_value": 121.0,
   "dividend_yield_pct": 0.0,
   "roce_pct": 7.02,
   "roe_pct": 11.3,
   "face_value": 10.0,
-  "sector": null
+  "sector": "Power",
+  "debt_to_equity": 5.19,
+  "promoter_holding_pct": 62.44,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

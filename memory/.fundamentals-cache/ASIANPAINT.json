@@ -2,13 +2,17 @@
   "symbol": "ASIANPAINT",
   "source": "screener.in",
   "url": "https://www.screener.in/company/ASIANPAINT/consolidated/",
-  "market_cap_cr": 237576.0,
-  "current_price": 2478.0,
-  "pe": 58.2,
+  "market_cap_cr": 236572.0,
+  "current_price": 2466.0,
+  "pe": 58.0,
   "book_value": 204.0,
-  "dividend_yield_pct": 1.0,
+  "dividend_yield_pct": 1.01,
   "roce_pct": 25.7,
   "roe_pct": 20.6,
   "face_value": 1.0,
-  "sector": null
+  "sector": "Consumer Durables",
+  "debt_to_equity": 0.18,
+  "promoter_holding_pct": 52.63,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

@@ -2,13 +2,17 @@
   "symbol": "SHREECEM",
   "source": "screener.in",
   "url": "https://www.screener.in/company/SHREECEM/consolidated/",
-  "market_cap_cr": 90121.0,
-  "current_price": 24970.0,
-  "pe": 50.3,
+  "market_cap_cr": 89484.0,
+  "current_price": 24801.0,
+  "pe": 50.0,
   "book_value": 6220.0,
   "dividend_yield_pct": 0.44,
   "roce_pct": 6.71,
   "roe_pct": 5.29,
   "face_value": 10.0,
-  "sector": null
+  "sector": "Construction Materials",
+  "debt_to_equity": 0.1,
+  "promoter_holding_pct": 62.56,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }

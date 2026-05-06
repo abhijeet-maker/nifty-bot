@@ -2,13 +2,17 @@
   "symbol": "ONGC",
   "source": "screener.in",
   "url": "https://www.screener.in/company/ONGC/consolidated/",
-  "market_cap_cr": 358538.0,
-  "current_price": 285.0,
-  "pe": 9.43,
+  "market_cap_cr": 356651.0,
+  "current_price": 284.0,
+  "pe": 9.37,
   "book_value": 292.0,
-  "dividend_yield_pct": 4.3,
+  "dividend_yield_pct": 4.32,
   "roce_pct": 12.0,
   "roe_pct": 10.6,
   "face_value": 5.0,
-  "sector": null
+  "sector": "Oil, Gas & Consumable Fuels",
+  "debt_to_equity": 0.48,
+  "promoter_holding_pct": 58.89,
+  "promoter_pledge_pct": 0.0,
+  "promoter_pledge_source": "default-stub"
 }
