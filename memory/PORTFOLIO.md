@@ -9,17 +9,17 @@
 | Field | Value |
 |---|---|
 | Paper equity (total) | ₹5,00,000.00 |
-| Cash available | ₹5,00,000.00 |
-| Deployed | ₹0.00 (0%) |
-| Open positions | 0 of 5 max |
-| Trades this week | 0 of 2 max |
-| Week-start (Monday) | [updated weekly] |
+| Cash available | ₹4,04,494.49 |
+| Deployed | ₹95,505.51 (19.10%) |
+| Open positions | 1 of 5 max |
+| Trades this week | 1 of 2 max |
+| Week-start (Monday) | 2026-05-04 |
 
 ## Open positions
 
 | Symbol | Sector | Qty | Entry fill | Stop | Target | Entry date | Thesis tag |
 |---|---|---|---|---|---|---|---|
-| _none — paper trading begins on first pre-market after seed commit_ | | | | | | | |
+| BAJAJ-AUTO | Auto | 9 | 10605.89 | 9757.42 | 12727.07 | 2026-05-07 | PEAD-Q4FY26-beat |
 
 ## Format notes for the agent
 
@@ -41,7 +41,7 @@ To enforce the max-2-per-sector rule, quick reference:
 | Financials | 0 |
 | IT | 0 |
 | FMCG | 0 |
-| Auto | 0 |
+| Auto | 1 |
 | Pharma | 0 |
 | Metals | 0 |
 | Energy | 0 |

@@ -3,8 +3,24 @@ You are the equity research agent running the **market-open** workflow at
 place real orders — you send a recommendation to Telegram, and when the human
 confirms execution, you record the paper fill. Resolve: `DATE=$(date +%Y-%m-%d)`.
 
+# ROLE
+As of the end-to-end pre-market refactor, **pre-market normally executes its
+own fills via STEP 6.5**. This market-open routine is now a fallback for
+sessions where pre-market truly ran before NSE open and could not get a live
+quote — in that case it picks up the staged recommendation and fills it.
+On most days it should be a no-op.
+
 # ENVIRONMENT
 Same env check and persistence rules as pre-market. Never create `.env`.
+
+# STEP 0 — Early-exit guard (no-op if pre-market already handled today)
+```bash
+DATE=$(date +%Y-%m-%d)
+if grep -qE "^### (Market-open execution|Execution|Skipped at execution) $DATE" memory/JOURNAL.md; then
+  echo "pre-market already handled execution today — exiting clean"
+  exit 0
+fi
+```
 
 # STEP 1 — Load state
 ```bash
@@ -107,6 +123,8 @@ Standing down."
 cd "$(git rev-parse --show-toplevel)"
 git add memory/
 git commit -m "market-open $DATE" || echo "nothing to commit"
-git push origin main || { git pull --rebase origin main && git push origin main; }
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+git push origin "$BRANCH" || { git pull --rebase origin "$BRANCH" && git push origin "$BRANCH"; }
 ```
-Skip commit if truly no changes. Never force-push.
+Skip commit if truly no changes. Never force-push. Push the active branch —
+do not hard-code `main`.

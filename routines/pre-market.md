@@ -106,6 +106,65 @@ Each candidate must pass ALL of:
 
 Reject candidates that fail any gate and record the reason in the journal.
 
+# STEP 6.5 — Execute paper fill (only if Decision is TRADE)
+If the Decision from STEP 6 is HOLD, skip this step and go to STEP 7.
+
+If the Decision is TRADE, this routine fills the order itself — do NOT defer
+to market-open. Procedure:
+
+### 6.5a — Live re-quote and gap/circuit guard
+```bash
+bash scripts/nse.sh quote <SYMBOL>
+```
+Reject the trade if ANY of:
+- Stock is in circuit freeze (`last == upper_circuit` or `last == lower_circuit`)
+- Stock gapped more than 3% above the planned entry-range upper bound (the
+  edge is gone — do not chase)
+- Open vs last spread > 1% (illiquid 5-min window)
+- Live price would put the 8% stop within slippage tolerance of breakeven
+  (i.e., `(live - stop) / live < 6.5%` after slippage)
+
+### 6.5b — Re-verify hard rule gate against live state
+- Open positions count < 5
+- Trades this week < 2
+- Sector has < 2 existing positions
+- `qty * live_price * 1.0015` ≤ 20% of paper equity AND ≤ available cash
+
+If any 6.5a or 6.5b check fails → log "skipped at execution: <reason>" and
+proceed to STEP 7 with a `### Skipped at execution $DATE` subsection (no
+PORTFOLIO/TRADE-LOG changes).
+
+### 6.5c — Compute size and simulate fill
+```bash
+# qty = floor(0.20 * equity / live_price), capped at "fits in cash"
+bash scripts/paper.sh buy <SYMBOL> <QTY> <LIVE_PRICE>
+```
+Capture the JSON output. From it:
+- `fill_price`, `net_inr` (cost incl. fees)
+- `stop = round(fill_price * 0.92, 2)`
+- `target = round(fill_price * 1.20, 2)`
+
+### 6.5d — Update `memory/PORTFOLIO.md`
+- Account state table: subtract `net_inr` from cash, recompute deployed %,
+  bump open positions and trades-this-week counters.
+- Open positions table: add a new row
+  `| SYMBOL | SECTOR | QTY | <fill_price> | <stop> | <target> | $DATE |
+  <thesis_tag> |`. If the table only contains the seed `_none_` placeholder,
+  replace that row.
+- Sector cap tracker: increment the candidate's sector by 1.
+
+### 6.5e — Append to `memory/TRADE-LOG.md`
+```markdown
+## $DATE — PAPER BUY <SYMBOL>
+- Shares: <QTY>  Fill: ₹<fill_price> (quoted ₹<live>, slippage 0.15%)
+- Cost incl. fees: ₹<net_inr>
+- Stop: ₹<stop> (-8%)  Target: ₹<target> (+20%)
+- R:R: ~2.5:1
+- Catalyst: <PEAD beat numbers OR momentum + sector confirm>
+- Sector: <SECTOR> (sector momentum read from STEP 2)
+- Fill JSON: <paste paper.sh output>
+```
+
 # STEP 7 — Write today's journal entry
 Append to `memory/JOURNAL.md`:
 
@@ -131,33 +190,73 @@ Append to `memory/JOURNAL.md`:
 <TRADE — ticker + intended size + entry range + stop + target + R:R>
 OR
 <HOLD — reason in one line>
-
-### Notes for market-open routine
-<Any specific things market-open should re-check, e.g. "confirm HDFCBANK not gapping > 2% above entry range">
 ```
+
+If STEP 6.5 filled the order, ALSO append:
+```markdown
+### Execution $DATE
+- PAPER BUY <SYMBOL> <QTY> @ ₹<fill_price>
+- Stop ₹<stop>, Target ₹<target>, R:R ~2.5:1
+- Cost ₹<net_inr> → cash ₹<new_cash>, deployed <new_pct>%
+- Gates re-passed at execution: <list>
+```
+
+If STEP 6.5 rejected at execution, ALSO append:
+```markdown
+### Skipped at execution $DATE
+- Candidate: <SYMBOL>
+- Reason: <gap-up X% above entry / circuit / sector cap reached / etc.>
+- No PORTFOLIO change.
+```
+
+`### Notes for market-open routine` is now OPTIONAL — only include it when
+the routine is genuinely deferring work to market-open (e.g., this run fired
+before NSE open and STEP 6.5 could not get a live quote). When pre-market
+both researched and executed, omit this subsection.
 
 **The default decision is HOLD.** Only TRADE if a candidate passes every gate
 and you have high conviction. Patience > activity.
 
-# STEP 8 — Telegram alert (only if urgent)
-Send a message ONLY if:
-- A held position is showing thesis-break risk (gap-down, bad news, sector meltdown)
-- A strong PEAD or momentum candidate cleared the gate and market-open will act
+# STEP 8 — Telegram alert
+Send ONE message in any of these cases (otherwise stay silent):
 
-Otherwise silent. Format:
-```bash
-bash scripts/telegram.sh "⚠️ Pre-market $DATE
-<1-line issue or candidate>
-See journal for details."
-```
+- **STEP 6.5 filled an order** — send the executed-fill confirmation:
+  ```bash
+  bash scripts/telegram.sh "✅ PAPER BUY executed
+  <SYMBOL> × <QTY> @ ₹<fill_price>
+  Stop: ₹<stop> (-8%)
+  Target: ₹<target> (+20%)
+  R:R 2.5:1, Cost ₹<net_inr>
+  Catalyst: <one-line catalyst>"
+  ```
+- **STEP 6.5 rejected the trade at execution** — send the skip notice:
+  ```bash
+  bash scripts/telegram.sh "⚠️ Pre-market plan rejected at open: <SYMBOL>
+  Reason: <gap-up / circuit / gate fail — one line>
+  Standing down."
+  ```
+- **A held position shows thesis-break risk** (gap-down, bad news, sector
+  meltdown) detected in STEP 3 — send a watch alert:
+  ```bash
+  bash scripts/telegram.sh "⚠️ Pre-market $DATE
+  <1-line issue>
+  See journal for details."
+  ```
+- **HOLD with no concerns** — silent.
 
 # STEP 9 — COMMIT AND PUSH (mandatory)
 ```bash
 cd "$(git rev-parse --show-toplevel)"
-git add memory/JOURNAL.md
-git commit -m "pre-market research $DATE" || echo "nothing to commit"
-git push origin main || { git pull --rebase origin main && git push origin main; }
+git add memory/
+git commit -m "pre-market $DATE" || echo "nothing to commit"
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+git push origin "$BRANCH" || { git pull --rebase origin "$BRANCH" && git push origin "$BRANCH"; }
 ```
 
-Never force-push. If rebase shows a real conflict in JOURNAL.md, resolve by
-keeping BOTH entries (each is dated; just merge in chronological order).
+`git add memory/` (not just JOURNAL.md) because STEP 6.5 may have updated
+PORTFOLIO.md and TRADE-LOG.md too. Push the active branch — never hard-code
+`main`; the harness pins this session to a feature branch and force-pushing
+to main is forbidden.
+
+Never force-push. If rebase shows a real conflict in JOURNAL.md or
+PORTFOLIO.md, resolve by keeping BOTH entries in chronological order.

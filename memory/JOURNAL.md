@@ -99,3 +99,15 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Update PORTFOLIO.md with fill, stop, target, deployed %.
 - Stock at 52w high (₹10,477.50) — be tight on entry discipline; if it gaps and runs, walk away.
 
+### Market-open execution 2026-05-07
+- **PAPER BUY BAJAJ-AUTO 9 @ ₹10,605.89** (quoted ₹10,590, slip 0.15%)
+- Cost incl. fees: ₹95,505.51 → cash ₹4,04,494.49, deployed 19.10%
+- Stop ₹9,757.42 (-8%), Target ₹12,727.07 (+20%), R:R 2.50:1
+- Gates re-passed at execution: positions 0→1/5, week 0→1/2, sector Auto 0→1/2,
+  size 19.10% (≤20%), open ₹10,582 < gap-guard ₹10,608, no circuit lock,
+  spread fine (open ₹10,582 vs last ₹10,590), 8% stop math holds (stop is 7.86%
+  below current — within slippage tolerance per market-open spec).
+- Note: filled retroactively in the same session — pre-market routine did not
+  auto-execute on this run. Routine spec being updated (Parts B+C of the plan)
+  so future pre-market firings execute end-to-end.
+
