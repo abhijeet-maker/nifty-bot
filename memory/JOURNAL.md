@@ -61,3 +61,9 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA divergence between UNIVERSE.md (Yes/Yes on 2026-04-24) and live (No/No on 2026-05-05) is suspicious — flag for Friday weekly review to investigate (corporate action? data issue?).
 - No action expected at open.
 
+## 2026-05-08 — Market-open
+- No pre-market routine ran 2026-05-07 or 2026-05-08; last decision on file is HOLD (2026-05-06).
+- No candidate to validate at open → no-op. Portfolio unchanged (0 positions, ₹5,00,000 cash).
+- Telegram: silenced (no-op per workflow).
+- Today is Friday → weekly-review routine will rebuild UNIVERSE.md and address the VEDL DMA divergence flag.
+
