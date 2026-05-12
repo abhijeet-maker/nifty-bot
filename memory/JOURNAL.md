@@ -61,3 +61,42 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA divergence between UNIVERSE.md (Yes/Yes on 2026-04-24) and live (No/No on 2026-05-05) is suspicious — flag for Friday weekly review to investigate (corporate action? data issue?).
 - No action expected at open.
 
+## 2026-05-12 — Pre-market
+
+### Macro
+- Nifty 50: ~23,800-24,000 zone, mildly soft tape; GIFT Nifty indicated -0.4% open
+- Bank Nifty: ~54,000 (sitting on key support; below = 53,650)
+- Hot sectors (1m): Pharma, Defence (per Perplexity narrative)
+- Cold / no recovery signal: broad market still below 20-week EMA; weak undercurrent
+- Today's events: DRREDDY, TATAPOWER, BPCL Q4 results post-market (Nifty 100). No FOMC/RBI/Budget today.
+- **Ops note:** `nse.sh quote` and `nse.sh earnings` return null/empty — nsepython blocked. Yahoo (history, momentum) works. Earnings calendar reconstructed from Perplexity narrative cross-checked with Yahoo close data.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week (Mon 05-11 onwards): 0 of 2 max
+- Concerns: none (no open positions)
+
+### Candidates considered
+**PEAD scan (results Fri 05-08 / Mon 05-11, names in UNIVERSE):**
+1. TITAN (Cons Durables) — PEAD — close 05-07 ₹4307.5 → 05-08 ₹4509.0 (+4.68%, met gap) → 05-11 ₹4205.6 (-6.73%, **faded through pre-results level**). **REJECT** — failed "held the gain" rule. Also now below 50DMA.
+2. BRITANNIA (FMCG) — PEAD — 05-08 close ₹5520 vs 05-07 ₹5814 = **-5.06% on results day**. **REJECT** — results-day reaction negative.
+3. PIDILITIND (Chemicals) — PEAD — 05-08 +1.77% only; faded to ₹1437.2 on 05-11. **REJECT** — gap below +3% threshold and faded.
+
+**Momentum scan (top-of-UNIVERSE by 12-1):**
+4. VEDL (Metals) — last ₹298.4 vs 50DMA ₹647.9 / 200DMA ₹559.7. **REJECT** — below both DMAs (still suspected corporate action; flagged 05-06).
+5. BEL (Cap Goods) — last ₹431.95, 50DMA ₹438.6 → -1.5% below 50DMA. **REJECT** — below 50DMA.
+6. ADANIPOWER (Power) — last ₹222.03, above both DMAs ✓, mom +65.25% ✓, but **+5.1% ABOVE 20DMA** and **RSI-14 = 70.7** (overbought). **REJECT** — extended, not 2-7% below 20DMA, RSI outside 50-70 band.
+7. HEROMOTOCO (Auto) — below both DMAs. **REJECT**.
+8. EICHERMOT (Auto) — above both DMAs ✓, mom +35.3% ✓, RSI 51, but **-0.07% vs 20DMA** (at 20DMA, not in 2-7% pullback band). **REJECT** — no pullback entry.
+9. HINDZINC (Metals) — above both DMAs ✓, mom +33.6% ✓, but **+4.31% ABOVE 20DMA**, RSI 62.5. **REJECT** — extended, not in pullback zone.
+
+### Decision
+**HOLD.** Zero candidates passed the entry gates. PEAD names all failed reaction/drift; momentum leaders all extended above 20DMA or below DMA gate. Patience > activity per STRATEGY.md default.
+
+### Notes for market-open routine
+- No action at open.
+- DRREDDY reports tonight — already in UNIVERSE; potential PEAD candidate for tomorrow's pre-market if both beats + >3% reaction the day after.
+- BPCL also reports tonight (in UNIVERSE), but BPCL is in the cold Oil/Gas sector and well below DMAs — even a beat would fail sector confirm.
+- Watch ADANIPOWER and HINDZINC for a 20DMA pullback into the 2-7% band — they remain best momentum setups if/when they pull back.
+- Re-test `nse.sh quote` and `nse.sh earnings` at next routine; if still null after 24h, escalate (nsepython upstream issue).
