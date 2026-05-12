@@ -5,8 +5,9 @@
 #   bash scripts/nse.sh history RELIANCE 250   -> 250 days of closes (for 12-1 momentum)
 #   bash scripts/nse.sh earnings 2026-04-21    -> companies reporting on that date
 #
-# quote/earnings use nsepython (handles NSE cookie auth internally).
-# history uses Yahoo Finance v8 chart API (v7 download is deprecated).
+# quote uses Yahoo Finance v8 chart (NSE API is Akamai-blocked in this environment).
+# earnings is unavailable; pre-market routine must use Perplexity for the earnings calendar.
+# history/momentum use Yahoo Finance v8 chart API (v7 download is deprecated).
 
 set -euo pipefail
 ROOT="$(dirname "$(git -C "$(dirname "$0")" rev-parse --git-common-dir)")"
@@ -21,32 +22,37 @@ shift || true
 
 case "$cmd" in
   quote)
+    # Yahoo Finance v8 chart (NSE API is Akamai-blocked; Yahoo covers all strategy-critical fields).
+    # Fields not available via Yahoo: vwap, circuit limits, delivery % (not used in any gate check).
     sym="${1:?usage: quote SYMBOL}"
-    "$PYTHON" - "$sym" <<'PYEOF'
+    curl -fsS -A "$UA" -H "Accept: application/json" \
+      "https://query1.finance.yahoo.com/v8/finance/chart/${sym}.NS?interval=1d&range=5d" \
+    | "$PYTHON" -c "
 import sys, json
-from nsepython import nse_eq
-sym = sys.argv[1]
-d = nse_eq(sym)
-p = d.get('priceInfo', {})
-info = d.get('info', {})
-ind = d.get('industryInfo', {})
+d = json.load(sys.stdin)
+r = d['chart']['result'][0]
+m = r['meta']
+q = r['indicators']['quote'][0]
+last = m.get('regularMarketPrice')
+prev = m.get('chartPreviousClose')
+change_pct = round((last - prev) / prev * 100, 2) if prev else None
 print(json.dumps({
-  'symbol': info.get('symbol'),
-  'name': info.get('companyName'),
-  'sector': ind.get('industry'),
-  'last': p.get('lastPrice'),
-  'open': p.get('open'),
-  'high': p.get('intraDayHighLow', {}).get('max'),
-  'low': p.get('intraDayHighLow', {}).get('min'),
-  'close_prev': p.get('previousClose'),
-  'change_pct': p.get('pChange'),
-  'vwap': p.get('vwap'),
-  'week52_high': p.get('weekHighLow', {}).get('max'),
-  'week52_low': p.get('weekHighLow', {}).get('min'),
-  'lower_circuit': p.get('lowerCP'),
-  'upper_circuit': p.get('upperCP'),
+  'symbol': m.get('symbol', '').replace('.NS', ''),
+  'name': m.get('longName') or m.get('shortName'),
+  'sector': None,
+  'last': last,
+  'open': q['open'][-1] if q.get('open') else None,
+  'high': m.get('regularMarketDayHigh'),
+  'low': m.get('regularMarketDayLow'),
+  'close_prev': prev,
+  'change_pct': change_pct,
+  'vwap': None,
+  'week52_high': m.get('fiftyTwoWeekHigh'),
+  'week52_low': m.get('fiftyTwoWeekLow'),
+  'lower_circuit': None,
+  'upper_circuit': None,
 }, indent=2))
-PYEOF
+"
     ;;
 
   history)
@@ -77,35 +83,12 @@ print(json.dumps(out[-int('$days'):]))
     ;;
 
   earnings)
+    # NSE API is Akamai-blocked in this environment — cannot fetch the results calendar.
+    # Returns [] with a stderr warning. The pre-market routine must use Perplexity (query 3)
+    # to get the earnings calendar: bash scripts/perplexity.sh "Q-results scheduled for $DATE..."
     date_arg="${1:-$(date +%Y-%m-%d)}"
-    "$PYTHON" - "$date_arg" <<'PYEOF'
-import sys, json
-from nsepython import nse_results
-date_arg = sys.argv[1]  # YYYY-MM-DD
-# nse_results returns a DataFrame of all filed results; filter by broadCastDate
-df = nse_results('equities', 'Quarterly')
-# broadCastDate format: "DD-Mon-YYYY HH:MM:SS"
-import datetime
-try:
-    target = datetime.datetime.strptime(date_arg, '%Y-%m-%d').date()
-except Exception:
-    print('[]'); sys.exit(0)
-
-out = []
-for _, row in df.iterrows():
-    try:
-        bd = datetime.datetime.strptime(str(row.get('broadCastDate', '')).strip(), '%d-%b-%Y %H:%M:%S').date()
-    except Exception:
-        continue
-    if bd == target:
-        out.append({
-            'symbol': row.get('symbol'),
-            'company': row.get('companyName'),
-            'period': row.get('period'),
-            'broadcast': str(row.get('broadCastDate', '')),
-        })
-print(json.dumps(out, indent=2))
-PYEOF
+    echo "WARN: nse.sh earnings is unavailable (NSE API blocked). Use Perplexity for earnings calendar on ${date_arg}." >&2
+    echo "[]"
     ;;
 
   momentum)
