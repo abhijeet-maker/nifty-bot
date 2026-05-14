@@ -61,3 +61,36 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA divergence between UNIVERSE.md (Yes/Yes on 2026-04-24) and live (No/No on 2026-05-05) is suspicious — flag for Friday weekly review to investigate (corporate action? data issue?).
 - No action expected at open.
 
+## 2026-05-14 — Pre-market
+
+### Macro
+- Nifty 50: ~23,413 (May 13 close, down vs 24,032 on May 6 — ~-2.6% week-on-week). Support 23,200/23,000; resistance 23,500/23,800.
+- Bank Nifty: support 53,000/52,500; resistance 54,000/54,500 (no clean print in source).
+- GIFT Nifty pre-market: not available in sources.
+- Hot 1w sectors: PSU Bank (+47.7%w but -6.9%m — sharp rebound off weakness, not durable), Defence (+42.2%w / -0.7%m), Transportation/Logistics, Mobility (1w bounce only).
+- Rolling over: Consumer Durables (-3.4%w/-7.7%m), Smallcap 100, Smallcap250 MomQuality.
+- Today's events: No FOMC, no RBI MPC. No Nifty 100 results confirmed for today by sources or `nse.sh earnings` cache.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week (Mon-Thu): 0 of 2 max
+- Concerns: none (no open positions). Broad-market correction (~-2.6% week) — patience preferred.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-05-13` returned `[]`; Perplexity could not confirm Nifty 100 results on 2026-05-14 either. **0 PEAD candidates.**
+2. VEDL (Metals) — momentum — live: last ₹323.35, 50DMA ₹632.03, 200DMA ₹558.35. **REJECT** — below both DMAs (pattern persists from last week; awaiting Friday rebuild to investigate).
+3. BEL (Capital Goods) — momentum — last ₹428.25, 50DMA ₹438.01, 200DMA ₹414.29. **REJECT** — below 50DMA, fails STRATEGY DMA gate.
+4. ADANIPOWER (Power) — momentum — last ₹213.87, 50DMA ₹178.54, 200DMA ₹149.96, above both DMAs ✓, 12-1 mom +79%. Computed 20DMA ≈ ₹216.50 → currently -1.2% vs 20DMA. RSI ≈ 51. **REJECT** — pullback shallow (<2%), fails 2-7% below-20DMA window. Power not in confirmed hot-sector list either.
+5. HEROMOTOCO (Auto) — momentum — last ₹4,995, 50DMA ₹5,261.8, 200DMA ₹5,420.1. **REJECT** — below both DMAs.
+6. TITAN (Consumer Durables) — momentum — last ₹4,090.7, 50DMA ₹4,265.1, 200DMA ₹3,909.6. **REJECT** — below 50DMA, and Consumer Durables sector rolling over (-7.7% 1m) → sector gate fails.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. Default action per STRATEGY.md. Broad market in 1m drawdown; most NSE sectoral indices weak; only Defence and PSU Bank show 1w spikes (neither durable, neither cleanly mapped to UNIVERSE). Patience > activity.
+
+### Notes for market-open routine
+- No fills expected at open.
+- Watch ADANIPOWER: if it drifts down 1-2% more toward ₹208-210 (~3-4% below 20DMA) and RSI holds 50-60, it becomes a clean momentum-pullback candidate for the next pre-market — but sector confirmation for Power is still needed.
+- VEDL "above both DMAs" in UNIVERSE.md (2026-04-24) vs live "below both" (2026-05-13) remains unresolved — Friday weekly review must investigate (corp action / data quality).
+- HEROMOTOCO has dropped further below both DMAs (vs 2026-05-06) — Friday rebuild should likely drop it from tradable list.
+
