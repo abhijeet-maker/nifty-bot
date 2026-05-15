@@ -61,3 +61,35 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA divergence between UNIVERSE.md (Yes/Yes on 2026-04-24) and live (No/No on 2026-05-05) is suspicious — flag for Friday weekly review to investigate (corporate action? data issue?).
 - No action expected at open.
 
+## 2026-05-15 — Pre-market
+
+### Macro
+- Nifty 50: 23,689.60 (May 14 close, +1.18%, bounce off oversold low 23,379 on May 13). GIFT Nifty mildly positive into open.
+- Bank Nifty: not cleanly reported in sources today.
+- Hot sectors (1w): Pharma/Healthcare, Metals (TATASTEEL results catalyst), PSU Banks, Private Banks.
+- Cold: IT (-2.03% BSE IT, worst performer), Oil & Gas (selling pressure).
+- Today's events: TATASTEEL, NHPC, POWERGRID Q4 results (none held, none in UNIVERSE). No FOMC/RBI.
+- Data note: `nse.sh quote` returning null payloads (NSE endpoint blocked/empty). History + momentum (Yahoo) still functional. Flag for tooling fix.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week (Mon 2026-05-11 → today): 0 of 2 max
+- Concerns: none (no open positions)
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-05-14` returned empty. Perplexity could not confirm specific Nifty 100 names with verifiable beat/miss for yesterday. **No PEAD candidates.**
+2. VEDL (Metals) — momentum — last ₹338.9, 50DMA ₹624.05, 200DMA ₹557.79, mom +79.53%. **REJECT** — below both DMAs (same suspected corp-action issue from May 6; still unresolved — escalate to Friday weekly review today).
+3. BEL (Capital Goods) — momentum — last ₹428.85, 50DMA ₹437.61 (below), 200DMA ₹414.42 (above), mom +41.16%. **REJECT** — fails "above BOTH DMAs" gate.
+4. ADANIPOWER (Power) — momentum — last ₹224.49, above 50/200 DMA, mom +76.74%, RSI 59.3. 20DMA ₹218.07 → currently **+2.95% ABOVE 20DMA**. **REJECT** — extended, not in 2-7% below-20DMA pullback zone.
+5. HEROMOTOCO (Auto) — momentum — last ₹5077, 50DMA ₹5247.64, 200DMA ₹5423.77, mom +29.48%. **REJECT** — below both DMAs.
+6. TITAN (Consumer Durables) — momentum — last ₹4135.2, 50DMA ₹4260.97 (below), 200DMA ₹3912.96 (above), mom +25.22%. **REJECT** — fails "above BOTH DMAs" gate.
+
+### Decision
+**HOLD.** Zero candidates passed the entry gates. Default action per STRATEGY.md. Patience > activity. Notably 4 of top-5 momentum names are below 50DMA — broad sign that the prior momentum cohort has rolled over since UNIVERSE was built (2026-05-06).
+
+### Notes for market-open routine
+- No entry intended today. No held positions to monitor.
+- Weekly review fires this evening (Friday) — UNIVERSE rebuild should resolve VEDL DMA anomaly (likely a corporate action/split skewing the historical series Yahoo serves) and flush the top-end names that have broken trend (BEL, HEROMOTOCO, TITAN below 50DMA).
+- Tooling: NSE `quote` returning all-nulls — investigate nsepython during weekly maintenance window. Doesn't block research today (history + momentum + screener all OK).
+
