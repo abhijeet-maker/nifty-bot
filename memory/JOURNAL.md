@@ -61,3 +61,35 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA divergence between UNIVERSE.md (Yes/Yes on 2026-04-24) and live (No/No on 2026-05-05) is suspicious — flag for Friday weekly review to investigate (corporate action? data issue?).
 - No action expected at open.
 
+## 2026-05-18 — Pre-market
+
+### Macro
+- Nifty 50: ~23,643 (last close ref); GIFT Nifty 23,769 (+0.06%) → flat open expected
+- Bank Nifty: ~53,710
+- Hot sectors (1w/1m): Defence/Capital Goods, Pharma/Healthcare, Power/Utilities
+- Cold: broad market rolling over (Nifty failing to reclaim 20W EMA), pockets of financial weakness
+- Today's events: IOC Q-results today (not in our filtered UNIVERSE). No FOMC/RBI.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max
+- Concerns: none (no open positions)
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-05-15` and `2026-05-17` both returned []. **No PEAD candidates.**
+2. VEDL (Metals) — momentum — last ₹331.05, mom +80.87%, below 50DMA (₹616.31) & 200DMA (₹557.17). **REJECT** — fails DMA gate (still anomalous vs UNIVERSE.md; corp-action suspected, flagged for Friday rebuild).
+3. BEL (Capital Goods) — momentum — last ₹423.65, mom +37.83%, below 50DMA (₹437.19), above 200DMA. **REJECT** — must be above BOTH DMAs.
+4. ADANIPOWER (Power) — momentum — last ₹221.33, mom +84.22%, above 50DMA (₹181.83) & 200DMA (₹151.01). Computed 20DMA ≈ ₹219.21 → +0.97% ABOVE 20DMA. **REJECT** — fails 2-7% below-20DMA pullback rule.
+5. HEROMOTOCO (Auto) — momentum — last ₹5,064.5, mom +28.72%, below both DMAs. **REJECT** — fails DMA gate.
+6. TITAN (Consumer Durables) — momentum — last ₹4,169.1, mom +27.02%, below 50DMA (₹4,257.8), above 200DMA. **REJECT** — must be above BOTH DMAs.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. Default per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- Top-5 momentum names all failed DMA or pullback gates; tape is rolling over (Defence/Pharma/Power lead while broad market weakens). Wait for clean setups.
+- Friday weekly review must investigate VEDL DMA divergence — UNIVERSE.md shows Yes/Yes but live data shows price ~₹331 vs DMAs ~₹557-616 (likely corporate action / split / demerger).
+- IOC reports today (not in UNIVERSE); ignore.
+
