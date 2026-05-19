@@ -94,3 +94,9 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence issue is still open — Friday weekly review must reconcile (possible split/bonus not adjusted in nse.sh history).
 - No action expected at open.
 
+### EOD 2026-05-19
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50 (+0.03%): alpha -0.03%
+- Cash 100%, 0 positions, 0 trades today (HOLD per pre-market), 0/2 trades this week
+- Tomorrow watchlist: BEL + BPCL Q-results filings (check tonight for PEAD setup — beat + day +3%); ADANIPOWER pullback into ₹204-215 if it offers; no held positions to manage
+
