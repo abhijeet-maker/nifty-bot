@@ -94,3 +94,9 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence issue is still open — Friday weekly review must reconcile (possible split/bonus not adjusted in nse.sh history).
 - No action expected at open.
 
+### Midday 2026-05-20
+- Actions: 0
+- Open positions: 0 → no quotes pulled, no stop checks, no thesis-break scan, no trail tightening
+- Portfolio: 0 positions, ₹5,00,000.00 equity (100% cash)
+- No Telegram sent.
+
