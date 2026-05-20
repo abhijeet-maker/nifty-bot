@@ -94,3 +94,11 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence issue is still open — Friday weekly review must reconcile (possible split/bonus not adjusted in nse.sh history).
 - No action expected at open.
 
+## 2026-05-20 — Market-open
+
+### Market-open execution 2026-05-20
+- No pre-market entry exists for today (last pre-market: 2026-05-19, HOLD).
+- No candidate to validate at 9:20 AM IST → no trade, no Telegram.
+- Default action per STRATEGY.md: HOLD.
+- Portfolio unchanged: 0 of 5 positions, ₹5,00,000 cash, 0% deployed.
+- Flag: pre-market routine appears to have skipped today — investigate scheduler at weekly review if pattern repeats.
