@@ -94,3 +94,42 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence issue is still open — Friday weekly review must reconcile (possible split/bonus not adjusted in nse.sh history).
 - No action expected at open.
 
+## 2026-05-21 — Pre-market
+
+### Macro
+- Nifty 50: 23,659 (May 20 close, +0.17%); GIFT Nifty 23,830 (+0.78%) → positive open expected
+- Bank Nifty: 53,002 (May 20 close, -0.76%) — diverging weak
+- Hot sectors (1m): Pharma (~+16% 1M), Healthcare/defensives, IT (intraday strength)
+- Cold / rolling over: Tata Group (-16.8% 1M), Mahindra Group, Railways PSU, Waves; PSU Bank & Auto cooling 1W but still +1M
+- Today's events: ITC, GAIL, Aurobindo Pharma, Prestige, Page Industries Q-results today (post-market). ITC is in UNIVERSE. No FOMC / RBI / budget. Not a blackout day. Backdrop: Trump-Iran headlines cited as risk.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week (Mon 05-18 → today): 0 of 2 max
+- Concerns: none (no open positions)
+
+### Candidates considered
+1. **PEAD scan (May 19–20 results)**:
+   - **BEL** (Capital Goods) — reported May 19. Revenue ₹10,177 cr (+12% YoY, marginal beat); EPS-vs-consensus unverified; PAT +5% YoY. Stock closed **-0.86% on results day** (₹422.95 vs ₹426.6), then -2.28% on May 20 to ₹413.3. **REJECT** — fails ">+3% on results day" PEAD gate; live below both DMAs (50: 435.23, 200: 414.94).
+   - **BPCL** (Oil & Gas) — May 19 report unverified by Perplexity; price action ₹280.8 → ₹286.45 (+2.01%) → ₹293.75. **REJECT** — fails ">+3% on results day"; sector cold; UNIVERSE shows below both DMAs.
+   - `nse.sh earnings 2026-05-19` and `2026-05-20` both returned []; relied on prior-day journal + Perplexity for reporter list.
+
+2. **Momentum scan — top 5 by mom_12_1_pct in UNIVERSE**:
+   - **VEDL** (+71.58% mom; last ₹333.75) — DMA50 ₹593.56 / DMA200 ₹555.50, **below both**. **REJECT** — fails DMA gate. Chronic divergence (3rd consecutive flag); weekly review must reconcile suspected unadjusted corporate action.
+   - **BEL** (+23.30%) — see PEAD above. Below both DMAs post-results. **REJECT**.
+   - **ADANIPOWER** (Power, +90.67%) — last ₹220.24; above 50DMA ₹186.68 and 200DMA ₹152.58. Computed 20DMA = ₹221.17 → only **-0.42% below 20DMA** (rule: 2-7% pullback). 14-day RSI ≈ **48** (rule: 50-70). **REJECT** — at 20DMA, not in pullback zone; RSI just below window. Same verdict as May 19.
+   - **HEROMOTOCO** (+19.42%) — last ₹4,968; DMA50 ₹5,200 / DMA200 ₹5,438, **below both**. **REJECT**.
+   - **TITAN** (+22.59%) — last ₹4,106; below 50DMA ₹4,250, above 200DMA. **REJECT** — fails "above BOTH DMAs".
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. PEAD reporters both failed the +3% reaction filter (BEL down, BPCL only +2%). Top-5 momentum: 4 of 5 are below at least one DMA; only ADANIPOWER is in clean uptrend but is sitting at its 20DMA, not in a pullback. Default action per STRATEGY.md. Cash remains 100%. Patience > activity.
+
+### Notes for market-open routine
+- ITC reports today (post-market). Note for tomorrow's PEAD scan — ITC is in UNIVERSE (FMCG, -31.31% mom but quality-passing); only triggers PEAD if it beats BOTH rev & EPS AND closes +3% on results day.
+- ADANIPOWER worth re-checking if it pulls back to **₹205-216 zone** (2-7% below current 20DMA ~₹221) AND RSI recovers above 50. Do NOT chase a breakout.
+- Watch BEL: now -3.1% over 2 sessions on a "beat" — sentiment is rejecting the print. May warrant universe re-rank Friday.
+- VEDL DMA-divergence is **3 sessions overdue** for resolution — escalate in Friday weekly review.
+- Geopolitical tail: Trump-Iran headlines flagged in macro; if oil spikes, BPCL/IOC/ONGC become noise — ignore the move, the PEAD rules already gated them out.
+- No action expected at open.
+
