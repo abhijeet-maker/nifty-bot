@@ -94,3 +94,11 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence issue is still open — Friday weekly review must reconcile (possible split/bonus not adjusted in nse.sh history).
 - No action expected at open.
 
+## 2026-05-21
+
+### EOD 2026-05-21
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%) — cash-only book, no positions.
+- vs Nifty 50 (+0.17%): alpha -0.17%.
+- No trades today. No pre-market routine logged for 2026-05-20 or 2026-05-21 (gap since 2026-05-19).
+- Tomorrow watchlist: BEL/BPCL PEAD setups (results 2026-05-19 — verify beat + day-of-results close ≥+3% before entry); ADANIPOWER if it pulls back into ~₹204–215 (2-7% under 20DMA). Friday weekly review must resolve VEDL DMA-history divergence.
+
