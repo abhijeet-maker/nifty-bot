@@ -127,3 +127,9 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-05-25 — Midday scan
+
+- Open positions: 0 of 5. No quotes pulled, no stop checks, no thesis-break checks.
+- Actions: 0 (no exits, no trail tightens, no Telegram sent).
+- Portfolio: ₹5,00,000.00 equity, 100% cash. Paper trading still pre-first-entry.
+- Next routine: EOD close (or next pre-market 2026-05-26 Mon).
