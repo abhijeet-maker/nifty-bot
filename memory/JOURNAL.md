@@ -127,3 +127,42 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-05-25 — Pre-market
+
+### Macro
+- Nifty 50: 23,719.30 (prev +0.27%); GIFT Nifty pre-market not reliably sourced
+- Bank Nifty: 54,055.35 (+1.15% prior session)
+- 1-month Nifty 50: -3.49% (mild broad-index drawdown)
+- Hot sectors (theme-level, no clean ranking today): Banking/Financials, Defence, Pharma, Renewables
+- Cold: no reliable sector heatmap; per ET, Nifty 50 -3.49% over 1m suggests breadth weak
+- Today's events: Amara Raja Q-results (NOT in UNIVERSE — not Nifty 100 quality screen). TCS dividend ex-date (₹31). US markets closed for Memorial Day → thin overnight cues. Tomorrow (Tue 2026-05-26) is monthly F&O expiry — expect volatility. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (new week starts today Mon 2026-05-25 → Fri 2026-05-29)
+- Concerns: none (no open positions)
+
+### Candidates considered
+1. PEAD — SUNPHARMA (Healthcare, in UNIVERSE) reported Fri 2026-05-22. Revenue beat trivially (₹0.03cr above consensus = inline). EPS beat unclear (press release reports net profit only, not diluted EPS). Stock DOWN 2.43% on results day per Moneycontrol. **REJECT** — fails "stock closed UP >3% on results day" gate clearly.
+2. PEAD — EICHERMOT (Auto, in UNIVERSE) reported Fri 2026-05-22. Revenue beat: yes. EPS beat: UNCONFIRMED from press snippet. Stock UP ~3% on results day per ET (borderline, rule requires strictly >3%). Live: ₹6,981.5, below both 50DMA (7,036) / 200DMA (6,998). **REJECT** — cannot confirm clean both-line beat; +3% is borderline, not strictly above; auto sector mixed. Insufficient PEAD confirmation per STRATEGY.
+3. PEAD — NAUKRI (reported Fri) — not in UNIVERSE filtered table (failed quality screen). **REJECT**.
+4. PEAD — TORNTPHARMA (reported Fri) — skipped from UNIVERSE (no Screener data). **REJECT**.
+5. Momentum — VEDL (Metals) — last ₹329.95, mom +65.6%, but 50DMA ₹578.15 / 200DMA ₹554.43 → below BOTH. **REJECT** — DMA gate fails. Same unadjusted-corporate-action divergence flagged 2026-05-06, 2026-05-19, 2026-05-22; still open (weekly review last Friday did not run/resolve).
+6. Momentum — BEL (Capital Goods) — last ₹416.55, mom +22.17%, below 50DMA (433.45), above 200DMA (415.25). **REJECT** — fails "above BOTH DMAs" gate.
+7. Momentum — ADANIPOWER (Power) — last ₹219.32, mom +91.39%, above 50/200 DMA (189.9 / 153.59). 20DMA computed from last 20 closes = ₹221.75 → stock is -1.10% vs 20DMA. **REJECT** — not in 2-7% pullback zone (4th consecutive cycle: 5/19, 5/22, 5/25 all flat near 20DMA). Sector "Power" not in clear momentum read today.
+8. Momentum — HEROMOTOCO (Auto) — last ₹4,966, below both DMAs (5,178.64 / 5,444.61). **REJECT** — DMA gate fails.
+9. Momentum — TITAN (Cons Durables) — last ₹4,079.8, below 50DMA (4,245.54), above 200DMA. **REJECT** — fails "above BOTH DMAs".
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. 4th consecutive HOLD cycle (5/6, 5/19, 5/22, 5/25). Most UNIVERSE leaders remain below their 50DMA after the index pullback; ADANIPOWER is the lone DMA-uptrend leader and continues to consolidate sideways at the 20DMA, never reaching the pullback window. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- Tomorrow (Tue 2026-05-26) = monthly expiry — expect intraday volatility; do not chase any breakouts.
+- ADANIPOWER setup: keep watching for a real pullback into ₹205-217 zone (i.e. 2-7% under 20DMA ~₹221.75). Do NOT chase a breakout above ₹225.
+- `nse.sh quote` endpoint returned all-nulls for SUNPHARMA, EICHERMOT, and RELIANCE this morning — quote API appears degraded; momentum and history endpoints still work. Flag for weekly review. Used momentum.last as live-price proxy this cycle.
+- VEDL DMA-divergence open across 4 cycles now (2026-05-06, 5/19, 5/22, 5/25). Weekly review MUST reconcile this Friday or VEDL stays falsely ranked #1.
+- UNIVERSE last rebuilt 2026-05-06 (19 days ago, well overdue). Weekly review Friday should rebuild.
+- Friday 2026-05-22's flagged earnings calendar (SUNPHARMA, EICHERMOT, NAUKRI, TORNTPHARMA) was not returned by `nse.sh earnings 2026-05-22` either — earnings endpoint may also be stale; cross-checked via Perplexity narrative.
+
