@@ -127,3 +127,46 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+## 2026-05-26 — Pre-market
+
+### Macro
+- Nifty 50: ~23,719 (Mon 25-May close per analyst commentary); GIFT Nifty pre-market not reliably sourced this morning. Intraday Mon traded ~23,917 region — broadly constructive. Treat tone as neutral-to-positive.
+- Bank Nifty: ~54,55x Mon close, weak relative to broader market per commentary.
+- Hot sectors (1m): Auto (leading), Pharma, FMCG, IT (mild positive). Metals neutral-positive.
+- Cold/rolling over: Realty (weakest), Banking, Energy.
+- Today's events: No major Nifty 100 results clearly scheduled today (NSE earnings API returning empty; Perplexity surfaces no headline Nifty 100 names). No FOMC / RBI / budget. **Not a blackout day.**
+- Wrapper note: NSE live-quote and NSE results-calendar (nsepython) returning empty payloads today (cookie/auth issue). Yahoo history endpoint working — momentum calls succeed. Skipping live-quote-based gap checks; relying on Mon close + Yahoo for prices.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (new week: Mon 2026-05-25 → Fri 2026-05-29)
+- Concerns: none (no open positions)
+
+### Candidates considered
+1. **EICHERMOT (Auto)** — **PEAD**. Reported Q4 FY26 Fri 2026-05-22 (post-mkt). Revenue ₹6,080 cr (BS: "above estimates") + PAT ₹1,520 cr +12% YoY (Reuters: "beats quarterly profit estimates") → beat BOTH rev AND EPS. Mon 25-May closed ₹7,414 = +6.19% on first post-print trading day (₹6,981.5 → ₹7,414 on 1.35M vol vs 485K 20d avg — clean conviction move). Above both DMAs (50DMA ₹7,034, 200DMA ₹7,008). Auto sector hot. Mgmt guide: ~25% margin near-term, June > May, Q1 commodity headwind 3-3.5% offset by price hike. Universe member. **Today = 2nd trading day post-print → within PEAD 1-2 day window.** **TRADE.**
+2. ADANIPOWER (Power) — momentum — last ₹233.38, mom +97.78%, above both DMAs (191.78 / 154.17). But 20DMA = ₹222.51 → stock is **+4.88% ABOVE 20DMA**, not 2-7% below. Big single-day +6.4% gap Mon. **REJECT** — extended, chasing (failed pullback gate; same issue as 2026-05-22, just now in the other direction).
+3. VEDL (Metals) — momentum — last ₹332.5, mom +69.62% but 50DMA ₹570.36 / 200DMA ₹553.96 → below BOTH. **REJECT** — DMA gate fails. Unadjusted corporate-action divergence in feed STILL unresolved across 4 cycles (2026-05-06/19/22/26); weekly review must fix.
+4. BEL (Capital Goods) — momentum — last ₹421.85, mom +13.73%, 50DMA ₹432.62 (below) / 200DMA ₹415.44 (above). **REJECT** — fails "above BOTH DMAs". Also momentum 12-1 below ~18% top-quartile threshold.
+5. HEROMOTOCO (Auto) — last ₹4,979, below both DMAs (5,164 / 5,448). **REJECT** — DMA gate fails despite Auto being hot.
+6. TITAN (Cons Durables) — last ₹4,159.2, below 50DMA (4,244), above 200DMA (3,938). **REJECT** — fails "above BOTH DMAs". Consumption lagging.
+7. COALINDIA (O&G) — last ₹458, above both DMAs (456 / 413) ✓, but mom 12-1 only +11.63% (below top-quartile ~18% gate). 20DMA ₹465.70, -1.65% below = not yet in 2-7% pullback zone either. RSI 37 = weakening. **REJECT** — fails momentum-strength gate.
+
+### Decision
+**TRADE — PAPER BUY EICHERMOT.**
+- Trigger: PEAD (Q4 FY26 beat both rev + EPS, +6.19% on first post-print trading day, Auto sector leading, Universe member, within 1-2 day window)
+- Entry zone: ₹7,250 – ₹7,450 (do NOT chase above ₹7,450; if gaps >+2% above ₹7,414, wait for retrace)
+- Quantity: 13 shares (₹96,382 ≈ 19.3% of ₹5L paper equity — under 20% cap)
+- Stop: ₹6,820 (-8% from ₹7,414 ref)
+- Target (first trail level): ₹8,897 (+20%)
+- R:R: ~2.5:1
+- Thesis tag: PEAD-Q4FY26-beat
+- Sector: Auto (count after fill = 1 of 2 max)
+
+### Notes for market-open routine
+- **PRIMARY ACTION**: Place PAPER BUY EICHERMOT 13 @ ₹7,250-7,450. If open prints above ₹7,560 (+2% over Mon close), do NOT enter — wait 30 min for retrace into the zone. If no retrace by 11:00 IST, stand down for the day. If open prints <₹7,250 (profit-booking gap), reassess thesis at midday — a fade to red below Mon's intraday low ≈ ₹7,300 would weaken the PEAD signal.
+- After fill: log entry to PORTFOLIO.md with stop ₹6,820, target ₹8,897, thesis tag PEAD-Q4FY26-beat. Update Auto sector count to 1.
+- Open issues to surface in weekly review:
+  - VEDL unadjusted corporate-action divergence (now 4 cycles unresolved).
+  - NSE wrapper degradation: nse_eq + nse_results returning empty dicts today — investigate cookie/UA or move to alternate endpoint.
