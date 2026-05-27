@@ -127,3 +127,37 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+## 2026-05-27 — Pre-market
+
+### Macro
+- Nifty 50: ~24,093 (latest live tick per Perplexity; prior session was monthly options expiry — added volatility)
+- Bank Nifty: live not reliably sourced (stale ref ~55,444); treat as neutral
+- GIFT Nifty: ~24,019 → mild gap-down / flat-to-soft open bias
+- Hot sectors (qualitative read): Metals outperforming, PSU Banks resilient; thematic strength flagged in BFSI, Defence, Pharma, Renewables. No clean 1W/1M sector heatmap available.
+- Cold/rolling-over: not reliably ranked from sources today
+- Risk-off catalyst: fresh US air strikes on Iran cited as reason for prior-session reversal — monitor crude / energy
+- Today's events: ESAB India + Gillette India results (both non-Nifty-100); CUMMINSIND / GMRAIRPORTS expected (non-Nifty-100 per UNIVERSE roster). No Nifty 100 names report today. No FOMC / RBI / budget. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-05-25 → Fri 2026-05-29)
+- Concerns: none (no open positions). Gap in journaling: no entry on 2026-05-25 or 2026-05-26 — routine did not fire those days.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-05-26` returned `[]`. No PEAD candidates today.
+2. VEDL (Metals) — momentum — last ₹344.9, mom +69.91%, 50DMA ₹562.83 / 200DMA ₹553.56 → below BOTH DMAs. **REJECT** — DMA gate fails. UNADJUSTED CORPORATE ACTION divergence STILL OPEN across 4 cycles (2026-05-06, 05-19, 05-22, 05-27). UNIVERSE table shows VEDL as above both DMAs — directly contradicted by live momentum call. This is a data-integrity bug that must be fixed before VEDL can ever pass the gate; Friday rebuild MUST reconcile.
+3. BEL (Capital Goods) — momentum — last ₹420.1, mom +13.65%, 50DMA ₹431.94 (below) / 200DMA ₹415.66 (above). **REJECT** — fails "above BOTH DMAs". Also momentum below the ~18% top-quartile threshold per STRATEGY.
+4. ADANIPOWER (Power) — momentum — last ₹244.53, mom +101.69%, above 50/200 DMA (193.9 / 154.82). 20DMA (last 20 closes 4/29→5/26) = ₹223.57 → stock is **+9.37% ABOVE** 20DMA after a 2-day spike (5/25 +6.4%, 5/26 +4.8%). **REJECT** — extended, not in the 2-7% pullback zone. Same name has now failed the pullback gate for 3 consecutive cycles — once sitting on the 20DMA, now extended above it. Do NOT chase. Wait for a pullback into ₹208-219.
+5. HEROMOTOCO (Auto) — momentum — last ₹4,983, below both 50DMA (5,152) and 200DMA (5,452). **REJECT** — DMA gate fails.
+6. TITAN (Cons Durables) — momentum — last ₹4,105.9, below 50DMA (4,243), above 200DMA (3,942). **REJECT** — fails "above BOTH DMAs".
+
+### Decision
+**HOLD.** Zero candidates passed entry gates for the 4th consecutive cycle. The only true uptrend leader (ADANIPOWER) is now extended +9.37% above its 20DMA after a 2-day melt-up; chasing here violates the pullback-only rule and the "don't chase gap-ups" lesson. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- ADANIPOWER pullback zone: ₹208-219 (2-7% under 20DMA ₹223.57). Re-check ONLY if it cools to that band; do not chase any further breakout.
+- VEDL data-integrity issue (likely unadjusted split/bonus in nse.sh history feed) is now 4 cycles old. UNIVERSE.md is also 21 days stale (last rebuild 2026-05-06; cadence is weekly). Friday weekly review is OVERDUE on both fronts.
+- Watch crude / energy names for follow-through on the Iran headline; not actionable for entries, but flag if any held energy position were to be added later.
