@@ -127,3 +127,37 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-05-28 — Pre-market
+
+### Macro
+- Nifty 50: live `nse.sh quote` returned nulls (likely pre-open data gap; history works fine through 2026-05-27). Last reference close ~23,995 from prior session per Perplexity (unverified).
+- Bank Nifty: not reliably sourced this morning; treat as neutral.
+- Hot sectors: no clean 1w/1m sector heatmap from Perplexity today. General 2026 momentum themes cited: Healthcare, Financials, Consumer Durables. Adani / Power names showing extreme relative strength on tape (ADANIPOWER 12-1 mom now +98%).
+- Cold: not clearly identified today.
+- Today's events: `nse.sh earnings 2026-05-28` returned empty. Perplexity could not verify any Nifty 100 result today. No FOMC / RBI / budget. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week (Mon 2026-05-25 → today): 0 of 2 max
+- Concerns: none (no open positions). Note: `nse.sh quote` wrapper returning nulls today across multiple symbols (RELIANCE, HDFCBANK, TCS) — `history`, `earnings`, `momentum` all work normally. Flagged for ops review.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-05-27` returned empty. No PEAD candidates from yesterday's tape. **REJECT** (no setup).
+2. VEDL (Metals) — momentum — last ₹354.7, mom +75.8%, 50DMA ₹555.53 / 200DMA ₹553.18 → below BOTH. **REJECT** — DMA gate fails. Same unadjusted-corporate-action divergence flagged 2026-05-06, 2026-05-19, 2026-05-22 — STILL OPEN across 4 cycles; weekly review must reconcile or VEDL stays falsely ranked #1.
+3. BEL (Capital Goods) — momentum — last ₹419.1, mom +14.0%, 50DMA ₹431.25 (below) / 200DMA ₹415.8 (above). **REJECT** — fails "above BOTH DMAs". Also note 12-1 momentum has fallen from +35% in last rebuild to +14% live → BEL momentum is decaying.
+4. ADANIPOWER (Power) — momentum — last ₹248.91, mom +98.19%, above 50/200 DMA (195.89 / 155.48). 20DMA computed from last 20 closes = ₹225.05 → stock is **+10.6% ABOVE 20DMA** after a 3-day rally 5-25→5-27 (+13.5%, volume spike to 73-91M from ~30M). **REJECT** — extended, not a pullback; almost certainly RSI > 70. This is now a breakout/chase setup, which the strategy explicitly forbids.
+5. HEROMOTOCO (Auto) — momentum — last ₹5,075, below both 50DMA (5,145.76) and 200DMA (5,454.25). **REJECT** — DMA gate fails.
+6. TITAN (Cons Durables) — momentum — last ₹4,137.9, below 50DMA (4,243.8), above 200DMA (3,945.59). **REJECT** — fails "above BOTH DMAs".
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. ADANIPOWER finally moved — but UP and out instead of pulling back, so it's now in the chase zone and per strategy is forbidden. Every other UNIVERSE leader is still below its 50DMA. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- `nse.sh quote` is broken today — if midday/EOD routines also need live quote, fall back to `nse.sh history <SYM> 1` to get most recent close, or skip and document. Do NOT hit Perplexity for numeric prices.
+- ADANIPOWER: do NOT chase the breakout. The valid entry is a 2-7% pullback under 20DMA (now ~₹209-220 zone). If it gives that back, re-evaluate next pre-market.
+- VEDL DMA divergence STILL OPEN across 4 cycles (5-06, 5-19, 5-22, 5-28). UNIVERSE.md needs hard fix tomorrow's weekly review (Friday 2026-05-29) — strong hypothesis: unadjusted split/bonus in `nse.sh history` feed inflating 12-1 momentum and stale DMAs. Until reconciled, VEDL should not appear ranked #1.
+- UNIVERSE last rebuilt 2026-05-06 (22 days stale, two weekly-review cycles overdue). Friday weekly review MUST rebuild or freshen rankings.
+- 12-1 momentum drift between UNIVERSE.md snapshot and live: BEL (+35→+14), VEDL (+57→+76), ADANIPOWER (+30→+98), HEROMOTOCO (+29→+19), TITAN (+16→+24). UNIVERSE is genuinely stale.
+
