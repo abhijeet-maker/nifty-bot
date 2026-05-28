@@ -127,3 +127,11 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-05-28 — EOD (MARKET HOLIDAY)
+
+### EOD 2026-05-28
+- NSE closed today for Bakri Id (confirmed: `nse.sh quote RELIANCE` returned nulls).
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%) — book 100% cash, no positions to mark.
+- vs Nifty 50: N/A (market closed). Last reference close: Nifty 50 23,907.15 (2026-05-27).
+- Tomorrow watchlist: Fri 2026-05-29 is next session. Pre-market scan resumes — check if SUNPHARMA / EICHERMOT (results 2026-05-22) PEAD window still tradable on Day 5 (likely past 1-2 day window per STRATEGY → skip). Re-test ADANIPOWER pullback into ₹205-215. UNIVERSE rebuild + VEDL DMA-divergence are still open from Friday 22-May review.
+
