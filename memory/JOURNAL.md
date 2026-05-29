@@ -127,3 +127,48 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-05-29 — Pre-market
+
+### Macro
+- Nifty 50: 23,907.15 (prev close 23,913.70, ~flat); GIFT Nifty ≈ 23,584 (-261 / -1.09%) → gap-down bias expected at open (third-party quote, treat cautiously)
+- Bank Nifty: live level not in sources today; recent session showed Nifty Bank -1.30%, Financial Services -1.65% → financials under pressure
+- Hot sectors (thematic, not 1w/1m relative-strength): BFSI, defence, renewable/green power, consumer durables, healthcare, IT — no clean live sector heatmap from sources
+- Cold/rolling over: defence and green-energy names cited as valuation-stretched (inference, not confirmed read)
+- Today's events: Q4 results for ASIANPAINT, TITAN, INDIGO, TATACONSUM (Nifty 100 + UNIVERSE), plus NMDC, GLENMARK, SWIGGY, BANKBARODA, SBIN, BANKINDIA, OBEROI, HYUNDAI, ABB, MCX. No FOMC / RBI / budget. Not a market blackout, but TITAN/ASIANPAINT/INDIGO/TATACONSUM are blackout for entries today (results day rule).
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-05-25 → Fri 2026-05-29)
+- Concerns: none (no open positions). 7-day gap since 2026-05-22 journal entry — pre-market did not run Mon-Thu this week.
+
+### Wrapper health
+- `nse.sh quote` returning null payload for RELIANCE and TITAN this morning — endpoint appears broken or pre-market data not populated. `momentum` and `history` and `earnings` wrappers all working. Health checks done from `momentum.last` and `history` instead. Flag for investigation in weekly review.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-05-28` returned empty. No PEAD candidates from yesterday's tape. EICHERMOT/SUNPHARMA (results 2026-05-22) now 5 trading days past print → outside 1-2 day PEAD window. **REJECT** for PEAD.
+2. VEDL (Metals) — momentum — last ₹354.7, mom +75.80%, but 50DMA ₹555.53 / 200DMA ₹553.18 → below BOTH. **REJECT** — DMA gate fails. Same unadjusted-corporate-action divergence flagged 2026-05-06 / 05-19 / 05-22; STILL OPEN. UNIVERSE.md not rebuilt for 23 days; VEDL keeps ranking #1 falsely.
+3. BEL (Capital Goods) — momentum — last ₹419.1, mom +14.0%, 50DMA ₹431.25 (below) / 200DMA ₹415.8 (above). **REJECT** — fails "above BOTH DMAs". Momentum decayed from +35% to +14% over the month.
+4. ADANIPOWER (Power) — momentum — last ₹248.91, mom +98.19%, above both DMAs (195.89 / 155.48), 20DMA ₹225.05 → stock is +10.60% ABOVE 20DMA, RSI14 ≈ 62.9. **REJECT** — extended, not pullback. Broke out from ₹219 → ₹249 over Mon-Wed (+13.5%); this is a chase, not the pullback we waited for.
+5. HEROMOTOCO (Auto) — momentum — last ₹5,075, mom +18.7%, below both DMAs (5,145.76 / 5,454.25). **REJECT** — DMA gate fails.
+6. EICHERMOT (Auto) — momentum — last ₹7,419, mom +33.14%, above both DMAs (7,044.91 / 7,025.83), 20DMA ₹7,143.25 → +3.86% above 20DMA, RSI14 ≈ 53.7. **REJECT** — extended, not in 2-7% below 20DMA pullback zone. Post-results rally (May 22 → May 27: ₹6,981 → ₹7,419, +6.3%); the PEAD window has already played out and momentum-pullback rule does not apply at this level.
+7. COALINDIA (Oil/Gas/Fuels) — last ₹463.05, mom +19.53%, above both DMAs (456.57 / 414.06), 20DMA ₹464.42 → -0.29% (essentially AT 20DMA), RSI14 ≈ 46.8. **REJECT** — RSI < 50 and not in 2-7% pullback zone; sideways at 20DMA.
+8. HINDZINC (Metals) — last ₹648.85, mom +37.13%, above both DMAs (585.84 / 543.63), 20DMA ₹632.54 → +2.58% above, RSI14 ≈ 55.6. **REJECT** — extended above 20DMA.
+9. DRREDDY (Healthcare) — last ₹1,319.0, mom +8.11%, above both DMAs (1,279.2 / 1,261.76), 20DMA ₹1,308.23 → +0.82% above, RSI14 ≈ 53.0. **REJECT** — sitting at 20DMA, not pullback; also momentum < 18% top-quartile threshold.
+10. BAJAJ-AUTO (Auto) — last ₹10,808.5, mom +9.18%, above both DMAs (9,743.21 / 9,293.12), 20DMA ₹10,392.98 → +4.00% above, RSI14 ≈ 55.2. **REJECT** — extended; also momentum < 18% threshold.
+11. CGPOWER (Capital Goods) — last ₹934.8, mom +18.54%, above both DMAs, 20DMA ₹846.83 → +10.39% above, RSI14 ≈ 66.1. **REJECT** — extended, very stretched above 20DMA.
+12. DIVISLAB (Healthcare) — last ₹6,797.5, mom -1.61%, 20DMA ₹6,747.5 → +0.74% above. **REJECT** — fails 18% top-quartile momentum gate (negative 12-1).
+13. TITAN — Q-results TODAY → blackout (no pre-results entries).
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. All UNIVERSE names that pass the DMA gate are either extended above 20DMA (ADANIPOWER +10.6%, EICHERMOT +3.9%, HINDZINC +2.6%, BAJAJ-AUTO +4.0%, CGPOWER +10.4%) or sitting on/at 20DMA without a real pullback (COALINDIA -0.3%, DRREDDY +0.8%, DIVISLAB +0.7%). No 2-7% pullback setups in the universe today. Default action per STRATEGY.md. Patience > activity. Week ends with 0 trades.
+
+### Notes for market-open routine
+- No action expected at open.
+- ASIANPAINT, TITAN, INDIGO, TATACONSUM report TODAY (post-market expected) → check filings tonight; PEAD candidates for Monday 2026-06-01 pre-market scan if they beat both rev and EPS AND close +3% on results day.
+- ADANIPOWER broke higher this week (+13.5% Mon-Wed) — DO NOT chase. Re-enter pullback watch only if it retraces to ₹215-225 zone (2-7% under 20DMA). Sector "Power" not explicitly hot in today's sector read.
+- EICHERMOT post-earnings gap already played out — past PEAD window, monitor for momentum-pullback into ₹6,800-7,000 zone (2-7% under 20DMA ₹7,143).
+- VEDL DMA-divergence OPEN across 4 cycles (2026-05-06, 05-19, 05-22, 05-29). UNIVERSE.md not rebuilt for 23 days. Weekly review TODAY (Friday) is OVERDUE and MUST: (a) rebuild UNIVERSE.md, (b) reconcile VEDL split/bonus history adjustment.
+- `nse.sh quote` wrapper returning null — flag for investigation. Workaround used: `momentum.last` for price reads.
+
+
