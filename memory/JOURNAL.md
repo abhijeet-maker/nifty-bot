@@ -127,3 +127,39 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-06-01 — Pre-market
+
+### Macro
+- Nifty 50: 23,649.95 (May 29 close); GIFT Nifty 23,860 (+201 / +0.85%) → gap-up bias at open near 23,750-23,850
+- Bank Nifty: ~53,537; described as under pressure, more sensitive to intraday profit-taking
+- Hot sectors (1w/1m): IT (TECHM/HCLTECH/WIPRO/INFY rel-strength), Defense, Pharma/Healthcare
+- Cold / rolling over: Financials (Nifty Fin Svc -1.55%), Power (POWERGRID -4.11%), Autos (EICHERMOT -2.78%), Consumer/FMCG, Metals (JSWSTEEL -2.47%)
+- Today's events: No Nifty 100 results confirmed for 2026-06-01 (Moneycontrol calendar shows 0; NSE filing calendar shows only RPEL/SOTL — non-Nifty 100). IMD monsoon update + FII flow data are the day's macro watch-items. No FOMC / RBI / budget. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-01 → Fri 2026-06-05)
+- Concerns: none (no open positions). 10-day gap since last journal (2026-05-22 → 2026-06-01) — Friday weekly-review routine appears to have been skipped; UNIVERSE is 26 days stale (last rebuild 2026-05-06, target weekly).
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-05-31` (Sun) and `2026-05-29` (Fri) both returned empty. Also checked 2026-05-28 (Thu) = empty. **No PEAD candidates** this window.
+2. VEDL (Metals) — momentum — last ₹352.6, mom_12_1 **-39.39%** (UNIVERSE stale value +56.75% is wrong), 50DMA ₹542.17 / 200DMA ₹552.32 → below BOTH. **REJECT** — fails DMA gate; momentum has fully unwound. The DMA-divergence flagged 3x previously (2026-05-06, 05-19, 05-22) is resolving on the wrong side. Sector cold too.
+3. BEL (Capital Goods) — momentum — last ₹410.75, mom +11.91%, 50DMA ₹430.47 (below) / 200DMA ₹416.07 (below). **REJECT** — fails "above BOTH DMAs" and momentum (+11.9%) is well under the +18% top-quartile threshold.
+4. ADANIPOWER (Power) — momentum — last ₹243.37, mom +100.75%, above 50/200 DMA (199.73 / 156.80). 20DMA from last 20 closes = ₹231.51 → stock is **+5.12% ABOVE** 20DMA. **REJECT** — wrong side of pullback gate (rule is 2-7% BELOW 20DMA, not above). Stock just had a 3-day rally from ₹219 → ₹249 → 243 (breakout extension, not pullback). Sector "Power" also in cold/rolling-over bucket today.
+5. HEROMOTOCO (Auto) — momentum — last ₹4,903, below both DMAs (5,139.7 / 5,456.0). **REJECT** — fails DMA gate; Auto sector cold.
+6. TITAN (Consumer Durables) — momentum — last ₹4,074.9, below 50DMA (4,243.84), above 200DMA (3,948.88). **REJECT** — fails "above BOTH DMAs"; Consumer also cold.
+7. DRREDDY (Healthcare, hot sector) — extra check — last ₹1,303.5, mom +6.61%, above both DMAs (1,279.4 / 1,262.2). **REJECT** — +6.6% momentum is below the +18% top-quartile gate. Hot sector but base-rate too weak.
+8. DIVISLAB (Healthcare) — extra — last ₹6,667, mom **-3.48%**. **REJECT** — fails momentum gate.
+9. SUNPHARMA (Healthcare) — extra — last ₹1,799.2, mom +7.89%, above both DMAs. **REJECT** — below +18% momentum gate.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. Top universe by momentum is either below DMAs (VEDL, BEL, HEROMOTOCO, TITAN) or extended above 20DMA (ADANIPOWER). Hot-sector pharma names lack momentum strength. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- ADANIPOWER is the cleanest uptrend leader and the rule-eligible re-entry window opens if it pulls back into ₹215-227 (i.e. 2-7% under 20DMA ~₹231.5). Do NOT chase if it breaks higher — rule is pullback only.
+- VEDL "false rank" issue is now self-resolving (live momentum -39.4% vs UNIVERSE stale +56.75%) — UNIVERSE rebuild on Friday must refresh; suspected stale corporate-action adjustment is no longer producing inflated momentum.
+- UNIVERSE.md is 26 days stale (last rebuild 2026-05-06). Friday's weekly-review routine MUST rebuild this week, or rotation candidates risk being mis-ranked.
+- Watch IT (TECHM/HCLTECH/WIPRO/INFY) and Pharma for sector-strength + momentum convergence in coming days; none qualify on current numbers but the sector tailwind is the place to look first.
+
