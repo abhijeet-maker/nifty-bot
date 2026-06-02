@@ -127,3 +127,36 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-06-02 — Pre-market
+
+### Macro
+- Nifty 50: expected range 23,150-23,800; support 23,150-23,200, resistance 23,750-23,800; bearish bias commentary (live previous close not confirmable from sources today)
+- Bank Nifty: bearish range 53,900-55,000; support 53,900-54,000, resistance 54,800-55,000
+- GIFT Nifty: pre-open level not reliably sourced
+- Hot sectors (1w): IT (only sector with clear positive momentum signal)
+- Cold/weakening: Banks, Financial Services, Auto, FMCG (all down ~0.85-1.45% in latest snapshot per ET tape commentary)
+- Today's events: no Nifty 100 results verified for today (NSE filings calendar shows only SME names). No FOMC / RBI / budget. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-01 → Fri 2026-06-05)
+- Concerns: none (no open positions). **11-day journal gap** since 2026-05-22 — weekly review on 2026-05-22 evening and any pre-market routines May 25–29 / Jun 1 did NOT run. UNIVERSE.md last rebuild 2026-05-06 (27 days stale, badly overdue).
+
+### Candidates considered
+1. **PEAD scan** — `nse.sh earnings 2026-06-01` returned empty. No PEAD candidates.
+2. **VEDL** (Metals) — momentum — last ₹337.15, **live mom -34.06%** (vs stale UNIVERSE +56.75%), below both DMAs (50: 534.93 / 200: 551.82). **REJECT** — DMA gate fails. **Divergence flagged across 4 cycles (2026-05-06/-19/-22/-06-02) is now self-resolving**: the history feed has updated, confirming the previously inflated 12-1 was driven by unadjusted corporate action. UNIVERSE rebuild will drop VEDL from the leader slot.
+3. **BEL** (Capital Goods) — momentum — last ₹407.20, mom +11.04%, 50DMA 429.83 / 200DMA 416.17, below BOTH. **REJECT** — DMA gate fails. Mom has also decayed from +35% to +11% over 4 weeks.
+4. **ADANIPOWER** (Power) — momentum — last ₹232.30, mom +106.37%, above 50/200 DMA (201.26 / 157.38). 20DMA computed from last 20 closes = ₹227.73 → stock is **+2.0% ABOVE 20DMA**, NOT in 2-7% pullback zone. RSI(14) ≈ 66.5 (passes 50-70 band). **REJECT** — pullback gate fails AND sector confirmation absent (Power not in today's hot-sector read; IT is the only confirmed hot sector). Same name flagged 2026-05-19 and 2026-05-22 as cleanest setup pending pullback — instead it rallied ₹220→₹248 May 25-28 and partially pulled back to ₹232. Buy zone of 2-7% under 20DMA = ₹212-223 not currently available.
+5. **HEROMOTOCO** (Auto) — momentum — last ₹4,819.9, mom +16.15%, below both DMAs (5,124.93 / 5,459.83). **REJECT** — DMA gate fails. Auto sector also weakening.
+6. **TITAN** (Cons Durables) — momentum — last ₹4,024.6, mom +22.05%, below 50DMA (4,243.46), above 200DMA (3,955.52). **REJECT** — fails "above BOTH DMAs" gate.
+7. **IT names check** (HCLTECH, INFY, TECHM, WIPRO, TCS) — all had negative 12-1 momentum and were below both DMAs in last UNIVERSE rebuild. Even though IT is the only hot sector this week, no UNIVERSE IT name passes the trend filter. **REJECT** all on momentum trigger.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates — 4th consecutive HOLD cycle. Default action per STRATEGY.md. The market has been broadly below 50DMA for ~5 weeks; only ADANIPOWER is in clean uptrend among UNIVERSE leaders, and it remains outside the pullback window. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open. No new entries gated through.
+- **CRITICAL — UNIVERSE rebuild overdue**: 27 days since last rebuild (2026-05-06). VEDL false-leader issue now self-resolved by data feed update but Friday's weekly-review MUST run a fresh quality+momentum screen. Many ranked names likely no longer pass DMA filter; some new names may now qualify.
+- **ADANIPOWER watch**: still the cleanest momentum setup. Buy zone = ₹212-223 (2-7% under 20DMA ₹227.73). Do NOT chase above ₹235 — rule is pullback, not breakout. Re-check after any 2-3 day weak tape.
+- **Cadence concern**: Pre-market routine did not run for 8 trading days (May 25-29, Jun 1). Telegram alert to flag schedule gap to operator.
