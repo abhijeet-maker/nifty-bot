@@ -127,3 +127,36 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+
+## 2026-06-03 — Pre-market
+
+### Macro
+- Nifty 50: 23,483.55 (Jun 2 close, +0.43%); GIFT Nifty live not cleanly verified (one secondary estimate ~23,560 → mildly positive open bias)
+- Bank Nifty: 53,714.65 (+0.13%)
+- Hot sectors (1w/1m): Financials/Banking, IT, Metals, Infra/Capital Goods, Defence, Pharma improving
+- Cold: Auto rolling over; Consumption/FMCG mixed
+- Today's events: No Nifty 100 results confirmed for today. FII -₹3,912 cr / DII +₹5,109 cr on Jun 1. No FOMC / RBI / budget. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-01 → Fri 2026-06-05)
+- Concerns: none (no open positions). Gap of 12 days since last journal entry (May 22 → Jun 3); weekly review still owes UNIVERSE rebuild + VEDL reconciliation.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-02` returned empty. No PEAD candidates.
+2. VEDL (Metals) — momentum — live mom flipped to -32.71%, below both DMAs (528 / 551). UNIVERSE rank #1 (+56.75%) is stale/unadjusted. **REJECT** — fails mom threshold AND DMA gate. Cross-cycle data divergence STILL unresolved (flagged 2026-05-06, 05-19, 05-22).
+3. BEL (Capital Goods) — momentum — last ₹407.85, live mom +12.03% (below 18% threshold), below both DMAs (429 / 416). **REJECT** — fails mom AND DMA gates. Sector (Infra/Capital Goods) is hot but the name itself isn't.
+4. ADANIPOWER (Power) — momentum — last ₹235.93, live mom +108.32%, above 50/200 DMA (202.9 / 158.0). 20DMA = ₹228.03 (computed from last 20 closes) → stock is **+3.46% ABOVE 20DMA**, not below. RSI(14) ≈ 66 (in band). **REJECT** — not in 2-7% pullback zone; broke out 5/25-5/27 (+13.5%), gave back some (₹248→₹232 = -6.7%), bounced. Same pattern as 05-22 (sat at 20DMA) — now it's run higher. Sector "Power" not in today's hot list.
+5. HEROMOTOCO (Auto) — momentum — last ₹4,875, live mom +17.27%, below both DMAs (5,114 / 5,461). **REJECT** — DMA gate fails AND Auto sector explicitly called "rolling over" today.
+6. TITAN (Cons Durables) — momentum — last ₹4,078.1, live mom +21.89%, below 50DMA (4,242), above 200DMA (3,959). **REJECT** — fails "above BOTH DMAs" gate.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. ADANIPOWER again the only technical uptrend leader and again outside the pullback window (this time it's extended above the 20DMA, not sitting on it). UNIVERSE leaders remain below their 50DMA despite the broader market having stabilized. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- ADANIPOWER pullback zone is ₹212-223 (2-7% below 20DMA ₹228). Re-check intraday only if it drops into that band on volume; do NOT chase a break above ₹240.
+- VEDL data integrity issue is now at 4 consecutive cycles. The UNIVERSE table dated 2026-05-06 is 28 days stale and ranks VEDL #1 on a +56.75% momentum that the live wrapper now shows as -32.71%. UNIVERSE.md MUST be rebuilt — overdue by 2 weekly cycles.
+- Macro thread to watch: Financials/Banking + IT are leading; UNIVERSE has 0 financials passing (HDFCBANK, ICICIBANK, SBIN, etc. are missing — quality screen likely cut them on D/E or the rebuild is stale). The rebuild may produce new tradable names.
