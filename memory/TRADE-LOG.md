@@ -19,3 +19,13 @@ Format has two kinds of entries:
 
 **Notes:** Seed state. Paper trading launches on the next pre-market routine firing.
 The agent must treat this as "yesterday's equity" for its first day-over-day calculation.
+
+## 2026-06-04 — EOD Snapshot
+**Equity:** ₹5,00,000.00 | **Cash:** ₹5,00,000.00 (100%) | **Deployed:** 0%
+**Day P&L:** ₹0 (0.00%) | **Nifty 50 day:** unavailable (post-close source unreliable) | **Alpha today:** n/a
+**Phase P&L:** ₹0 (0.00% from ₹5,00,000 start)
+
+**Open positions:** none.
+
+**Trades today:** none.
+**Notes:** Zero positions held → no MTM move. No pre-market routine appears to have run today (last JOURNAL entry 2026-05-22 Friday). Last EOD snapshot was Day-0 baseline; this is the first true EOD snapshot of the paper phase. Index close not reliably sourceable from Perplexity at 4 PM (post-close pages still showed live/intraday). Yesterday's Nifty 50 close (2026-06-03) was 23,405.6 (-0.33%) per Perplexity-cited source — establishes a baseline for tomorrow's alpha math once today's close is recoverable. Watch tomorrow: no held names, scan for fresh PEAD / pullback setups in pre-market.

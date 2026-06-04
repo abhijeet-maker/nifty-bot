@@ -127,3 +127,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-06-04
+
+### EOD 2026-06-04
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%)
+- vs Nifty 50: unavailable (post-close source unreliable at 4 PM) → alpha n/a
+- 0 of 5 positions held; 100% cash; 0 trades today; 0 trades this week
+- Data gap: no pre-market routine appears to have fired between 2026-05-22 and today (13 calendar days). UNIVERSE still dated 2026-05-06 (29 days old, way past Friday-rebuild cadence). VEDL DMA-divergence still open.
+- Tomorrow watchlist: no held names. Need a fresh UNIVERSE rebuild before any entry consideration; scan for PEAD candidates from yesterday's tape and for momentum-pullback setups (ADANIPOWER still the cleanest technical leader pending a real 2-7% pullback under 20DMA).
+
