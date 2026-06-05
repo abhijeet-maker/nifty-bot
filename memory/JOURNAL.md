@@ -127,3 +127,28 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+## 2026-06-05 — Pre-market
+
+### Macro
+- Nifty 50: 23,416.55 (June 4 close, ~flat volatile session); GIFT Nifty ≈ 23,495 → mildly positive open expected
+- Bank Nifty: 53,570.15 (June 4 close)
+- Hot/cold sectors: not surveyed today (blackout — see below)
+- Today's events: **RBI MPC policy announcement** (repo rate expected unchanged at 5.25%). Middle East tensions and IT sector weakness in backdrop. Ceasefire hopes / FPI tax relief cited as sentiment drivers.
+
+### Blackout
+**RBI MPC decision day → no-new-entry blackout per STRATEGY.md.** Skipping macro sector scan, PEAD scan, and momentum scan. Research resumes Monday 2026-06-08 pre-market.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-01 → Fri 2026-06-05)
+- Concerns: none (no open positions to expose to MPC volatility)
+
+### Decision
+**HOLD.** Blackout day per STRATEGY.md (RBI MPC). No candidates evaluated, no trades possible. Default action.
+
+### Notes for market-open routine
+- No action at open. Watch RBI presser (10:00 IST decision, governor commentary follows) only for context — do NOT enter on volatility spikes; blackout applies all day.
+- Universe is stale: last rebuilt 2026-05-06 (30 days). Weekly review (Friday EOD) should rebuild UNIVERSE.md. VEDL DMA-divergence still open across 4 cycles — must reconcile during rebuild (suspected unadjusted corporate action in nse.sh history feed inflating 12-1 momentum).
+- Monday 2026-06-08 pre-market should run a full scan; check Friday's results tape for PEAD candidates (any UNIVERSE name reporting today/Friday).
