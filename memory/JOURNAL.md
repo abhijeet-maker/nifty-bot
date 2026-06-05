@@ -127,3 +127,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-06-05
+
+### EOD 2026-06-05
+- Equity ₹5,00,000 (day 0.00%, phase 0.00%) — 100% cash, 0 positions
+- vs Nifty 50 (~+0.23%, exact close unverified): alpha -0.23%
+- RBI MPC day — blackout per STRATEGY; repo held steady, market drifted up ~+0.2% post-decision
+- No pre-market or trade routine ran today; 14-day silent gap since 2026-05-22 pre-market
+- Tomorrow watchlist: weekly review overdue (UNIVERSE 30 days stale), rebuild-universe + reconcile VEDL DMA divergence before next pre-market; ADANIPOWER still the cleanest momentum candidate pending a 2-7% pullback under 20DMA (~₹205-215 zone)
+
