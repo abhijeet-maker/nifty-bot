@@ -127,3 +127,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-06-05 — Market-open
+
+### Market-open execution 2026-06-05
+- No pre-market plan logged for today (last journal entry: 2026-05-22, 14-day gap).
+- No candidate to validate → no trade. Standing down per STRATEGY default-HOLD rule.
+- Operational flag: pre-market cron appears to have not fired since 2026-05-22. Weekly review must investigate cron/scheduler health.
+- UNIVERSE.md is now 30 days stale (last rebuilt 2026-05-06) — weekly review must rebuild before any new entries.
+- No Telegram sent (silence on no-op per market-open spec).
+
