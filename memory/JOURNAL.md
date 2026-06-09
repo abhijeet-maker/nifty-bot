@@ -127,3 +127,42 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+## 2026-06-09 — Pre-market
+
+### Macro
+- Nifty 50: 23,123.00 (Jun 8 close); GIFT Nifty pre-market not reliably sourced this morning; commentary points to 23,000 support / 23,200-23,300 resistance
+- Bank Nifty: 54,063.75 (Jun 8 close)
+- India VIX: 17.09 (elevated)
+- Hot sectors (RRG/leading): PSU banks, Pharma, Financials/Private banks, IT; Auto improving
+- Cold/selling (prior session breadth): Metals, Realty, IT (intraday), Auto (intraday), Chemicals, Oil & Gas, Consumer Durables — broad-based selling Jun 8
+- Today's events: No Nifty 100 results scheduled today (per perplexity + nse.sh earnings). India-US trade deal chatter cited as background. FII -₹8,700 cr / DII +₹9,134 cr on Jun 8. No FOMC/RBI/budget. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-08 → Fri 2026-06-12)
+- Concerns: none (no open positions). Gap since last journal entry: 18 days (2026-05-22 → 2026-06-09).
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-08` returned empty. Perplexity confirms no Nifty 100 names reporting today either. **0 PEAD candidates.**
+2. VEDL (Metals) — momentum — live mom now **-31.69%** (vs stale UNIVERSE +56.75), below both DMAs (304.25 vs 50DMA 500.83 / 200DMA 549.04). **REJECT** — fails DMA + momentum gates. NB: live momentum reading reverses the stale UNIVERSE number, suggesting the prior corporate-action divergence has now been adjusted in the history feed; flag for Friday weekly review.
+3. BEL (Capital Goods) — last 412.95, mom +10.59%, below 50DMA (428.35) AND below 200DMA (416.78). **REJECT** — fails DMA gate.
+4. ADANIPOWER (Power) — last 225.85, mom +103.64%, above both DMAs (50: 209.31, 200: 160.23). 20DMA = 228.75 → currently -1.27% vs 20DMA. **REJECT** — not in 2-7% pullback zone (need 212.73-224.17). Same conclusion as 2026-05-19 and 2026-05-22 — extended/at trend, no pullback yet.
+5. HEROMOTOCO (Auto) — last 4,775.5, mom +24.47%, below both DMAs (5,085.26 / 5,464.45). **REJECT** — fails DMA gate.
+6. TITAN (Cons Durables) — last 4,192.4, mom +20.17%, below 50DMA (4,259.62), above 200DMA. **REJECT** — fails "above BOTH DMAs".
+7. EICHERMOT (Auto) — last 7,050, below both DMAs. **REJECT**.
+8. COALINDIA (Oil/Gas) — last 464.9, mom +17.7% (just under 18% top-quartile cutoff), above both DMAs (458.41 / 417.57). 20DMA 463.60 → +0.28% above 20DMA, not a pullback. Sector also flagged as selling. **REJECT** — not in pullback zone + sector cold.
+9. HINDZINC (Metals) — below 50DMA. **REJECT**.
+10. DRREDDY (Pharma) — below 50DMA. **REJECT**.
+11. BAJAJ-AUTO (Auto) — last 10,231, mom +23.73%, above both DMAs (9,967.15 / 9,379.75). 20DMA 10,429.10 → -1.90% vs 20DMA, RSI 50.7. **REJECT** — just outside pullback band by 0.1% (need ≤ -2.0%, gate top is 10,220.52). Also avg 20d volume reads only ~350k on NSE feed — suspect/illiquid; verify before any future entry. Auto sector "improving" not yet hot.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates across PEAD or momentum. No Nifty 100 names reported yesterday; broad selling on Jun 8 has put most UNIVERSE leaders below their 50DMA. ADANIPOWER remains the cleanest uptrend but is glued to its 20DMA (no pullback), and BAJAJ-AUTO sits 0.1% outside the pullback floor. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open. No held positions to monitor.
+- Watch BAJAJ-AUTO for a clean dip into ₹9,700-10,220 (2-7% under 20DMA) — would put it on the candidate list IF Auto sector confirms hot AND volume looks real (current 20d avg vol via NSE feed reads ~350k, suspiciously low for a Nifty 100 name; reconcile against alt source before any entry).
+- ADANIPOWER still pending a real pullback into ~₹213-224. Do not chase a breakout — rule is pullback only.
+- VEDL momentum reading now reverted from +56.75 (stale UNIVERSE) to -31.69 (live) — the prior unadjusted-corporate-action divergence appears self-resolved in the feed. UNIVERSE.md ranking is stale and now misleading.
+- **UNIVERSE.md is 34 days old (last rebuild 2026-05-06).** Universe-cache TTL is 30 days. Friday weekly-review routine must rebuild this cycle — multiple rebuild dates appear to have been missed (2026-05-08, 05-15, 05-22, 05-29, 06-05). Until rebuilt, treat ranking as indicative only and re-verify each candidate against live momentum (as done today).
