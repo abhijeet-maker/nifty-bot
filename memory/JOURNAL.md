@@ -127,3 +127,39 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+## 2026-06-11 — Pre-market
+
+### Macro
+- Nifty 50: 23,214.95 (June 10 close, -0.12%); GIFT Nifty pre-market not reliably sourced
+- Bank Nifty: 55,195 (June 10 close)
+- Hot sectors (RRG read): Banks/Financials, IT, Pharma, Auto, Metals
+- Cold/lagging: FMCG, PSU/PSE, Energy. Power sector ambiguous (neither leading nor explicitly lagging)
+- Today's events: no Nifty 100 Q-results scheduled today or yesterday (post-Q4 FY26 window — results season effectively closed). RBI on hold at 5.25% (last MPC), no FOMC today, no budget. Not a blackout day.
+- Long gap since last journal: 20 days (May 22 → Jun 11). Weekly-review cadence has lapsed.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-08 → Fri 2026-06-12)
+- Concerns: none (no open positions). Tooling note: `nse.sh quote` is returning all-null payloads (nsepython block); `history` + `momentum` (Yahoo-backed) still work. Workaround for now: derive levels from history. Investigate fix during weekly review.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-10` returned empty. No PEAD candidates. Q4 FY26 results window effectively closed (deadline was 2026-05-30). PEAD edge dormant until Q1 FY27 prints begin late July.
+2. VEDL (Metals) — momentum — UNIVERSE shows +56.75% mom and above both DMAs (stale 2026-05-06). Live: last ₹299.30, mom_12_1 -27.83%, 50DMA ₹486.56, 200DMA ₹547.63 → below BOTH. **REJECT** — DMA gate fails. The 3-cycle-old VEDL data divergence has flipped: instead of inflated +56.75%, live now shows -27.83% — history feed reconciled (likely split/bonus now adjusted), but momentum has collapsed in real terms. VEDL is no longer a candidate at all.
+3. BEL (Capital Goods) — momentum — last ₹408.35, mom +9.61%, 50DMA ₹428.39 (below), 200DMA ₹417.07 (below). **REJECT** — fails "above BOTH DMAs"; mom also below top-quartile threshold (~18%).
+4. ADANIPOWER (Power) — momentum — last ₹220.58, mom +92.59%, above 50DMA (₹212.09) and 200DMA (₹161.26). 20DMA ₹229.91 → -4.06% (in 2-7% pullback zone). RSI14 ≈ 50.88 (in 50-70 range). On the technical gate it PASSES. But: (a) Power sector NOT in confirmed leading set per macro RRG read (leaders: Banks/IT/Pharma/Auto/Metals); (b) last 7 closes are 7 consecutive down sessions (235.93 → 220.58) — looks more like distribution off a parabolic +92.6% YoY move than a clean shallow pullback; (c) UNIVERSE.md is 5 weeks stale, no fresh quality re-screen since 2026-05-06. **REJECT** — sector momentum gate fails (rule: "Sector is in positive 1-month momentum").
+5. HEROMOTOCO (Auto) — momentum — last ₹4,856.70, mom +17.03%, below 50DMA (5,070.85) and 200DMA (5,462.50). **REJECT** — DMA gate fails despite Auto being in leading sectors. Mom also marginal vs top-quartile.
+6. TITAN (Cons Durables) — momentum — last ₹4,042.10, mom +14.91%, below 50DMA (4,262.14), above 200DMA (3,978.04). **REJECT** — fails "above BOTH DMAs". Cons Durables also only "early recovery", not confirmed leadership.
+
+### Decision
+**HOLD.** Zero candidates pass entry gates. Same regime as the May cycles: ADANIPOWER is the only UNIVERSE name in technical uptrend but its sector is not in the confirmed leading set and the recent tape looks distributive after a parabolic move. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- ADANIPOWER: do NOT enter. If it stabilizes (3+ green closes) AND Power sector momentum confirms in next macro read, reconsider — but bias is now against chasing a +92.6% YoY name after 7 consecutive down sessions.
+- Q4 FY26 PEAD window closed. Next live PEAD opportunities are Q1 FY27 prints starting ~mid-July 2026 (typically TCS / Reliance / banks lead off mid-month). Until then, momentum trigger is the only path to a new entry.
+- **Operational debt to clear at Friday weekly review (2026-06-12):**
+  1. Rebuild UNIVERSE.md (5+ weeks stale; current top names mostly fail live DMA gates → universe is mostly noise).
+  2. Investigate `nse.sh quote` nsepython block (returning all-null payloads); ensure Yahoo fallback or a fix is in place before regime change.
+  3. Note that VEDL DMA-divergence has self-resolved (history feed reconciled); close that 3-cycle-old item.
