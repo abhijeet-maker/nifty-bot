@@ -127,3 +127,43 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-06-12 — Pre-market
+
+### Macro
+- Nifty 50: ~23,379 (latest verifiable close); GIFT Nifty live read not reliably sourced this morning — treat open as neutral pending live tick
+- Bank Nifty: ~53,555 last verifiable level; described as "slightly bearish" rollover risk in narrative
+- Hot sectors (1m, narrative): Pharma, Defense, Auto, Metals, Financials/Banks
+- Cold / rolling over: FMCG (clearly weak), Energy (struggling), PSU; Bank Nifty showing some near-term rollover risk at margin
+- Today's events: No Nifty 100 Q-results today (Q4 FY26 season effectively over — calendar shows only non-Nifty-100 names: Ather Energy, Omkar Specialty, Soma Textiles). No FOMC. No RBI MPC. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-08 → Fri 2026-06-12)
+- Concerns: none (no open positions). Note 21-day gap since last journal entry (2026-05-22 → 2026-06-12) — pre-market routine has not run on the intervening trading days; cron health to verify.
+
+### Candidates considered
+1. PEAD scan — earnings(2026-06-11) empty; checked 2026-06-08 through 2026-06-11, all empty. Q4 FY26 results season has ended. **0 PEAD candidates.**
+2. VEDL (Metals) — momentum — live: last ₹304.9, mom_12_1 −25.99% (NOT +56.75% as stale UNIVERSE shows), 50DMA ₹479.56 / 200DMA ₹546.93. **REJECT** — fails DMA gate AND momentum gate. The "DMA-divergence" mystery flagged 3× since 2026-05-06 now appears resolved: live mom flipped from +56% to −26% — the UNIVERSE value was a stale/bad feed read, NOT an unadjusted corp action. Weekly-review must rebuild Universe — VEDL no longer qualifies on momentum at all.
+3. BEL (Capital Goods) — momentum — last ₹402.3, mom +9.28%, 50DMA ₹428.43 / 200DMA ₹417.23, below BOTH. **REJECT** — fails DMA gate. Momentum also halved vs stale UNIVERSE (+35 → +9).
+4. ADANIPOWER (Power) — momentum — last ₹215.51, mom +99.33%, above both DMAs (50: 213.39, 200: 161.74). 20DMA = ₹229.46 → −6.08% vs 20DMA (IN pullback zone ✓). RSI(14) = 40.1 → FAILS RSI 50-70 gate. Sector "Power" not in today's hot list. **REJECT** — RSI gate + sector gate.
+5. HEROMOTOCO (Auto, hot sector) — last ₹4,836.2, below both DMAs (5,066 / 5,461). **REJECT** — DMA gate.
+6. TITAN (Cons Durables) — last ₹4,025.2, below 50DMA (4,263.62), above 200DMA. **REJECT** — fails "above BOTH DMAs" gate.
+7. EICHERMOT (Auto, hot sector) — last ₹7,179.5, mom +30.48%, above both DMAs (50: 7,117.9, 200: 7,103.39). 20DMA = ₹7,127.1 → +0.74% vs 20DMA. **REJECT** — sitting AT the 20DMA, not in 2-7% pullback zone (extended/no pullback).
+8. BAJAJ-AUTO (Auto, hot sector) — last ₹10,114, mom +20.95%, above both DMAs (50: 10,041.4, 200: 9,400.9). 20DMA = ₹10,395.7 → −2.71% vs 20DMA (IN pullback zone ✓). RSI(14) = 36.7 → FAILS RSI 50-70 gate. **REJECT** — pullback became weakness; momentum cracked.
+9. DRREDDY (Pharma, hot sector) — last ₹1,276, mom −1.18%, below 50DMA (1,279.53). **REJECT** — DMA gate AND momentum no longer top-quartile.
+10. HINDZINC (Metals, hot sector) — last ₹545, mom +27.48%, below both DMAs (602 / 553). **REJECT** — DMA gate.
+11. COALINDIA (Oil/Gas) — last ₹446.2, below 50DMA (458.91). **REJECT** — DMA gate.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. Default per STRATEGY.md. Patience > activity.
+
+Key read: the May-June correction has knocked most UNIVERSE leaders below their 50DMA. The two technical-uptrend leaders that ARE above both DMAs (ADANIPOWER, BAJAJ-AUTO) sit in the right pullback zone but their RSI(14) has cracked below 50 (40.1 and 36.7 respectively) — the pullback has degraded into weakness, exactly what the RSI gate is designed to filter out. EICHERMOT is the cleanest setup but is not pulled back. Wait.
+
+### Notes for market-open routine
+- No action expected at open. Default HOLD.
+- Watch EICHERMOT for a 2-7% pullback into ₹6,635-₹6,985 over coming sessions — would be a clean Auto-sector momentum-pullback setup if RSI stays >50.
+- Watch BAJAJ-AUTO and ADANIPOWER for RSI recovery back above 50 while still in pullback zone — only then re-evaluate.
+- **UNIVERSE.md is 37 days stale (last rebuild 2026-05-06).** Multiple ranks are now wrong (VEDL live mom is −26% vs Universe's +57%; BEL +9% vs +35%). Friday weekly-review MUST rebuild — until then, every pre-market is operating on a bad watchlist.
+- 21-day journal gap (2026-05-22 → 2026-06-12) suggests cron / scheduled trigger has been silent. Operational item: verify the schedule is firing daily.
+
