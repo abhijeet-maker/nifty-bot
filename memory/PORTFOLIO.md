@@ -13,7 +13,7 @@
 | Deployed | ₹0.00 (0%) |
 | Open positions | 0 of 5 max |
 | Trades this week | 0 of 2 max |
-| Week-start (Monday) | [updated weekly] |
+| Week-start (Monday) | 2026-06-08 |
 
 ## Open positions
 
