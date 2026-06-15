@@ -127,3 +127,44 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+## 2026-06-15 — Pre-market
+
+### Macro
+- Nifty 50: 23,622.90 (Fri 06-12 close, broad risk-on rally on Mid-East de-escalation); GIFT Nifty level not reliably sourced pre-open
+- Bank Nifty: 56,814.80 (Fri close) — strongest sector; private + PSU banks led the week, fresh RBI guidelines on FX inflows cited as tailwind
+- Hot sectors (1w/1m): Banks, Financial Services, Auto (near 52w highs, may be late-cycle), Metals, Pharma (recovering)
+- Cold/value: IT (WIPRO -9% on buyback exit), FMCG, Realty; ONGC -7% on Brent crude collapse
+- Today's events: No Nifty 100 results confirmed for 2026-06-15. No FOMC/RBI/budget. Not a blackout day.
+- Note: New week (Mon 2026-06-15 → Fri 2026-06-19). Trades-this-week counter resets to 0/2.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max
+- Concerns: none (no open positions). Note 24-day gap since last journal entry (2026-05-22 → 2026-06-15); routine cadence drift to flag in weekly review.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-14` and `2026-06-12` both returned empty. **No PEAD candidates.**
+2. VEDL (Metals) — momentum — last ₹309.65, mom_12_1 now -28.27% (vs UNIVERSE table's stale +56.75%), below both DMAs. **REJECT** — fails momentum and DMA gates. *Earlier divergence (flagged 05-06/05-19/05-22) appears RESOLVED: history feed has caught up with corporate action; UNIVERSE row is simply stale.*
+3. BEL (Capital Goods) — last ₹406.5, mom +6.61%, below both DMAs. **REJECT** — fails DMA + momentum top-quartile gates.
+4. ADANIPOWER (Power) — last ₹223.07, mom +85.66%, above 50DMA (214.71) AND 200DMA (162.26), 20DMA ₹229.55 → stock is -2.82% vs 20DMA (✅ pullback window). RSI ≈ 42.58 (❌ below 50). Power sector at best neutral per Perplexity sector read (no momentum-leader status). **REJECT** — fails RSI gate and sector momentum gate.
+5. HEROMOTOCO (Auto) — last ₹4,962.6, mom +15.65%, below both DMAs. **REJECT** — fails DMA gate (Auto sector hot but technical setup absent).
+6. TITAN (Cons Durables) — last ₹4,184.0, mom +18.30%, below 50DMA, above 200DMA. **REJECT** — fails "above BOTH DMAs".
+7. EICHERMOT (Auto) — last ₹7,312.0, mom +30.44%, above both DMAs (50: 7127.6 / 200: 7110.1). 20DMA ≈ ₹7,142 → stock is +2.38% ABOVE 20DMA (❌ not in 2-7% below pullback window — it's extended, not pulled back). **REJECT** — fails pullback gate. Worth re-checking later in the week if it pulls back to ₹6,930-7,000 zone (2-3% below 20DMA).
+8. BAJAJ-AUTO (Auto) — last ₹10,063, mom +20.3%, below 50DMA (10,064.7), above 200DMA. **REJECT** — fails DMA gate.
+9. DRREDDY, DIVISLAB (Pharma) — both mom <2% → below top quartile. **REJECT** — fail momentum gate despite hot Pharma sector read.
+10. HINDZINC (Metals) — last ₹559.9, mom +19.43% (top quartile), below 50DMA (603.0), above 200DMA. **REJECT** — fails DMA gate.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. Top-momentum UNIVERSE names are largely below their 50DMA after Q1FY27 corrections. Only ADANIPOWER is in technical uptrend WITH a pullback, but RSI is in the 40s (post-correction, not setup-quality) and Power is not a leading sector. Default action per STRATEGY.md. Patience > activity. 4th consecutive pre-market HOLD — gates working as designed; no rule changes warranted.
+
+### Notes for market-open routine
+- No action expected at open.
+- Watch EICHERMOT — if it pulls back to ₹6,930-7,070 (2-5% under 20DMA ₹7,142) AND RSI stays 50-70, it becomes the cleanest momentum-pullback setup in the universe (Auto is hot, DMAs aligned, mom +30%). Do NOT chase a breakout above ₹7,400.
+- Watch ADANIPOWER for RSI recovery into 50+. If price holds ₹215-225 zone and RSI lifts, setup re-qualifies (though sector confirm still needed).
+- **For weekly review (Friday 2026-06-19):**
+  - UNIVERSE is 40 days stale (last rebuild 2026-05-06) — MUST rebuild this week.
+  - UNIVERSE contains ZERO bank names despite Banks being the #1 hot sector this week. Verify D/E < 2.0 financial-sector exemption is actually being applied in the rebuild script (HDFCBANK, ICICIBANK, AXISBANK, KOTAKBANK, SBIN should all clear quality on every metric except D/E which needs the bank carve-out).
+  - VEDL data divergence appears self-resolved — close the flag.
+  - 24-day journal gap suggests cron didn't fire on multiple weekdays — confirm scheduler is healthy.
