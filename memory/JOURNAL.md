@@ -127,3 +127,52 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+## 2026-06-16 — Pre-market
+
+### Macro
+- Nifty 50: 23,853.90 (2026-06-15 close); GIFT Nifty pre-market level not verifiable from sources today
+- Bank Nifty: 56,814.80 (2026-06-15 close)
+- Hot sectors (1w/1m): Nifty IT (+3.88% / +5.40%), Nifty Bank (+4.20% / +1.33%), Nifty Financial Services (+3.48% / +4.90%), Nifty Auto (+1.49% / +5.43%), Nifty Consumer Durables (+0.40% / +11.24%)
+- Cold/rolling over: Nifty Healthcare (under pressure), Nifty Oil & Gas (low 1m mom)
+- Today's events: NO FOMC / RBI / budget. Not a blackout day. Mid-June is between Q4 FY26 and Q1 FY27 earnings seasons — no Nifty 100 results today or yesterday (Infosys leads Q1 FY27 on 2026-07-23).
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-15 → Fri 2026-06-19)
+- Concerns: none (no open positions). Note 25-day gap since last journal entry (2026-05-22 → 2026-06-16) — routine appears not to have run between.
+
+### Wrapper / data health (operational)
+- `nse.sh quote <SYM>` returns all-null JSON for every symbol tested (RELIANCE, HDFCBANK). `nse_eq()` from nsepython is returning an empty dict — NSE quote API path broken. **Live quotes unavailable this cycle.** Yahoo-backed `nse.sh history` and derived `nse.sh momentum` both work — used those for the scan.
+- `nse.sh earnings 2026-06-15` returned `[]` — consistent with no Nifty 100 prints mid-June (between earnings seasons), so plausibly correct rather than a wrapper failure; cannot fully distinguish.
+- UNIVERSE.md last rebuilt 2026-05-06 — now **41 days stale** (rebuild cadence is weekly). VEDL DMA-divergence noted across prior 3 cycles has resolved naturally: fresh `nse.sh momentum VEDL` returns mom -30.32% (vs UNIVERSE-stale +56.75%) with stock below both DMAs — confirms the prior cycles' suspicion that stale data was driving false rank-1. UNIVERSE rebuild remains overdue and material.
+
+### Candidates considered
+PEAD scan — `nse.sh earnings 2026-06-15` returned empty. No PEAD candidates.
+
+Momentum scan — fresh `nse.sh momentum` on UNIVERSE top-5 by stale mom_12_1, plus next 7 (given staleness of UNIVERSE rankings):
+
+1. VEDL (Metals) — last ₹302.5, fresh mom **-30.32%**, below both DMAs (50: 464.51 / 200: 545.53). **REJECT** — mom gate + DMA gate fail. (Resolves the 3-cycle data divergence: UNIVERSE rank-1 was a stale-data artifact.)
+2. BEL (Capital Goods) — last ₹409.55, mom +8.58%, below both DMAs. **REJECT** — DMA + mom < 18%.
+3. ADANIPOWER (Power) — last ₹220.52, mom +86.78%, above 50DMA (215.92) + 200DMA (162.77). 20DMA = ₹229.61 → stock is **-3.96% below 20DMA** (in pullback zone ✓). RSI(14) ≈ **30** (computed from last 15 closes: 6 gains avg 1.32 / 8 losses avg 3.03 → RS 0.43 → RSI 30.3). **REJECT** — RSI below 50-70 band; stock is in heavy selling, not a healthy pullback. Power sector also not on today's hot list.
+4. HEROMOTOCO (Auto) — last ₹5,024, mom +12.4%, below both DMAs (5,063 / 5,460). **REJECT** — DMA + mom.
+5. TITAN (Cons Durables) — last ₹4,283.5, mom +17.73% (just under 18%), above 50DMA (4,269.72) + 200DMA (3,986.34). 20DMA = ₹4,125.10 → stock is **+3.84% above 20DMA**. **REJECT** — extended above 20DMA, not in 2-7% pullback zone. Cons Durables sector hot but entry rule fails.
+6. EICHERMOT (Auto) — last ₹7,624.5, mom +29.17% ✓, above 50DMA (7,147) + 200DMA (7,119) ✓, Auto sector hot ✓. 20DMA = ₹7,177.55 → stock is **+6.23% above 20DMA**, and gapped +4.27% on 2026-06-15. **REJECT** — breakout move, not a pullback entry; rule is pullback only.
+7. COALINDIA (Oil/Gas) — mom +14.92%, below 50DMA. **REJECT** — DMA + mom + cold sector.
+8. HINDZINC (Metals) — mom +22.27% ✓, below 50DMA (603.95). **REJECT** — DMA.
+9. DRREDDY (Healthcare) — mom -1.47%, below 50DMA, sector cold. **REJECT.**
+10. BAJAJ-AUTO (Auto) — mom +16.97%, below 50DMA. **REJECT** — DMA + mom < 18%.
+11. BOSCHLTD (Auto) — mom +17.78% (under 18%), above both DMAs, sector hot. **REJECT** — mom under threshold by a hair.
+12. CGPOWER (Capital Goods) — mom +16.24%, above both DMAs. **REJECT** — mom under 18%.
+
+### Decision
+**HOLD.** Zero candidates passed all entry gates. ADANIPOWER is the only name in the proper pullback zone but its RSI ~30 signals distribution, not a healthy dip. EICHERMOT and TITAN have the right sector + DMA setup but are extended above the 20DMA, not in pullback. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- No action expected at open.
+- **Operational: `nse.sh quote` is broken** (nsepython `nse_eq` returns empty dict). Midday and EOD routines will be hobbled — they rely on quote for live marks. Workaround: use `nse.sh history <SYM> 2` and take the last close as a same-day fallback (will be 1 day stale intraday; acceptable for EOD mark-to-market once today's close lands tonight). A real fix likely needs an nsepython upgrade or a switch to a Yahoo-backed `quote` path inside the wrapper.
+- **Operational: UNIVERSE.md is 41 days stale.** Weekly review must rebuild — current ranking misleads (e.g. VEDL was rank-1 on stale +56.75% mom but fresh mom is -30%). Several names currently in UNIVERSE are unlikely to still pass the quality screen; new high-momentum Nifty 100 names probably missing from the watchlist.
+- **Operational: 25-day journal gap (2026-05-22 → 2026-06-16)** — pre-market routine apparently didn't fire on the schedule. Worth confirming the cron / trigger configuration is healthy.
+- Watch EICHERMOT for a pullback into the ₹7,180–7,400 zone (2-7% under fresh 20DMA ~₹7,178); would qualify on next pullback if Auto stays hot.
+- ADANIPOWER — pullback zone intact but needs RSI to recover into 50+ before a momentum entry would qualify.
+
