@@ -127,3 +127,32 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL DMA-divergence STILL open across 3 cycles (2026-05-06, 2026-05-19, 2026-05-22). Weekly review TODAY (Friday) MUST reconcile or VEDL stays falsely ranked #1 in UNIVERSE; suspected unadjusted split/bonus in history feed driving the inflated 12-1 momentum and stale DMAs.
 - Universe last rebuilt 2026-05-06 (16 days ago, overdue) — weekly review tonight should rebuild.
 
+
+## 2026-06-17 — Pre-market
+
+### Macro
+- Nifty 50: 23,996.45 (prev close, +0.59%) — coiled at the 24,000 line. GIFT Nifty / Bank Nifty not reliably sourced this morning.
+- Hot sectors (1m, RRG read): Banks, IT, Pharma in leading quadrant; Auto improving.
+- Cold/under pressure: FMCG, Realty.
+- **Today's events: US FOMC rate decision (announced today, 2026-06-17, 2-day meeting Jun 16–17).** No Nifty 100 names report today — large-cap Q1 FY27 cycle starts mid-July.
+
+### Blackout determination
+- **TODAY IS A BLACKOUT DAY** per STRATEGY.md: "No new entries on US FOMC decision day."
+- Skipping PEAD/momentum candidate scans. Default action = HOLD regardless of setup quality.
+
+### Portfolio health
+- Total positions: 0 of 5 max. Paper equity ₹5,00,000.00, Cash ₹5,00,000.00, Deployed 0%.
+- Trades this week (Mon 2026-06-15 → today): 0 of 2 max.
+- No held positions → no thesis-break / gap-down watch required.
+
+### Candidates considered
+- None scanned. Blackout day.
+
+### Decision
+**HOLD — FOMC blackout. No new entries today.** Patience > activity.
+
+### Notes for market-open routine
+- No action at open. Stand down for the day; FOMC statement lands tonight India time (~11:30 PM IST). Reaction trade is tomorrow's pre-market problem, not today's.
+- **Operational: `nse.sh quote` is returning all-null fields for every symbol (nsepython / nse_eq endpoint failing).** Yahoo `history` endpoint still works. Not blocking today (no held positions, blackout), but flag for the next routine — without `quote` we lose pre-market gap detection and held-position health checks. Weekly review should investigate / patch wrapper.
+- UNIVERSE.md last rebuilt 2026-05-06 (42 days stale). Friday weekly review must rebuild before Monday's scan or the universe data is too old to trust.
+- VEDL DMA-divergence (flagged 2026-05-06, -05-19, -05-22) still unresolved; weekly review must reconcile.
