@@ -161,3 +161,9 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **Process risk**: UNIVERSE.md last rebuilt 2026-05-06 — now 43 days stale, ~5 Friday reviews missed. Weekly-review routine has not been running. Universe rankings (esp. VEDL at #1, BEL/HEROMOTOCO/TITAN) are out of date and should be regenerated ASAP via `rebuild-universe` before next entry decision. The 12-1 momentum live for ADANIPOWER (+92.89%) is much higher than UNIVERSE's stale +29.91 — confirms staleness.
 - VEDL data divergence (4th cycle now) — Yahoo history likely missing a corporate-action adjustment. Either drop VEDL from universe or switch its history fetch to a split-adjusted source.
 
+### EOD 2026-06-18
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%) — 100% cash, 0 positions.
+- vs Nifty 50 (+0.34% to 24,168.00): alpha -0.34%. Acceptable drag — FOMC-impact blackout precluded the only qualifying setup (ADANIPOWER).
+- Trades today: 0. This week: 0 of 2 max.
+- Tomorrow (Fri 2026-06-19): (1) re-scan ADANIPOWER pullback — buy zone ₹212-225 with sector-momentum confirm; (2) execute weekly review + `rebuild-universe` (UNIVERSE.md is 43 days stale, blocks any new entry). No Nifty 100 names confirmed reporting tomorrow.
+
