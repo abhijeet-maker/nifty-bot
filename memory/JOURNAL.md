@@ -161,3 +161,27 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **Process risk**: UNIVERSE.md last rebuilt 2026-05-06 — now 43 days stale, ~5 Friday reviews missed. Weekly-review routine has not been running. Universe rankings (esp. VEDL at #1, BEL/HEROMOTOCO/TITAN) are out of date and should be regenerated ASAP via `rebuild-universe` before next entry decision. The 12-1 momentum live for ADANIPOWER (+92.89%) is much higher than UNIVERSE's stale +29.91 — confirms staleness.
 - VEDL data divergence (4th cycle now) — Yahoo history likely missing a corporate-action adjustment. Either drop VEDL from universe or switch its history fetch to a split-adjusted source.
 
+## 2026-06-19 — Market-open (stand-down)
+
+### Pre-market status
+- **No pre-market entry for 2026-06-19 in JOURNAL.md.** Pre-market routine did not fire this morning. Last entry is 2026-06-18.
+- Without a documented pre-market decision, there is no validated plan to execute. STRATEGY.md forbids discretionary entries.
+
+### Data feed status
+- `bash scripts/nse.sh quote ADANIPOWER` → all fields null.
+- `bash scripts/nse.sh quote RELIANCE` → all fields null.
+- `bash scripts/nse.sh earnings 2026-06-19` → `[]` (may be legitimate empty or feed issue).
+- NSE quote wrapper is broken this session. Even if a plan existed, the live-validation gates in STEP 2 cannot be evaluated.
+
+### Yesterday's watch note (not actioned)
+- 2026-06-18 flagged ADANIPOWER as a Friday-watch pullback setup IF still in ₹212-225 AND sector confirm upgraded. Without a live quote and without a fresh pre-market research entry, this watch note is NOT actionable today per the entry checklist rules.
+
+### Decision
+**STAND DOWN.** No trade. No paper fill. PORTFOLIO unchanged.
+- Reasons (any one is sufficient): (a) no pre-market plan, (b) NSE quote feed down, (c) UNIVERSE.md 44 days stale.
+
+### Action items for human
+1. Investigate why pre-market routine did not fire today (cron / scheduler / env).
+2. Investigate NSE quote wrapper returning all-null payloads (likely yfinance endpoint change, rate limit, or auth issue).
+3. Run `rebuild-universe` skill — UNIVERSE.md is 44 days stale (5+ Friday reviews missed) and VEDL DMA divergence still unresolved across 4 cycles.
+
