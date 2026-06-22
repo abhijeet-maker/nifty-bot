@@ -161,3 +161,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **Process risk**: UNIVERSE.md last rebuilt 2026-05-06 — now 43 days stale, ~5 Friday reviews missed. Weekly-review routine has not been running. Universe rankings (esp. VEDL at #1, BEL/HEROMOTOCO/TITAN) are out of date and should be regenerated ASAP via `rebuild-universe` before next entry decision. The 12-1 momentum live for ADANIPOWER (+92.89%) is much higher than UNIVERSE's stale +29.91 — confirms staleness.
 - VEDL data divergence (4th cycle now) — Yahoo history likely missing a corporate-action adjustment. Either drop VEDL from universe or switch its history fetch to a split-adjusted source.
 
+## 2026-06-22 — Market-open
+
+### Market-open execution 2026-06-22
+- No-op. No pre-market entry exists for today (2026-06-22, Monday); last journal entry is 2026-06-18 pre-market HOLD. No candidate to validate or execute.
+- Gap in routine: pre-market did not run 2026-06-19 (Fri) or 2026-06-22 (today). Weekly-review also missing since 2026-05-06.
+- Portfolio unchanged: 0 positions, ₹5,00,000 cash, 0 trades this week (week Mon 2026-06-22 → Fri 2026-06-26).
+- ADANIPOWER pullback setup flagged 2026-06-18 not re-validated today (no pre-market candidate to act on); revisit in next pre-market cycle.
+- No Telegram sent (silence on no-op per STRATEGY).
+
