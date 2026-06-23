@@ -169,3 +169,45 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Bank Nifty +0.61%. No positions, no trades today; pre-market routine did not fire.
 - Tomorrow watchlist: ADANIPOWER — re-check pullback zone (₹212-225 vs 20DMA) and Power sector momentum. UNIVERSE rebuild (47 days stale) is blocking quality of all entry decisions — prioritize before any new entry.
 
+## 2026-06-23 — Pre-market
+
+### Macro
+- Nifty 50: 24,090 (Jun 22 close, +0.32%); GIFT Nifty ≈ 24,112.5 (+64 pts) → mildly positive open
+- Bank Nifty: 22-Jun close ~57,160 region (live intraday not retrievable; treat as neutral, expiry-day volatility)
+- Hot sectors (1w/1m read): Capital Goods, Infrastructure, Energy, select PSU Banks
+- Cold / lagging: IT, FMCG, Metals, Auto, Power (no longer a clear leader)
+- Today's events: **Monthly Nifty/Bank Nifty options expiry day** → elevated intraday volatility but NOT a blackout per STRATEGY.md. No RBI MPC, no FOMC, no budget. Q1 FY27 reporting window has not opened — Nifty 100 names start ~July 23 (Infosys). nse_results feed empty for 2026-06-22 → no PEAD candidates from yesterday's tape.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-22 → Fri 2026-06-26)
+- Concerns: none (no open positions)
+
+### Infrastructure note
+- `nse.sh quote` (nsepython `nse_eq`) returns empty dict for RELIANCE/ADANIPOWER — NSE direct API blocked from this container. Yahoo-backed paths (`history`, `momentum`) work. Pre-market = working off 22-Jun closes; live intraday cannot be retrieved this session. Flag for tool-fix routine.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-22` returned `[]`. Q1 FY27 results window not open (starts late July). **REJECT** — no PEAD candidates available this entire week and likely until ~Jul 21.
+2. ADANIPOWER (Power) — momentum — last ₹233.78 (Jun 22), mom +111.86%, above 50/200 DMA (221.82 / 165.46). 20DMA = ₹230.99 → stock is **+1.21% ABOVE 20DMA**. After Jun 18→22 rally (₹220→233.78, +6%), the pullback setup flagged in 2026-06-18 journal has resolved into a breakout. **REJECT** — rule is pullback (2-7% BELOW 20DMA), not breakout chase. Also Power sector no longer in the leadership read (today's read: Cap Goods / Infra / Energy lead; Power "not singled out").
+3. BEL (Capital Goods) — momentum — last ₹431.5, mom +5.33%, above 50/200 DMA (426.82 / 418.91). 20DMA ₹413.75 → **+4.29% ABOVE 20DMA, extended**. RSI ~70.3 (overbought edge). **REJECT** — not pullback; also 12-1 momentum of +5.33% is well below the top-quartile threshold (~+18%).
+4. HEROMOTOCO (Auto) — momentum — last ₹4,983.7, mom +14.25%, 50DMA 5,040.08 (below) / 200DMA 5,457.8 (below). **REJECT** — DMA gate fails (4th cycle).
+5. TITAN (Cons Durables) — momentum — last ₹4,372.5, mom +19.94%, above 50/200 DMA (4,269.41 / 4,005.18). 20DMA ₹4,193.51 → **+4.27% ABOVE 20DMA, extended**. RSI ~67. **REJECT** — extended, not pullback. Also Consumer Durables not in today's hot-sector read.
+6. EICHERMOT (Auto) — momentum — last ₹7,639.5, mom +37.47%, above 50/200 DMA (7,207.47 / 7,154.89). 20DMA ₹7,322.62 → **+4.33% ABOVE 20DMA**. RSI ~75 (overbought). **REJECT** — extended AND RSI > 70.
+7. CGPOWER (Capital Goods) — momentum — last ₹962.55, mom +26.9%, above 50/200 DMA (863.81 / 737.58). 20DMA ₹925.49 → **+4.0% ABOVE 20DMA, extended**. RSI ~66.5. Sector hot, momentum qualifies, DMAs clean — but fails pullback gate. **REJECT** — chase, not pullback. Best technical setup in the universe today; first to watch on a real pullback to ₹880-910.
+8. VEDL — **REJECT** — 5th cycle of unadjusted-corporate-action distortion in history feed (mom -27.16% live vs UNIVERSE rank +56.75%; 50DMA 422 < 200DMA 542 while price 305 confirms the discontinuity). Until fixed, skip.
+
+### Decision
+**HOLD.** Zero candidates passed entry gates. Every UNIVERSE technical-uptrend leader is extended ABOVE its 20DMA after the Indian market rally to 24,100 — none in the 2-7% pullback window. ADANIPOWER's setup teed up Jun 18 has resolved into a +6% breakout (not entry-rule compliant). PEAD window is closed for ~4 weeks until Q1 FY27 reporting begins. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- **No new entries today.** No alert needed at open.
+- **CGPOWER is the cleanest setup pending pullback**: ₹962.55, all DMA/momentum/sector gates passing except pullback. Watch for ₹880-910 zone (3-7% below current 20DMA ₹925.49). If reached AND CapGoods sector still leading, qualifies for entry. Stop would be ~8% below fill; target +20%. Position size 20% of ₹5L = ₹1,00,000 → ~110 shares at ₹905.
+- **ADANIPOWER**: no longer the lead setup — wait for a real pullback under ₹222 before re-considering. Do NOT chase ₹233+.
+- **EICHERMOT / TITAN / BEL**: all extended; watch for pullbacks of 3-5% before considering. EICHERMOT RSI 75 = wait for cooling first.
+- **PROCESS RISKS still open**:
+  1. UNIVERSE.md last rebuilt 2026-05-06 → 48 days stale (~6 missed Friday rebuilds). The rebuild-universe routine MUST run before next entry decision. Current rankings (VEDL #1, BEL #2, ADANIPOWER #3) are wrong vs live data (CGPOWER/EICHERMOT actually lead now).
+  2. NSE direct API blocked (`nse_eq` returns `{}`) → pre-market routine has no live intraday quote source. Yahoo history (T-1 close) is the only working price feed. Workaround acceptable for daily-bar entry rules; not acceptable for stop-trail or live exit decisions. Flag for repair.
+  3. VEDL split-adjustment issue still open (5th cycle). Either drop VEDL from UNIVERSE permanently or switch its history source to a split-adjusted feed.
+
+
