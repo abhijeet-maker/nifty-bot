@@ -169,3 +169,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Bank Nifty +0.61%. No positions, no trades today; pre-market routine did not fire.
 - Tomorrow watchlist: ADANIPOWER — re-check pullback zone (₹212-225 vs 20DMA) and Power sector momentum. UNIVERSE rebuild (47 days stale) is blocking quality of all entry decisions — prioritize before any new entry.
 
+## 2026-06-23 — Market-open
+
+### Market-open execution 2026-06-23
+- No-op. Pre-market routine did not fire today → no candidate to validate at 9:20 AM.
+- Default action per STRATEGY.md = HOLD. No live quotes pulled (market-open scope is "validate the pre-market pick," not free-form scanning).
+- Portfolio unchanged: 0 of 5 positions, ₹5,00,000 cash, 0% deployed, 0 of 2 trades this week.
+- Telegram: silent (no-op rule).
+- Process risk reminder still standing from 2026-06-22 EOD: pre-market routine cadence has slipped, and UNIVERSE.md is now 48 days stale. Both should be addressed before the next entry decision.
+
