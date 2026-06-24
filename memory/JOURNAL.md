@@ -169,3 +169,43 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Bank Nifty +0.61%. No positions, no trades today; pre-market routine did not fire.
 - Tomorrow watchlist: ADANIPOWER — re-check pullback zone (₹212-225 vs 20DMA) and Power sector momentum. UNIVERSE rebuild (47 days stale) is blocking quality of all entry decisions — prioritize before any new entry.
 
+
+## 2026-06-24 — Pre-market
+
+### Macro
+- Nifty 50: 23,824.10 (Jun 23 close, -1.16% / -278.80 pts) — broke decisively below 24,000; that level now resistance, S1 ≈ 23,750. GIFT Nifty not cleanly sourced this morning; sentiment cautious.
+- Bank Nifty: **expiry day today** (June monthly), analyst band 56,800–57,200 (~57,000 ±200).
+- India VIX: 14.23 (+10.83%) — meaningful jump, signals elevated uncertainty into expiry.
+- Hot sectors (1w/1m): Defence, Capital Goods (record budget capex driving BEL/HAL/L&T/Siemens breakouts), Green Energy / EV (selective).
+- Cold / rolling over: IT (-2.23% Jun 23), Metals (-3.23%), Basic Materials. Pharma defensive (+0.92% Jun 23, stable). Power "selective" not broad-momentum.
+- Today's events: no Nifty 100 results (Q1 FY27 window starts late July — June is between-quarters quiet zone). No FOMC / RBI / budget. Bank Nifty expiry → elevated intraday vol.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-22 → Fri 2026-06-26)
+- Concerns: none (flat). Cash drag continues — alpha tracking negative-but-small (-0.38% on 2026-06-22 vs Nifty +0.38%).
+
+### Data-source health (this run)
+- `nse.sh quote` returning null fields across symbols (RELIANCE, ADANIPOWER) — nsepython upstream issue or NSE block, not transient.
+- `nse.sh history` → Yahoo v8 chart returning HTTP 429 (rate-limited) for every symbol attempted; `nse.sh momentum` therefore fails.
+- Result: cannot freshly verify DMA / pullback / 12-1 momentum gates this cycle. All technical reads below are inferred from 2026-06-18 journal (6 trading days stale).
+- Perplexity working; PEAD calendar `nse.sh earnings 2026-06-23` → [] (returned empty cleanly — that path uses NSE directly, not Yahoo, suggests the nse_results endpoint is fine but `nse_eq`/yahoo are throttled).
+
+### Candidates considered
+1. **PEAD scan** — `nse.sh earnings 2026-06-23` → empty. Mid-June is between Q4 FY26 (May) and Q1 FY27 (late July). No Nifty 100 PEAD candidates available structurally for at least 3–4 weeks. **REJECT — no setups exist.**
+2. **VEDL** (Metals) — momentum — UNIVERSE-stale rank #1 still suspect (4th cycle of unresolved Yahoo-history corp-action distortion); metals sector in active rolldown per macro read (-3.23% Jun 23). **REJECT** — sector cold + data unreliable.
+3. **BEL** (Capital Goods) — momentum — Defence/CapGoods sector hot per Perplexity (BEL named in 52-week-high breakout list). Live DMA/pullback gates cannot be verified this cycle (Yahoo 429). 2026-06-18 read: last ₹419.85, below 50DMA, above 200DMA → fails "above BOTH DMAs". Even if sector-strong now, can't confirm gates. **REJECT** — data unverifiable + last known DMA-fail.
+4. **ADANIPOWER** (Power) — momentum — 2026-06-18 read had it as the live pullback setup (last ₹220.4, in 2-7% pullback zone vs 20DMA ₹229.79, above both DMAs). 6 trading days later, no live data available this cycle. Power sector now described as "selective" not broad-momentum (weak sector confirm). Even if technicals still qualify, entering on a Bank-Nifty-expiry day with VIX +10.83% and Nifty just broke 24,000 support = entering into a tape break. **REJECT** — adverse macro (broken support + VIX spike + expiry vol) overrides a clean setup; sector confirm weak.
+5. **HEROMOTOCO** (Auto) — momentum — Auto sector improving in RRG but stock failed DMA gate on 2026-06-18 (below both 50/200 DMA). No fresh data. **REJECT** — last known DMA-fail.
+6. **TITAN** (Cons Durables) — momentum — 2026-06-18: above both DMAs but +5.54% extended above 20DMA → chase, not pullback. Consumption sector not in hot-list today. **REJECT** — extended + sector cold.
+
+### Decision
+**HOLD.** Default action. Three converging reasons: (a) live data unavailable for any technical re-verification (Yahoo 429 + NSE quote nulls); (b) macro tape just broke 24,000 with VIX +10.83% into a Bank Nifty expiry — wrong day to deploy fresh capital even with a clean setup; (c) PEAD pipeline is structurally empty until late July. Patience > activity. Cash drag is acceptable cost.
+
+### Notes for market-open routine
+- **No new entries today.** Bank Nifty expiry day + VIX spike + S1 at 23,750 → if Nifty 50 gaps further down below 23,750, treat as confirmed breakdown and stay defensive. Do NOT chase any reversal bounce.
+- ADANIPOWER remains the only live pullback candidate from prior reads. If `nse.sh momentum` recovers from 429 by midday, re-verify: needs last in ₹212-225 zone, 2-7% under 20DMA, above both DMAs, Power sector still constructive. Entry only if all four hold AND macro stabilizes (Nifty reclaims 24,000 on close).
+- **Process risk — UNIVERSE.md is now 49 days stale** (last rebuild 2026-05-06). Friday weekly review has missed ~7 cycles. `rebuild-universe` MUST run before any next entry — current UNIVERSE rankings are unreliable (VEDL at #1 is provably wrong; live ADANIPOWER mom was +92.89 on Jun 18 vs UNIVERSE's +29.91, etc.).
+- **Wrapper degradation worth a separate fix-cycle**: Yahoo v8 chart 429s blocking all momentum calls; nsepython `nse_eq` returning nulls for valid symbols. Either rotate to a different price source (Stooq, NSEpy direct, or screener) or add caching/throttling to the wrappers. Flag for off-routine engineering work.
+- VEDL Yahoo-history corp-action distortion now flagged across 5 cycles unresolved. If Yahoo stays 429 or stays unadjusted, drop VEDL from UNIVERSE on next rebuild.
