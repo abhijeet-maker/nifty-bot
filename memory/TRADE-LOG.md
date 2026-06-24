@@ -33,3 +33,17 @@ The agent must treat this as "yesterday's equity" for its first day-over-day cal
 **Trades today:** none. Pre-market routine did not fire today (last journal entry 2026-06-18).
 
 **Notes:** First live EOD snapshot. Book sat in 100% cash through a +0.38% Nifty 50 / +0.61% Bank Nifty session — opportunity-cost drag of -₹1,900 vs a fully-deployed index proxy, but consistent with STRATEGY.md (no candidate has cleared all gates since launch). ADANIPOWER remains the only live pullback setup flagged 2026-06-18; sector confirm and live pullback zone need re-checking in tomorrow's pre-market. UNIVERSE.md is 47 days stale — rebuild is overdue and is the single biggest process risk going into the next entry decision.
+
+---
+
+## 2026-06-24 — EOD Snapshot
+
+**Equity:** ₹5,00,000.00 | **Cash:** ₹5,00,000.00 (100%) | **Deployed:** 0%
+**Day P&L:** ₹0 (0.00%) | **Nifty 50 day:** +0.73% | **Alpha today:** -0.73%
+**Phase P&L:** ₹0 (0.00% from ₹5,00,000 start)
+
+**Open positions:** none.
+
+**Trades today:** none. Pre-market routine did not fire today (no 06-23 or 06-24 pre-market journal entry).
+
+**Notes:** No EOD ran on 2026-06-23 (expiry day, Nifty -1.16%). Today's +0.73% recovery closed Nifty at 23,998.50; Bank Nifty consolidated near 57,933 with slight positive bias. Two-session change since last snapshot (06-22 → 06-24): Nifty 50 ≈ -0.44%; book at ₹5,00,000 → alpha over the gap ≈ +0.44% (favorable cash drag this time). India VIX 14.23 on 06-23 — elevated. ADANIPOWER pullback setup (flagged 06-18) and UNIVERSE rebuild (49 days stale) remain the two unresolved threads; neither was actioned because no pre-market routine has fired since 06-18. Process risk is now the binding constraint, not market opportunity.

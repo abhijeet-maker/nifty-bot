@@ -169,3 +169,14 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Bank Nifty +0.61%. No positions, no trades today; pre-market routine did not fire.
 - Tomorrow watchlist: ADANIPOWER — re-check pullback zone (₹212-225 vs 20DMA) and Power sector momentum. UNIVERSE rebuild (47 days stale) is blocking quality of all entry decisions — prioritize before any new entry.
 
+## 2026-06-24 — EOD
+
+### EOD 2026-06-24
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%). 100% cash, 0 positions, 0 trades today.
+- vs Nifty 50 today (+0.73%, close 23,998.50): alpha -0.73% (cash drag).
+- Two-session gap since last snapshot (06-22 → 06-24, 06-23 EOD missed): Nifty 50 ≈ -0.44% (06-23 -1.16% expiry-day selloff, 06-24 +0.73% recovery); book flat → gap alpha ≈ +0.44%.
+- Bank Nifty ~57,933, slight positive bias. India VIX 14.23 on 06-23, elevated.
+- Trades this week (Mon 06-22 → today): 0 of 2 max. Week pace: on track for 0-trade week again.
+- Pre-market routine has not fired since 2026-06-18 (now 5 trading days dark) — entry pipeline is effectively offline. No catalyst-day blackout today.
+- Tomorrow watchlist: ADANIPOWER pullback zone (₹212-225 vs 20DMA) still the only live momentum setup flagged; needs fresh live check + Power-sector momentum confirm. UNIVERSE rebuild (now 49 days stale) and VEDL split-adjust fix remain blockers on entry quality. Q1 FY27 earnings season starts late July → next material PEAD window is ~4 weeks out.
+
