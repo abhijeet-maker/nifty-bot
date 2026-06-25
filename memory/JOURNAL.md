@@ -169,3 +169,42 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Bank Nifty +0.61%. No positions, no trades today; pre-market routine did not fire.
 - Tomorrow watchlist: ADANIPOWER — re-check pullback zone (₹212-225 vs 20DMA) and Power sector momentum. UNIVERSE rebuild (47 days stale) is blocking quality of all entry decisions — prioritize before any new entry.
 
+
+## 2026-06-25 — Pre-market
+
+### Macro
+- Nifty 50: 24,021.65 (Jun 24 close, +0.83%); pre-market GIFT level not in sources but outlook cautiously positive after Nifty reclaimed 24,000. Support 23,900 / resistance 24,150.
+- Bank Nifty: bullish above 58,250 (engulfing candle Jun 24, breakout confirmed); downside support ~57,500. Bank Nifty expiry today → expect intraday volatility.
+- India VIX: 13.33 (low → benign risk regime).
+- Hot sectors (1w): Realty (+3.55%), MidSmall Pvt Banks (+3.49%), Industrials (+3.45%), Financial Services (+3.14%), Pvt Banks (+3.07%). Jun 24 sector winners: Banking, Financial Services, Cement, IT (+2.05%).
+- Cold / rolling over: Oil & Gas (-2.47% Jun 24), Healthcare (-1.86% Jun 24), Consumer Durables (-1.62% Jun 24), Metals (red early-June), IT (mixed — rallied Jun 24 but 1m laggard).
+- Today's events: **Bank Nifty weekly expiry** — typical mid-session volatility but not a STRATEGY blackout. No FOMC / RBI / Budget. No major Nifty 100 Q-results today (Equitymaster calendar shows only SME-level names: SIEL FINANCIAL, HINDU.ADHESI, AUREATE TRADDE, DAVIN SONS, GENERIC ENGG — none in UNIVERSE). Mid-June is the quiet window between Q4 FY26 (May) and Q1 FY27 (late-July).
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-22 → Fri 2026-06-26)
+- Concerns: none (no open positions). 47-day stale UNIVERSE still blocking quality of any new entry decision.
+
+### Data wrapper outage (CRITICAL)
+- **`scripts/nse.sh momentum <SYM>` → HTTP 429 Too Many Requests from Yahoo Finance v8 chart API across every symbol attempted (VEDL, BEL, ADANIPOWER, plus retries with 45s backoff over 5+ min). Confirmed via direct curl: `query1.finance.yahoo.com` returns `HTTP/2 429` with `Too Many Requests` body. Persistent — not a transient burst.**
+- **`scripts/nse.sh quote <SYM>` → returns all-null JSON (RELIANCE, ADANIPOWER both null). nsepython call is failing silently upstream.**
+- Net effect: **no live or recent price data available this cycle** for either momentum gating or the held-position check. Per CLAUDE.md: do NOT substitute Perplexity for numerical fundamentals/prices.
+- Macro narrative (Perplexity) and earnings calendar (`nse.sh earnings` — returned `[]` for 2026-06-24, which is correct for the mid-June reporting gap) both work.
+
+### Candidates considered
+1. **PEAD scan** — `nse.sh earnings 2026-06-24` returned `[]`. Mid-June is the inter-quarter reporting gap (Q4 FY26 reported May; Q1 FY27 starts late July). Perplexity confirms no Nifty 100 names report today either. **REJECT — zero PEAD candidates.**
+2. **Momentum scan** — UNIVERSE top-5 by mom_12_1_pct (VEDL, BEL, ADANIPOWER, HEROMOTOCO, TITAN) cannot be re-validated this cycle due to the Yahoo 429 outage above. UNIVERSE itself is 50 days stale (last rebuild 2026-05-06). The Jun 18 pre-market journal had ADANIPOWER at ₹220.40 in the 2-7% pullback zone (-4.09% vs 20DMA ₹229.79) but blocked by FOMC-impact day. Cannot verify if that setup still holds today — Yahoo data path is down. **REJECT all — gates unverifiable.**
+
+### Decision
+**HOLD.** Two independent reasons each sufficient on their own:
+1. Zero PEAD candidates (empty earnings calendar yesterday).
+2. Momentum gates unverifiable (Yahoo + NSE wrappers both broken). STRATEGY rule: every entry requires a documented catalyst + gate-checklist green. We have neither.
+Default action per STRATEGY.md. Patience > activity. No trade today.
+
+### Notes for market-open routine
+- **Wrapper outage is the top priority.** Re-probe `nse.sh quote RELIANCE` and `nse.sh momentum ADANIPOWER` at open. If still 429/null, the bot is flying blind for any midday rebalance check too — flag in EOD if outage persists end-of-day.
+- ADANIPOWER remains the live watchlist: from Jun 18, last verified ₹220.40 in pullback zone. If wrappers recover and price still ₹212–225, AND Power/Industrials sector confirm strong (today's read places Industrials as 1w leader at +3.45% → that's supportive), AND ADANIPOWER not gapping >2% above ₹220, it can re-enter the candidate funnel. Stop ~₹202.8 (-8% from ₹220.4 fill); target ~₹264.5 (+20%). Size: ₹1,00,000 = ~454 sh.
+- **Process risk compounding**: UNIVERSE 50-day stale + data wrappers down = high-risk window for any entry decision. Strongly recommend the rebuild-universe routine fire before any momentum-trigger entry is attempted again. Weekly review (Friday 2026-06-26) MUST run and MUST rebuild UNIVERSE — this is the 6th consecutive missed Friday rebuild.
+- VEDL DMA-divergence (5th cycle) still open — but currently moot because Yahoo can't be queried at all.
+- No action expected at open. Re-check macro tape for Bank Nifty expiry day volatility, but with no positions, this is informational only.
