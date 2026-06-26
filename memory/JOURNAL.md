@@ -169,3 +169,38 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Bank Nifty +0.61%. No positions, no trades today; pre-market routine did not fire.
 - Tomorrow watchlist: ADANIPOWER — re-check pullback zone (₹212-225 vs 20DMA) and Power sector momentum. UNIVERSE rebuild (47 days stale) is blocking quality of all entry decisions — prioritize before any new entry.
 
+
+## 2026-06-26 — Pre-market
+
+### Macro
+- Nifty 50 / Bank Nifty: live levels NOT reliably sourced this morning (Perplexity returned dated data from earlier in June: Nifty range ~23,197–23,638, Bank Nifty ~54,071–54,496). GIFT Nifty: not reported for today.
+- Hot sectors (qualitative, 1m): Specialty Chemicals, Infrastructure, Real Estate (+3.55% 1w), Defense, Pharma; Power "robust" — data-center linked names + renewables (Tata Power, Reliance green) cited; Mid/small private banks gaining.
+- Cold/lagging: Large-cap indices and traditional banking showing fatigue; retail consumption mixed.
+- Today's events: NO FOMC, NO RBI, NO Budget. No Nifty 100 earnings scheduled today (calendar confirms "no results" for major names; only non-N100 micro-caps like SER INDUST. and HARIKANTA OVERSEAS). Tape geopolitics tailwind: 60-day US-Iran ceasefire and crude weakness cited as constructive.
+- Friday → weekly-review routine should fire after close (5 PM IST).
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-22 → Fri 2026-06-26)
+- Concerns: none (no open positions). EOD journal gap: only one EOD entry this week (2026-06-22). Routine cadence is degraded.
+
+### Data-feed state (CRITICAL)
+- `nse.sh quote` returned ALL-NULL fields for RELIANCE, ADANIPOWER, HEROMOTOCO this run. Likely pre-open hours; quote payload empty server-side. Cannot rule out NSE-side block — re-check at market-open routine.
+- `nse.sh momentum` (Yahoo history backend) hit HTTP 429 on every call, multiple retries. Yahoo rate-limit. Momentum/DMA math NOT computed this cycle.
+- Net effect: STEP 5 momentum scan cannot complete deterministically. Cannot confirm or reject momentum candidates against live DMA / 20DMA gates today.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-25` returned ONLY VIDEOIND (Videocon Industries) — not in Nifty 100, not in UNIVERSE. **REJECT** — zero PEAD candidates from yesterday's tape. Mid-June through late July is the quiet earnings window between Q4 FY26 (May) and Q1 FY27 (starts late July) — expect PEAD scans to remain dry for several weeks.
+2. Momentum scan — DEFERRED: live momentum/DMA data unavailable (Yahoo 429). Cannot evaluate ADANIPOWER (last watchlist setup at ₹220.4, 20DMA ₹229.79 as of Jun 18) or any other UNIVERSE name against the DMA + pullback gates today. Per STRATEGY, do NOT guess — REJECT all momentum candidates this cycle on data-availability grounds.
+
+### Decision
+**HOLD.** Zero candidates passed the gates. PEAD scan empty (off-cycle earnings window). Momentum scan deferred — upstream data feed (Yahoo) rate-limited; STRATEGY rule is: when wrappers fail, do NOT substitute. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- Re-run `nse.sh quote` on ADANIPOWER and a sample N100 name (RELIANCE) at market-open. If quotes still return all-null fields once market is open (post 09:15 IST), this is an NSE block / wrapper failure — escalate via Telegram and stop the cycle (do NOT trade blind).
+- Re-run `nse.sh momentum ADANIPOWER` with backoff. If Yahoo 429 persists, market-open routine should NOT initiate any new entry — REJECT all momentum candidates again.
+- ADANIPOWER remains the cleanest pending pullback setup carried over from 2026-06-18 (last seen in ₹212-225 pullback zone vs ₹229.79 20DMA). Re-evaluate ONLY once both quote and momentum wrappers return live data. If it has gapped >2% above ₹220, REJECT as chase — wait for next pullback.
+- No PEAD trigger expected today (results calendar empty for N100).
+- **PROCESS RISK (escalating)**: UNIVERSE.md last rebuilt 2026-05-06 — now 51 days stale (~7 Friday reviews missed). Today is Friday — the weekly-review routine MUST fire after market close and rebuild UNIVERSE. Until rebuilt, all momentum rankings (VEDL at #1, BEL/HEROMOTOCO/TITAN etc.) are unreliable; Jun 18 confirmed live ADANIPOWER mom +92.89% vs UNIVERSE's stale +29.91. Do NOT initiate any new entry under stale universe + Yahoo outage.
+- VEDL data divergence still open (now 5th cycle). Likely unadjusted split/bonus in history feed. Weekly review must either drop VEDL or fix the history fetch.
