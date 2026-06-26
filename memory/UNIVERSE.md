@@ -4,16 +4,20 @@ This file is rebuilt every Friday by the weekly-review routine. Between rebuilds
 it is the ONLY tradable watchlist. If a ticker is not in the filtered table
 below, it is NOT tradable this week, no matter how attractive it looks.
 
-**Last rebuild:** 2026-05-06 (post-Screener-fix rebuild � 37 of 95 screened pass quality gate)
+**Last rebuild:** 2026-06-26 (fundamentals fresh from cache, 22-day-old; momentum/DMA columns STALE from 2026-05-06 — Yahoo Finance returned 429 on all momentum calls during this rebuild).
+**Last momentum/DMA refresh:** 2026-05-06. Treat the Mom/DMA columns as **advisory only** — pre-market routine MUST recompute momentum + DMAs live for any candidate before applying the entry gate.
+
+**Quality screen pass count:** 38 of 95 names with parseable Screener data (was 37 prior — LODHA newly added).
 
 ## Filtered tradable universe (passes quality screen)
 
-Ranked by 12-1 month momentum. Regenerated weekly from screener.sh + nse.sh momentum.
-Skipped (no Screener data): LTIM, TATAMOTORS, TORNTPHARMA, ZOMATO
+Ranked by 12-1 month momentum where available (snapshot from 2026-05-06 — see staleness note above).
+Skipped (no Screener data parsed): LTIM, TATAMOTORS, TORNTPHARMA, ZOMATO + BFSI subset where Screener parser does not extract ROCE/ROE/D/E (AXISBANK, BAJFINANCE, BANKBARODA, CANBK, CHOLAFIN, HDFCBANK, ICICIBANK, ICICIGI, IDBI, INDUSINDBK, IOB, IRFC, KOTAKBANK, PFC, PNB, RECLTD, SBILIFE, SBIN, SHRIRAMFIN, UNIONBANK). The BFSI gap is a known parser limitation — flag for `scripts/screener.sh` review.
 
-| Symbol | Sector | ROCE% | ROE% | D/E | Pledge% | Mom 12-1% | Above 50DMA | Above 200DMA | Next Results |
+**Excluded (data-suspect):** VEDL — 4 cycles of unresolved DMA divergence (50DMA ₹448 vs live ~₹306). Listed at the bottom of the table for visibility but **NOT tradable** until momentum source reconciled.
+
+| Symbol | Sector | ROCE% | ROE% | D/E | Pledge% | Mom 12-1% (stale) | Above 50DMA (stale) | Above 200DMA (stale) | Next Results |
 |---|---|---|---|---|---|---|---|---|---|
-| VEDL | Metals & Mining | 16.5 | 19.0 | 0.56 | 0.0 | +56.75 | Yes | Yes | - |
 | BEL | Capital Goods | 38.9 | 29.2 | 0.0 | 0.0 | +35.19 | Yes | Yes | - |
 | ADANIPOWER | Power | 17.3 | 21.2 | 0.84 | 0.0 | +29.91 | Yes | Yes | - |
 | HEROMOTOCO | Automobile and Auto Components | 35.8 | 28.5 | 0.04 | 0.0 | +29.31 | No | No | - |
@@ -50,6 +54,8 @@ Skipped (no Screener data): LTIM, TATAMOTORS, TORNTPHARMA, ZOMATO
 | ITC | Fast Moving Consumer Goods | 36.8 | 27.3 | 0.01 | 0.0 | -31.31 | No | No | - |
 | IRCTC | Consumer Services | 49.0 | 37.1 | 0.02 | 0.0 | -34.13 | No | No | - |
 | TRENT | Consumer Services | 27.8 | 27.9 | 0.37 | 0.0 | -37.38 | Yes | No | - |
+| LODHA | Realty | 16.6 | 15.8 | 0.42 | 0.0 | N/A | N/A | N/A | - |
+| ~~VEDL~~ | Metals & Mining | 16.5 | 19.0 | 0.56 | 0.0 | (data-suspect, excluded) | — | — | - |
 
 
 ## How this gets populated
