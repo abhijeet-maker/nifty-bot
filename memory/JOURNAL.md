@@ -169,3 +169,42 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - Bank Nifty +0.61%. No positions, no trades today; pre-market routine did not fire.
 - Tomorrow watchlist: ADANIPOWER — re-check pullback zone (₹212-225 vs 20DMA) and Power sector momentum. UNIVERSE rebuild (47 days stale) is blocking quality of all entry decisions — prioritize before any new entry.
 
+
+## 2026-06-29 — Pre-market
+
+### Macro
+- Nifty 50: 24,056.00 (Jun 25 close, +0.14%); GIFT Nifty pre-open not cleanly sourced — possible flat-to-slight-gap-down bias near 23,960
+- Bank Nifty: ~55,177 (week-end ref, +0.9% on the truncated 4-day week)
+- Hot sectors (1w): Pharma +2.1%, Realty +1.8%, Auto +1.5%
+- Cold / weakening: Oil & Gas -0.87%, Nifty Mid Select rolling over (-1.3% wk), Nifty 50 ~-8% YTD
+- Today's events: No Nifty 100 Q1 FY27 results today; reporting season starts in earnest July 9 (TCS). No FOMC / RBI / budget. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-29 → Fri 2026-07-03)
+- Concerns: none (no open positions)
+
+### Data feed outage (CRITICAL — operational)
+- `bash scripts/nse.sh quote <SYM>` returns all-null JSON for every tested symbol (RELIANCE, HDFCBANK, ADANIPOWER). nsepython is silently failing — likely NSE cookie/auth or upstream-API change.
+- `bash scripts/nse.sh history|momentum <SYM>` returns Yahoo Finance HTTP 429 across 3 retries spaced 90s apart. Yahoo `query1.finance.yahoo.com/v8/finance/chart/<SYM>.NS` is durably rate-limited from this container.
+- `bash scripts/universe-cache.sh get <SYM>` works — Screener fundamentals snapshot still available, but it does NOT give live price/DMAs/RSI.
+- `bash scripts/perplexity.sh "..."` works.
+- Net: I have macro context + cached fundamentals, but ZERO live technicals. Cannot evaluate momentum DMAs / pullback zone / RSI today. PEAD trigger also moot (no earnings).
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-26` returned `[]`; Perplexity confirms no Nifty 100 names reported Friday. **REJECT — no PEAD candidates.**
+2. Momentum scan — Yahoo history endpoint 429-throttled; cannot compute 50/200 DMA, 12-1 momentum, 20-DMA pullback %, or RSI for any UNIVERSE name. **REJECT ALL — no live technical data.**
+3. ADANIPOWER (from 2026-06-18 watchlist) — Screener snapshot price ₹226. Last journal entry had it in the 2-7% pullback zone but blocked by FOMC. Today FOMC is moot, but I cannot independently verify the technical gates without live history. **REJECT — gate-data unavailable; will not trade on stale 11-day-old technicals.**
+
+### Decision
+**HOLD.** Forced HOLD: (a) zero PEAD candidates (no Friday Nifty 100 prints); (b) momentum gate unevaluable due to Yahoo-429 + NSE-nullquote outage. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- **Data feed fix is the top priority.** Until `nse.sh quote` returns real prices AND `nse.sh history` clears the Yahoo 429, no entries can be vetted. Likely fixes:
+  - nsepython: bump version, or switch to direct NSE cookie-priming as in the BSE workaround. The all-null output suggests `nse_eq()` is catching an exception and returning `{}`; instrument it.
+  - Yahoo 429: container IP may be flagged. Options — add a `User-Agent` + `Cookie` from a fresh browser session, route through `query2.finance.yahoo.com`, or swap to `yfinance` Python lib (uses session cookies), or switch history source to NSE bhav files.
+- ADANIPOWER remains the only live candidate from the prior cycle. Once feeds are back, re-run momentum gate on it FIRST; if still in pullback zone (₹212-225 vs 20DMA) and Power sector confirms, this is the tradeable setup the routine has been waiting on.
+- UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
+- VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
+- No action expected at open.
