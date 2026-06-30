@@ -208,3 +208,16 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-06-30 — Market-open
+
+### Market-open execution 2026-06-30
+- **No-op.** No pre-market entry exists for today (last journal entry is 2026-06-29 pre-market = HOLD). Nothing in the queue to validate or fill.
+- Data-feed status re-checked at 09:20 IST: `nse.sh quote RELIANCE` still returns all-null fields; `nse.sh history RELIANCE 5` still returns Yahoo HTTP 429. Outage from 2026-06-29 is unchanged — both NSE-quote and Yahoo-history endpoints remain unusable.
+- No fill simulated, no Telegram sent (silence on no-op per market-open spec).
+- Portfolio unchanged: 0 positions, ₹5,00,000 cash, 0 trades this week.
+
+### Notes
+- Pre-market routine did not fire this morning — second consecutive trading day where the queue is empty by routine omission (cf. 2026-06-22 EOD note: "pre-market routine did not fire"). Trigger reliability is itself an open operational issue.
+- Data-feed remediation is still blocking everything — momentum gate is unevaluable without Yahoo history, and even PEAD validation would need NSE quote to verify the +3% hold post-print. Fix priority unchanged.
+- If pre-market fires tomorrow and ADANIPOWER is still in the ₹212-225 pullback zone with feeds restored, it remains the highest-probability setup pending UNIVERSE rebuild.
