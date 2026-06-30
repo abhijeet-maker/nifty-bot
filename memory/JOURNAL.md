@@ -208,3 +208,43 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-06-30 — Pre-market
+
+### Macro
+- Nifty 50: 23,946.25 (Jun 29 close, -0.46%); GIFT Nifty not cleanly sourced — predicted range 23,750-24,150 with bias toward gap-down ~23,960
+- Bank Nifty: ~57,800 (Jun 29 close, est.); predicted range 57,600-58,300
+- India VIX 13.56 (+3.91%) — elevated ahead of expiry
+- Hot sectors (1w): Pharma +2.1%, Realty +1.8%, Auto +1.5%, Financial Services rebounding
+- Cold / weakening: IT, Metals, Nifty 50 -8% YTD; Nifty Midcap 150 momentum easing to +1.7%
+- Today's events: **Monthly + weekly F&O expiry** (Nifty 50 weekly, Bank Nifty, Nifty 50 monthly all expire today) → historically the most volatile session of the month. No FOMC / RBI / budget. No Nifty 100 Q1 FY27 results today; reporting season starts in earnest July 9 (TCS). **Not a blackout day per STRATEGY.md** (expiry is not on the no-trade list), but volatility risk is elevated.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-06-29 → Fri 2026-07-03)
+- Concerns: none (no open positions)
+
+### Data feed outage (Day 2 — STILL UNRESOLVED)
+- `bash scripts/nse.sh quote RELIANCE` → still all-null JSON (nsepython silently failing).
+- `bash scripts/nse.sh momentum ADANIPOWER` → curl 429 from Yahoo Finance, json.decode error. Same Yahoo rate-limit as 2026-06-29.
+- `bash scripts/nse.sh earnings 2026-06-29` → `[]` (consistent with no Nifty 100 print Monday — Perplexity-verified).
+- `bash scripts/perplexity.sh` → working.
+- `bash scripts/universe-cache.sh get <SYM>` → assumed working (used by yesterday's run).
+- **Net: identical to 2026-06-29 — macro yes, live technicals no. Cannot evaluate momentum DMAs / pullback / RSI for any UNIVERSE name. PEAD gate also moot (no earnings).**
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-06-29` returned `[]`; Perplexity confirms only A2Z Infra (small-cap, not Nifty 100) reported Monday. **REJECT — no PEAD candidates.**
+2. Momentum scan — Yahoo history endpoint still 429-throttled; cannot compute 50/200 DMA, 12-1 momentum, 20-DMA pullback %, or RSI for any UNIVERSE name. **REJECT ALL — no live technical data.**
+3. ADANIPOWER (rolling watchlist from 2026-06-18) — last verifiable price was Screener snapshot ₹226 (now 11+ days stale). Cannot re-verify pullback zone or sector confirm. **REJECT — gate-data unavailable; will not trade on stale technicals.** Today's F&O expiry adds another reason to wait — entering into expiry-day chop is poor execution even if gates were green.
+
+### Decision
+**HOLD.** Forced HOLD for the second consecutive session: (a) zero PEAD candidates (no Nifty 100 Monday prints, reporting season hasn't started); (b) momentum gate unevaluable due to Yahoo-429 + NSE-nullquote outage now spanning 2 days; (c) F&O expiry volatility is a third reason to stay out even if data were live. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- **Data feed fix remains the #1 operational priority.** Same diagnosis as 2026-06-29 — nsepython returning empty dict on exception (instrument it), Yahoo 429 on container IP (rotate UA/cookies, swap to yfinance lib, or move history source to NSE bhav files). Until both return real data, every subsequent routine is non-functional for entries.
+- **Expiry-day caution**: even if a momentum candidate cleared gates intraday, do NOT chase entries on expiry day — wait for Wednesday's pre-market with cleaner price action.
+- ADANIPOWER remains the rolling pullback-zone candidate from the prior cycle — first eligible re-evaluation once feeds are back AND we have a non-expiry session.
+- UNIVERSE.md is now **55 days stale** (last rebuild 2026-05-06). Weekly-review / rebuild-universe must run before any new entry once feeds return.
+- VEDL data divergence — still open across 6 cycles. Same Yahoo dependency.
+- No action expected at open.
