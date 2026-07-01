@@ -208,3 +208,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-01 — EOD
+
+### EOD 2026-07-01
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%)
+- vs Nifty 50 (-0.34%, close 23,865.75): alpha +0.34% (cash outperformed a down tape)
+- Bank Nifty close not cleanly sourced today.
+- No positions, no trades. Pre-market did not fire today; last pre-market 2026-06-29 forced HOLD on data-feed outage (nse.sh quote all-null + Yahoo 429).
+- Tomorrow watchlist: (a) restore feeds — top priority; (b) ADANIPOWER re-check once feeds are up (was in ₹212-225 pullback zone on 2026-06-18); (c) rebuild UNIVERSE.md — now 56 days stale, blocking entry-quality decisions.
