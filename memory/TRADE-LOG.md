@@ -33,3 +33,17 @@ The agent must treat this as "yesterday's equity" for its first day-over-day cal
 **Trades today:** none. Pre-market routine did not fire today (last journal entry 2026-06-18).
 
 **Notes:** First live EOD snapshot. Book sat in 100% cash through a +0.38% Nifty 50 / +0.61% Bank Nifty session — opportunity-cost drag of -₹1,900 vs a fully-deployed index proxy, but consistent with STRATEGY.md (no candidate has cleared all gates since launch). ADANIPOWER remains the only live pullback setup flagged 2026-06-18; sector confirm and live pullback zone need re-checking in tomorrow's pre-market. UNIVERSE.md is 47 days stale — rebuild is overdue and is the single biggest process risk going into the next entry decision.
+
+---
+
+## 2026-07-02 — EOD Snapshot
+
+**Equity:** ₹5,00,000.00 | **Cash:** ₹5,00,000.00 (100%) | **Deployed:** 0%
+**Day P&L:** ₹0 (0.00%) | **Nifty 50 day:** +0.59% | **Alpha today:** -0.59%
+**Phase P&L:** ₹0 (0.00% from ₹5,00,000 start)
+
+**Open positions:** none.
+
+**Trades today:** none. Pre-market routine did not fire today (last journal entry 2026-06-29). No pre-market → no entry evaluation → forced HOLD by absence, on top of the data-feed outage that would have blocked entries anyway.
+
+**Notes:** Second live EOD snapshot; 10 calendar days (7 trading sessions) since last snapshot on 2026-06-22 — pre-market routine has misfired for the entire stretch. Book sat 100% cash through Nifty 50 +0.59% (index reclaimed 24,000 to 24,005.85 per Investing.com) — cumulative cash drag since 2026-06-22 is meaningful but unquantified without daily benchmarks. Data-feed outage flagged in 2026-06-29 pre-market (nse.sh quote returns all-nulls, Yahoo history 429'd) is STILL live — `nse.sh quote NIFTY` re-tested tonight returned all-nulls, confirming the outage persists. Perplexity is the only working data source and it is narrative-only per STRATEGY.md — no numerical fundamentals or technicals from it. Blocker stack going into tomorrow: (1) fix nse.sh quote + nse.sh history wrappers, (2) rebuild UNIVERSE.md (57 days stale, last rebuild 2026-05-06), (3) revalidate ADANIPOWER pullback zone once feeds are back. No positions to mark-to-market so this snapshot is bookkeeping only.
