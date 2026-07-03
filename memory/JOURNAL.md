@@ -208,3 +208,28 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-03 — Market-open
+
+### State
+- No pre-market entry today (or any day this week — last journal entry is 2026-06-29 Mon pre-market). Pre-market routine has not fired Tue/Wed/Thu/Fri.
+- No candidate to re-validate at 9:20 AM IST.
+
+### Data feed check (unchanged from 2026-06-29)
+- `bash scripts/nse.sh quote RELIANCE` → all-null JSON. `bash scripts/nse.sh quote ADANIPOWER` → all-null JSON.
+- `bash scripts/nse.sh momentum ADANIPOWER` → Yahoo HTTP 429, JSONDecodeError.
+- Both feeds still down. Day 5 of the outage flagged Monday. No fix has been applied.
+
+### Portfolio health
+- Positions: 0 of 5. Equity ₹5,00,000. Cash ₹5,00,000. Deployed 0%.
+- Trades this week: 0 of 2 (week Mon 2026-06-29 → Fri 2026-07-03). Week closes today with **0 trades**, same as the last two weeks.
+
+### Decision
+**NO-OP.** Cannot execute what pre-market didn't queue, and could not have validated it anyway with feeds down. Sending one Telegram to the operator — a full trading week has now passed with the bot dead; pre-Monday-open they need to have decided whether to fix the feeds or manually trade.
+
+### Notes for next routine
+- Weekly review (Friday 5 PM) is the next scheduled routine. It should:
+  1. Attempt UNIVERSE.md rebuild — will fail on Yahoo momentum; note the failure and log the count of names that at least got Screener quality-pass.
+  2. Grade this week: 0 trades, 0 P&L, 0 alpha, 100% cash drag (Nifty week move sets the miss).
+  3. LESSONS.md entry: "5+ trading days of silent data-outage went un-notified after the initial flag. Add a heartbeat check to pre-market that Telegrams the operator if BOTH `nse.sh quote` and `nse.sh momentum` fail on the FIRST attempted symbol — so the outage doesn't compound silently across a full week."
+- Underlying data-feed fixes still owed (see 2026-06-29 entry): nsepython version bump + NSE cookie priming for `quote`; UA+Cookie or `yfinance` swap or NSE bhav files for `momentum`.
