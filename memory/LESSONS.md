@@ -35,3 +35,6 @@ let it mature another week.
 ---
 
 _(Seed — empty. Lessons are earned, not assumed.)_
+
+- 2026-07-03: Rejected candidates weekly across 4+ pre-market cycles on "DMA gate fails" while the underlying Yahoo history feed was either 429-throttled or serving unadjusted corporate-action data (VEDL). Silent-stale rejects look identical to legitimate rejects in the journal but produce zero learning. **Rule: before writing any "REJECT — gate fails" verdict, verify feed health with `nse.sh momentum RELIANCE` (or any known-live symbol). If that returns non-null with a plausible DMA, feeds are good and the reject stands. If it 429s or returns null, downgrade the day's verdict to "DATA-BLOCKED HOLD" and Telegram-alert the failure mode. Do not silently REJECT on unverifiable data.**
+

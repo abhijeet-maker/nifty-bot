@@ -4,7 +4,8 @@ This file is rebuilt every Friday by the weekly-review routine. Between rebuilds
 it is the ONLY tradable watchlist. If a ticker is not in the filtered table
 below, it is NOT tradable this week, no matter how attractive it looks.
 
-**Last rebuild:** 2026-05-06 (post-Screener-fix rebuild � 37 of 95 screened pass quality gate)
+**Last rebuild:** 2026-05-06 (post-Screener-fix rebuild — 37 of 95 screened pass quality gate)
+**Last rebuild attempt:** 2026-07-03 (BLOCKED — Yahoo Finance history/momentum endpoint 429-throttled; NSE `quote` returning all-null. Cannot compute mom_12_1_pct or DMAs. Fundamentals cache is fresh, but ranking + technical gates are not derivable. Table below is 58 days stale — do NOT rely on 12-1 momentum or DMA columns until the next successful rebuild.)
 
 ## Filtered tradable universe (passes quality screen)
 
