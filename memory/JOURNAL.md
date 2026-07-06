@@ -208,3 +208,46 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-06 — Pre-market
+
+### Macro
+- Nifty 50: 24,270.85 (Fri Jul 3 close, +0.39%); Sensex 77,763.91 (+0.34%)
+- GIFT Nifty pre-open: not cleanly sourced; setup bias moderately bullish; support 24,200 / resistance 24,350
+- Bank Nifty: Friday close not explicitly sourced; ref 57,800 area cited
+- Hot sectors (Fri / 1w): **Nifty IT +3% Friday** (extended gains 2nd session), on softer US jobs → cooler Fed-hike odds + lower crude
+- Cold / lagging: **PSU Banks -1% Friday**, Auto and Consumer Durables lower; Auto also under pressure into Q1 result season
+- Today's events: **No Nifty 100 Q1 FY27 results today**. Big-cap reporting starts July 13 (HCLTECH), July 23 (INFY), and staggered through the month. No FOMC / RBI / Budget. **Not a blackout day.**
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-06 → Fri 2026-07-10)
+- Concerns: none (no open positions to health-check)
+
+### Data feed outage (STILL OPEN — 8 days now)
+- `bash scripts/nse.sh quote RELIANCE` → still returns all-null JSON. Same nsepython silent-failure mode as 2026-06-29.
+- `bash scripts/nse.sh momentum <SYM>` → still Yahoo Finance HTTP 429 across retries. `query1.finance.yahoo.com` remains durably rate-limited from this container.
+- `bash scripts/nse.sh earnings 2026-07-05|06` → returns `[]` (yesterday was Sunday anyway; today confirmed no Nifty 100 prints via Perplexity — feed answer is at least directionally correct).
+- `bash scripts/perplexity.sh "..."` → working.
+- Net: macro narrative available; ZERO live technical data for 8 consecutive days. Cannot evaluate momentum (DMAs / pullback / RSI) or PEAD gap-and-hold today.
+
+### Candidates considered
+1. **PEAD scan** — Yesterday (2026-07-05) was Sunday; NSE closed. `nse.sh earnings 2026-07-05` returned `[]`. Perplexity confirms zero Nifty 100 Q1 FY27 prints on Fri Jul 3 or over the weekend — earliest big print is HCLTECH on Jul 13. **REJECT — no PEAD candidates.**
+2. **Momentum scan** — Yahoo history 429-throttled for 8 straight days; cannot compute 12-1 momentum, 50/200 DMA, 20-DMA pullback %, or RSI for any UNIVERSE name. UNIVERSE.md is now **61 days stale** (last rebuild 2026-05-06); rankings there are unreliable (VEDL divergence proven; ADANIPOWER cached +29.9% vs live +92.9% on 2026-06-18). **REJECT ALL — technical gate unevaluable; will not enter on stale rankings.**
+3. **ADANIPOWER** (only live-vetted candidate from 2026-06-18: was in the 2-7% pullback window) — still cannot re-vet without live DMAs. Power sector also not confirmed hot in today's read (Perplexity source-limited on sector momentum). **REJECT — gate-data unavailable + sector confirm missing.**
+4. **IT sector opportunistic thought** — Friday IT +3% is a *breakout*, not a pullback; UNIVERSE names TECHM/HCLTECH/INFY/WIPRO/TCS were all below both DMAs at last rebuild. Even if the rebound persists, no live technicals to confirm the DMA cross. **REJECT — chase, not pullback; also cannot verify.**
+
+### Decision
+**HOLD.** Forced HOLD, 2nd consecutive cycle: (a) zero PEAD candidates (no prints); (b) momentum gate unevaluable (Yahoo 429 + NSE null-quote outage entering day 8). Default action per STRATEGY.md. Patience > activity. Paper equity unchanged at ₹5,00,000; zero trades this week (week Mon Jul 6).
+
+### Notes for market-open routine
+- **Data feed fix remains blocker #1.** Recap of fix candidates from 2026-06-29 (none actioned yet):
+  - nsepython: bump version or instrument `nse_eq()` — silent `{}` return implies a caught exception path.
+  - Yahoo 429: swap to `yfinance` Python lib (session cookies), route via `query2.finance.yahoo.com`, or replace history source with NSE bhav files (`/products/content/equities/equities/bhavcopy.htm`).
+  - Blocker #2 is the UNIVERSE rebuild (61 days stale) — depends on the same history endpoint being fixed.
+- **No new entries today**; PEAD trigger is dormant until Jul 13 HCLTECH print (first live Q1 FY27 catalyst in UNIVERSE).
+- Once feeds are back, run rebuild-universe BEFORE any entry decision.
+- ADANIPOWER remains the queued momentum candidate from the June cycle. Re-vet DMAs + 20DMA pullback + Power sector confirm as soon as history feed unthrottles.
+- Sector map to hold for market-open: IT rebounding on softer US jobs; PSU Banks weak; Auto weak into results. Nothing actionable without live technicals; use only for reject-side sector-drawdown checks.
+- VEDL data divergence: still open (6th cycle), same Yahoo dependency.
