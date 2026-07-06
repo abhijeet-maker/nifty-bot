@@ -208,3 +208,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-06 — EOD
+
+### EOD 2026-07-06
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%) — 0 positions, 100% cash
+- vs Nifty 50 (~+0.73%): alpha ~-0.73% (cash drag)
+- No pre-market or market-open routine fired today. No trades. Feed outage persists (nsepython → null quote; Yahoo → 429). UNIVERSE 61 days stale.
+- Nifty 50 close cited from Perplexity intraday last (24,447 vs Fri 24,270.85); Bank Nifty not sourced.
+- Tomorrow watchlist: nothing tradable until (a) `nse.sh quote` + `nse.sh history` are fixed, and (b) UNIVERSE.md rebuilt. TCS reports Jul 9 → first real Q1 FY27 PEAD opportunity of the cycle. Priority for the next agent cycle: fix the two wrappers, then run `rebuild-universe`, then pre-market can resume real gating.
