@@ -208,3 +208,44 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-07 — Pre-market
+
+### Macro
+- Nifty 50: 24,430.35 (Jul 6 close, +0.66%); GIFT Nifty 24,524 (+0.13%) → mild positive open
+- Bank Nifty: 58,291.50 (+0.61%); Sensex 78,285.07; India VIX 11.82 (multi-month lows)
+- Nifty closed above 200 DMA for first time since late February — technical trend flip
+- Hot sectors (1w/1m): Auto (+1.36% wk), Metals (+0.98% wk), Realty, Oil & Gas, Banks (private-led), Power, Capital Goods
+- Cold / rolling over: IT (-0.59%, laggard into TCS Thursday), PSU banks
+- Today's events: Weekly F&O expiry (Tue). No RBI, no budget, no FOMC. Not a blackout day.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-06 → Fri 2026-07-10)
+- Concerns: none (no open positions)
+
+### Data feed outage — STILL BROKEN (2nd cycle, 8 days in)
+- `bash scripts/nse.sh quote RELIANCE` → all-null JSON (nsepython still silently failing; same as 2026-06-29).
+- `bash scripts/nse.sh momentum RELIANCE` → Yahoo `curl (22) 429` on 3 retries. Same throttle as 2026-06-29.
+- `bash scripts/universe-cache.sh get RELIANCE` → works. Screener still fine.
+- `bash scripts/perplexity.sh "..."` → works.
+- Net: same as 2026-06-29 — I have macro narrative + cached fundamentals, ZERO live technicals. Cannot evaluate momentum DMAs / pullback / RSI. PEAD moot anyway (no earnings yesterday).
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-07-06` returned `[]`; Perplexity confirms zero Nifty 100 prints Mon Jul 6. Q1 FY27 season starts Thu Jul 9 (TCS). **REJECT — no PEAD candidates.**
+2. Momentum scan — Yahoo history endpoint still 429; cannot compute 50/200 DMA, 12-1 momentum, 20-DMA pullback %, or RSI for any UNIVERSE name. **REJECT ALL — no live technical data.**
+3. ADANIPOWER (carry-over watchlist) — gate-data unavailable; last live read (2026-06-18) had it in pullback zone; today Power sector is confirmed hot but cannot verify current price / DMA / pullback %. **REJECT — will not trade blind on 19-day-stale technicals.**
+
+### Decision
+**HOLD.** Forced HOLD again: (a) zero PEAD candidates (Q1 FY27 hasn't started); (b) momentum gate unevaluable due to Yahoo-429 + NSE-nullquote outage — now 2 consecutive cycles / 8 days. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- **Data feed fix is critical and now overdue.** The outage has persisted a full week+ (2026-06-29 → 2026-07-07). Every entry decision is currently blind on the technical side. Options unchanged from last cycle:
+  - nsepython: instrument `nse_eq()`; likely swallowing an exception. Bump version or bring cookie-priming inside the wrapper.
+  - Yahoo 429: container IP appears durably rate-limited. Swap `nse.sh history` to `yfinance` (session cookies) OR NSE bhav files OR query2 endpoint with UA.
+- TCS reports **Thursday 2026-07-09** — first Q1 FY27 print. If IT sector is confirmed cold and TCS beats + gaps up >3%, it is a live PEAD candidate for Friday's pre-market (but TCS is currently in UNIVERSE at -28.23% mom and DMA-broken → PEAD trigger applies only if all UNIVERSE gates + STRATEGY beat/gap gates clear).
+- ADANIPOWER remains carry-over. Once feeds return, re-check pullback vs 20DMA and Power sector — likely still the cleanest setup.
+- **UNIVERSE.md is now 62 days stale** (last rebuild 2026-05-06). Weekly-review / rebuild-universe has not fired for ~9 Fridays. Compounds outage risk. Rebuild before next entry.
+- VEDL data divergence — 6th cycle open. Same Yahoo-history root cause as the momentum outage.
+- Weekly expiry today → intraday pin around 24,400-24,500; low VIX. Not tradeable via our strategy either way (no intraday).
