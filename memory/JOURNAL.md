@@ -208,3 +208,7 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-07 — Market-open
+
+Stood down. No pre-market plan for today; pre-market routine has not fired since 2026-06-29 (8-day gap). Probed `nse.sh quote RELIANCE` at 9:20 AM — still all-null (same outage flagged 2026-06-29). No live technicals, no candidates to validate, no positions to manage. No action, no Telegram (silence on no-op). Data-feed fix remains the top blocker for the entire routine loop.
