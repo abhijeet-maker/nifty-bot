@@ -208,3 +208,23 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-08 — Market-open
+
+### State on wake
+- No pre-market journal entry for 2026-07-08 (cron missed; last entry was pre-market 2026-06-29).
+- No candidate to re-validate at 9:20 IST → default **HOLD**.
+- Portfolio: 0/5 positions, cash ₹5,00,000, 0% deployed, 0 trades this week.
+
+### Feed status (re-checked at market-open)
+- `nse.sh quote ADANIPOWER` → all-null JSON (nsepython still failing; unchanged since 2026-06-29, now 9 days).
+- `nse.sh momentum ADANIPOWER` → Yahoo `chart` endpoint still HTTP 429 (unchanged, 9 days).
+- `universe-cache.sh` and `perplexity.sh` still working, but neither is sufficient for live entry gating.
+- Conclusion: even if a pre-market entry existed, market-open gate re-validation would be impossible today.
+
+### Decision
+**HOLD.** No entry to execute; no trade rejected. Silence on Telegram per STEP 6 (no-op).
+
+### Priority for next cron cycle
+- Data-feed fix is now the routine's blocker of record for ~10 calendar days and 6-plus scheduled runs. Recommend the human operator either: (a) instrument `nse.sh` / `nsepython` to log the underlying exception on quote failure; (b) switch history source off Yahoo (yfinance session-cookies, NSE bhav, or Stooq); (c) rotate container IP if Yahoo 429 is IP-scoped.
+- UNIVERSE.md staleness is now 63 days (last rebuild 2026-05-06) — quality of any future entry decision degrades every day feeds stay down.
