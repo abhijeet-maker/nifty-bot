@@ -208,3 +208,23 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-09 — Market-open
+
+### State
+- No pre-market entry in JOURNAL.md today. Last journal entry: 2026-06-29 (pre-market HOLD, forced by data-feed outage). **Pre-market routine has not run for 10 days.**
+- Portfolio: 0 open positions, ₹5,00,000 cash, 0 trades this week.
+- No plan to execute → no candidate to re-validate → no trade to place.
+
+### Data feed re-check (still broken)
+- `bash scripts/nse.sh quote RELIANCE` returns all-null JSON — same failure mode as 2026-06-29. nsepython silent-failing (10-day-persistent).
+- Yahoo history endpoint not re-tested this run (moot without a candidate).
+- UNIVERSE.md now **64 days stale** (last rebuild 2026-05-06).
+
+### Decision
+**No-op.** Market-open cannot execute a plan that was never made. Even if a candidate existed, the live-quote gate in STEP 2 cannot be evaluated (quote returns nulls). Standing down cleanly.
+
+### Notes
+- Sending one Telegram flag today: pre-market silent 10 days AND data feed still broken. This is the "routine cannot run" condition — worth a human eye. If pre-market's own alerts already fired daily, this is redundant; if they didn't (cron/telegram broken), user needs to see something.
+- Priority-1 fix (unchanged from 2026-06-29): repair `scripts/nse.sh quote` (nsepython auth/cookie) and Yahoo 429 in `scripts/nse.sh history`. Until then, entire trade pipeline is blocked — pre-market cannot vet momentum gates, market-open cannot verify live prices.
+- ADANIPOWER watchlist entry from 2026-06-18 is now 21 days stale — void, do not act on it without fresh data.
