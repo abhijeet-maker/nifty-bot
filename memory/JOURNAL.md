@@ -208,3 +208,47 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-09 — Pre-market
+
+### Macro
+- Nifty 50: 23,882.05 (Jul 8 close); GIFT Nifty ~23,960 — gap-down bias into open
+- Bank Nifty: 56,742.60 (-2.51% on Jul 8) — sharp risk-off session
+- India VIX: 14.54 (+24.81% on Jul 8) — volatility regime shift
+- Hot sectors (1w/1m via Perplexity): Auto +0.56% wk / +3.62% mo (only sector cleanly sourced today)
+- Cold / weakening: Bank Nifty rolling over hard yesterday; crude firming a risk to Oil-heavy names
+- Today's events:
+  - **NOT FOMC blackout.** Jul 8 was FOMC MINUTES release only (June meeting minutes). Next FOMC decision = Jul 29. No blackout on Fed grounds.
+  - No RBI / budget today.
+  - **TCS Q1 FY27 results TODAY** (after market). TCS is in UNIVERSE but mom -28.23% & below both DMAs — not a candidate; tape-mover for IT sector, watch tomorrow's PEAD window on other IT names IF TCS beats and reprices sector.
+  - No held-position results conflict (portfolio is empty).
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-06 → Fri 2026-07-10)
+- Concerns: none (no open positions). Cash-only stance is protective on a VIX-spike / gap-down day.
+
+### Data feed outage (STILL OPEN — 2nd consecutive routine)
+- `bash scripts/nse.sh quote RELIANCE` → all-null JSON. Same failure mode as 2026-06-29 (nsepython silently returning `{}`).
+- `bash scripts/nse.sh momentum ADANIPOWER` → Yahoo `curl: (22) HTTP 429` on `query1.finance.yahoo.com`. Same rate-limit as 2026-06-29, 10 days later.
+- `bash scripts/universe-cache.sh get ADANIPOWER` → works (Screener snapshot: ₹226, ROCE 17.3, ROE 21.2, D/E 0.84).
+- `bash scripts/perplexity.sh` → works (used for macro + sector + earnings queries).
+- Net: cannot compute 50/200 DMA, 20-DMA pullback %, 12-1 momentum, or RSI on any UNIVERSE name. Momentum entry gate is unevaluable for the 2nd cycle running.
+
+### Candidates considered
+1. PEAD scan — `bash scripts/nse.sh earnings 2026-07-08` returned `[]`. Perplexity confirms no Nifty 100 names reported Jul 8 (reporting season kicks off with TCS TODAY post-market). **REJECT — no PEAD candidates.**
+2. Momentum scan — Yahoo history endpoint 429-throttled; cannot compute DMAs / pullback / RSI for any UNIVERSE symbol. **REJECT ALL — momentum gate data unavailable.**
+3. ADANIPOWER (standing watchlist since 2026-06-18) — Screener cached price ₹226. Still cannot verify 20DMA pullback zone or Power-sector momentum today. Independent of data, the tape context (Bank Nifty -2.51%, VIX +24.81%, gap-down open) is unfriendly to entering ANY momentum long today even if the gate could be evaluated. **REJECT — gate-data unavailable AND tape context risk-off.**
+
+### Decision
+**HOLD.** Forced HOLD (2nd consecutive): (a) zero PEAD candidates (no Jul 8 Nifty 100 prints); (b) momentum gate unevaluable — Yahoo-429 + NSE-nullquote outage persists 10 days after first flag; (c) even ignoring data, VIX-spike risk-off tape argues against fresh longs. Default action per STRATEGY.md. Patience > activity.
+
+### Notes for market-open routine
+- **No new entries today.** Data outage + risk-off tape both argue for cash.
+- **Data feed fix is now blocking two consecutive routines.** Priorities as flagged 2026-06-29 still stand: (a) instrument `nse_eq()` in nsepython to surface the swallowed exception; (b) switch Yahoo history source — try `query2.finance.yahoo.com`, `yfinance` lib with cookie session, or NSE bhavcopy CSVs as fallback. Send one Telegram alert flagging the persistence.
+- **UNIVERSE.md now 64 days stale** (last rebuild 2026-05-06). Any entry decision made before rebuild is on stale rankings — priority-1 after feed fix.
+- **TCS reports TODAY post-market.** If TCS beats revenue AND EPS AND closes +3% on results day, Friday pre-market scan should evaluate it as a PEAD candidate (but check gate: TCS 12-1 mom was -28.23% in stale UNIVERSE — even a beat may not clear momentum sector-confirm gate; use PEAD trigger only).
+- ADANIPOWER remains standing watchlist candidate; re-evaluate the moment feeds return.
+- VEDL data divergence — 6th cycle now open; blocked on same Yahoo endpoint.
+
