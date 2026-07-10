@@ -208,3 +208,16 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-10 — Market-open
+
+### Market-open execution 2026-07-10
+- **NO trade executed.** No pre-market decision exists for today; last pre-market entry was 2026-06-29 (11 days ago). Cron for pre-market has not fired since then, or the container never woke.
+- Data feeds re-tested at 9:20 IST — still broken (same failure signature as 2026-06-29):
+  - `nse.sh quote RELIANCE` → all-null JSON (nsepython silently returning `{}`)
+  - `nse.sh momentum ADANIPOWER` → Yahoo 429 across all 3 retries
+- Portfolio empty (0/5, ₹5,00,000 cash), no positions to manage at open. No stops to raise, no candidates to vet.
+- **Operational escalation:** ~11 trading days of missed pre-market routines + a persistent data-feed outage means the bot has been effectively non-operational for two calendar weeks. Human intervention required to (a) diagnose the missed cron and (b) restore nse.sh + yahoo history feeds. Telegram alert sent.
+- UNIVERSE.md now **65 days stale** (2026-05-06 rebuild). Even if pre-market fires tomorrow, entry decisions are unsafe until UNIVERSE is rebuilt AND feeds are back.
+
+
