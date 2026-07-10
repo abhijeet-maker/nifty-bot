@@ -208,3 +208,45 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-10 — Pre-market
+
+### Macro
+- Nifty 50: 23,962.80 (Jul 9 close, +0.34%). Range Jul 9: 23,700–24,150. GIFT Nifty pre-open not cleanly sourced.
+- Bank Nifty: exact close not cleanly sourced; sector rolled over on the week (-0.41%) per Perplexity read.
+- Sensex: 76,741.82 (+238.22). India VIX: 13.19 (-10.15% d/d), off Jul 8 spike to 14.54.
+- Hot sectors (1w/1m): IT (biggest single-day rally in a year Jul 3), Realty, Auto (Delhi EV policy), Healthcare/Pharma (structural), Small/Midcap risk-on.
+- Cold / rolling over: Banking (profit-booking in heavyweights), Core industrials (7-month low IIP-linked read), Energy (crude weakness), Metals (linked to core weakness).
+- Today's events: **NO FOMC, NO RBI, NO Budget.** Not a blackout day. TCS reported Jul 9 (post-market). No other Nifty 100 Q1 FY27 prints on Jul 9 tape per Perplexity.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-06 → Fri 2026-07-10)
+- Concerns: none (no open positions)
+
+### Data feed outage — DAY 12 (CRITICAL, UNRESOLVED)
+- `bash scripts/nse.sh quote <SYM>` — still returns all-null JSON for RELIANCE. nsepython silently failing (same as 2026-06-29).
+- `bash scripts/nse.sh history|momentum <SYM>` — Yahoo Finance HTTP 429 across retries. Container IP durably rate-limited.
+- `bash scripts/nse.sh earnings 2026-07-09` — returns `[]`. Confirmed miss (TCS did print; feed is broken, not just quiet). Same feed silence as 2026-06-29.
+- `bash scripts/universe-cache.sh get`, `scripts/perplexity.sh` — work.
+- Net: 12th consecutive cycle blocked from evaluating momentum gate. Universe now **65 days stale** (last rebuild 2026-05-06).
+
+### Candidates considered
+1. **TCS (IT) — PEAD candidate, Jul 9 print.** Rev **beat** (₹72,275 cr vs ~₹69,555 cr est, +14% YoY / +4% vs consensus). EPS **MISS** (net profit ₹13,349 cr vs ~₹13,554 cr est, -1.5%) driven by one-time $70M exceptional charge (US Supreme Court ruling). **REJECT** — PEAD gate requires BOTH revenue AND EPS beat. Rev-only is not a valid trigger per STRATEGY. Constructive concall (TCV $9.5B, AI annualized revenue $2.6B +13.6% QoQ, SKF $800M mega-deal, ₹12 dividend) doesn't change the numerical gate.
+2. **Other Nifty 100 PEAD** — Perplexity confirms no other Nifty 100 constituent reported on Jul 9 tape. **REJECT — no candidates.**
+3. **Momentum scan** — Yahoo 429 blocks 50/200 DMA, 12-1 momentum recompute, 20-DMA pullback %, RSI. UNIVERSE.md 65 days stale (May 6 rebuild). Cannot vet momentum triggers on current data. **REJECT ALL — gate-data unavailable.**
+4. **ADANIPOWER (Power)** — from 2026-06-18 watchlist; last tradable read was 41 days ago. Power sector today is weakening (crude/energy read). Would not re-enter this candidate absent live technicals + sector confirm anyway. **REJECT.**
+
+### Decision
+**HOLD.** Forced HOLD, 4th consecutive cycle: (a) only PEAD candidate (TCS) fails EPS beat gate; (b) momentum universe unevaluable due to persistent Yahoo-429 + NSE-nullquote outage. Default action per STRATEGY.md. Patience > activity. Week Mon–Fri closes with 0 trades. Valid outcome per rules; concerning from an operational-readiness standpoint.
+
+### Notes for market-open routine
+- No action expected at open.
+- **TCS is not a PEAD trade** despite the constructive narrative. Do not revisit at open on the theory that "the beat qualifies" — the STRATEGY gate is BOTH-and, EPS miss is a hard reject. If TCS opens strong today on the AI-deal narrative, that is a MOMENTUM setup at best and needs live DMAs + universe re-rank we cannot compute.
+- **DATA FEED IS TOP PRIORITY, DAY 12.** Every downstream routine (pre-market, midday, EOD, weekly review) is degraded until:
+  - `nse.sh quote` returns real prices — instrument nsepython, add NSE cookie priming, or switch to a resilient source.
+  - Yahoo history 429 cleared — rotate UA/cookie, try `query2.finance.yahoo.com`, switch to `yfinance` lib, or move history to NSE bhavcopy.
+  - `nse.sh earnings` feed fixed — Jul 9 returned `[]` even though TCS printed. Likely BSE/NSE announcements endpoint schema drift.
+- **UNIVERSE.md staleness = 65 days.** After feeds are restored, the very first task is `rebuild-universe` before any entry decision. Ranking VEDL #1 is almost certainly wrong (unadjusted corporate-action divergence flagged across 6+ cycles now).
+- Telegram alert sent this cycle re: persistent feed outage. Do not resend on midday unless a state change (feeds fixed or held-position risk).
