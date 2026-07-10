@@ -4,17 +4,19 @@ This file is rebuilt every Friday by the weekly-review routine. Between rebuilds
 it is the ONLY tradable watchlist. If a ticker is not in the filtered table
 below, it is NOT tradable this week, no matter how attractive it looks.
 
-**Last rebuild:** 2026-05-06 (post-Screener-fix rebuild � 37 of 95 screened pass quality gate)
+**Last rebuild:** 2026-07-10 (fundamentals rescreened via 30-day cache — 38 of 95 pass quality gate; **momentum column STALE from 2026-05-06** — Yahoo Finance history endpoint 429-throttled from container since 2026-06-29, unresolved this cycle)
 
 ## Filtered tradable universe (passes quality screen)
 
-Ranked by 12-1 month momentum. Regenerated weekly from screener.sh + nse.sh momentum.
+Ranked by 12-1 month momentum (stale; see banner above). Regenerated weekly from screener.sh + nse.sh momentum.
 Skipped (no Screener data): LTIM, TATAMOTORS, TORNTPHARMA, ZOMATO
+
+⚠ **Momentum + DMA data is stale as of 2026-05-06.** Do NOT use the Mom 12-1 / 50DMA / 200DMA columns to gate an entry decision until Yahoo history is restored — the entry-gate rules in STRATEGY.md require live technicals. Fundamentals ARE fresh as of 2026-07-10.
 
 | Symbol | Sector | ROCE% | ROE% | D/E | Pledge% | Mom 12-1% | Above 50DMA | Above 200DMA | Next Results |
 |---|---|---|---|---|---|---|---|---|---|
 | VEDL | Metals & Mining | 16.5 | 19.0 | 0.56 | 0.0 | +56.75 | Yes | Yes | - |
-| BEL | Capital Goods | 38.9 | 29.2 | 0.0 | 0.0 | +35.19 | Yes | Yes | - |
+| BEL | Capital Goods | 38.9 | 29.2 | 0.00 | 0.0 | +35.19 | Yes | Yes | - |
 | ADANIPOWER | Power | 17.3 | 21.2 | 0.84 | 0.0 | +29.91 | Yes | Yes | - |
 | HEROMOTOCO | Automobile and Auto Components | 35.8 | 28.5 | 0.04 | 0.0 | +29.31 | No | No | - |
 | TITAN | Consumer Durables | 19.1 | 31.8 | 0.97 | 0.0 | +15.50 | Yes | Yes | - |
@@ -32,14 +34,14 @@ Skipped (no Screener data): LTIM, TATAMOTORS, TORNTPHARMA, ZOMATO
 | APOLLOHOSP | Healthcare | 16.6 | 18.4 | 0.88 | 0.0 | +0.04 | Yes | Yes | - |
 | NESTLEIND | Fast Moving Consumer Goods | 85.4 | 74.3 | 0.09 | 0.0 | -2.74 | Yes | Yes | - |
 | HCLTECH | Information Technology | 30.6 | 24.0 | 0.07 | 0.0 | -8.33 | No | No | - |
-| LICI | Financial Services | 53.1 | 45.7 | 0.0 | 0.0 | -9.48 | No | No | - |
+| LICI | Financial Services | 53.1 | 45.7 | 0.00 | 0.0 | -9.48 | No | No | - |
 | BPCL | Oil, Gas & Consumable Fuels | 16.2 | 17.3 | 0.56 | 0.0 | -10.77 | No | No | - |
 | DABUR | Fast Moving Consumer Goods | 20.2 | 17.0 | 0.12 | 0.0 | -12.24 | No | No | - |
 | HINDUNILVR | Fast Moving Consumer Goods | 28.4 | 22.3 | 0.03 | 0.0 | -12.71 | Yes | No | - |
 | PIDILITIND | Chemicals | 29.8 | 23.0 | 0.05 | 0.0 | -12.90 | No | No | - |
 | ASIANPAINT | Consumer Durables | 25.7 | 20.6 | 0.18 | 0.0 | -13.24 | Yes | No | - |
-| INFY | Information Technology | 40.0 | 31.9 | 0.1 | 0.0 | -13.38 | No | No | - |
-| HAL | Capital Goods | 33.9 | 26.1 | 0.0 | 0.0 | -15.65 | Yes | No | - |
+| INFY | Information Technology | 40.0 | 31.9 | 0.10 | 0.0 | -13.38 | No | No | - |
+| HAL | Capital Goods | 33.9 | 26.1 | 0.00 | 0.0 | -15.65 | Yes | No | - |
 | GODREJCP | Fast Moving Consumer Goods | 19.2 | 15.2 | 0.34 | 0.0 | -17.39 | No | No | - |
 | CIPLA | Healthcare | 22.7 | 17.8 | 0.01 | 0.0 | -19.14 | Yes | No | - |
 | WIPRO | Information Technology | 17.9 | 15.5 | 0.23 | 0.0 | -21.35 | No | No | - |
@@ -50,6 +52,7 @@ Skipped (no Screener data): LTIM, TATAMOTORS, TORNTPHARMA, ZOMATO
 | ITC | Fast Moving Consumer Goods | 36.8 | 27.3 | 0.01 | 0.0 | -31.31 | No | No | - |
 | IRCTC | Consumer Services | 49.0 | 37.1 | 0.02 | 0.0 | -34.13 | No | No | - |
 | TRENT | Consumer Services | 27.8 | 27.9 | 0.37 | 0.0 | -37.38 | Yes | No | - |
+| LODHA | Realty | 16.6 | 15.8 | 0.42 | 0.0 | N/A | - | - | - |
 
 
 ## How this gets populated
