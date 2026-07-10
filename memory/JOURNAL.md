@@ -208,3 +208,14 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md is now **54 days stale** (last rebuild 2026-05-06). Once feeds are back, run weekly-review / rebuild-universe BEFORE any entry decision. Stale ranking risk is now compounding the data-outage risk.
 - VEDL data divergence — still open across 5 cycles. Resolution depends on the same Yahoo history endpoint that is currently 429'd.
 - No action expected at open.
+
+## 2026-07-10 — EOD
+
+### EOD 2026-07-10
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%)
+- vs Nifty 50 (+0.93%): alpha -0.93% (cash drag)
+- Bank Nifty +0.90%. Zero positions, zero trades. No pre-market/midday routine fired between 2026-06-29 and today (11 calendar days silent) — scheduled cycles broken since the data-feed outage.
+- Data-feed outage still active: `nse.sh quote` returns all-null, `nse.sh history` HTTP 429 from Yahoo. Verified this EOD run. Blocking all entry-gate evaluation.
+- UNIVERSE.md now ~65 days stale (last rebuild 2026-05-06). ADANIPOWER pullback setup from 2026-06-18 still unactioned.
+- Tomorrow (2026-07-13 Mon) watchlist: fix data feeds FIRST, then rebuild UNIVERSE, then re-scan ADANIPOWER pullback. TCS reports 2026-07-09 (already passed with no PEAD signal captured due to outage). Broader Q1 FY27 reporting season now live — PEAD scan window opens with every trading day.
+
