@@ -219,3 +219,44 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - UNIVERSE.md now ~65 days stale (last rebuild 2026-05-06). ADANIPOWER pullback setup from 2026-06-18 still unactioned.
 - Tomorrow (2026-07-13 Mon) watchlist: fix data feeds FIRST, then rebuild UNIVERSE, then re-scan ADANIPOWER pullback. TCS reports 2026-07-09 (already passed with no PEAD signal captured due to outage). Broader Q1 FY27 reporting season now live — PEAD scan window opens with every trading day.
 
+## 2026-07-13 — Pre-market
+
+### Macro
+- Nifty 50: 24,206.90 (Jul 10 close, +1.02%, +244 pts); Sensex 77,569 (+1.08%); India VIX 13.36 (-9%). Nifty reclaimed 200DMA for first time since Feb — supports/resistances 24,165/24,055 vs 24,300/24,420.
+- Bank Nifty: 58,046 (+1.39%). GIFT Nifty bias: positive/bullish carry-over.
+- Hot sectors (1w): Realty (+3.5% Fri), PSU Banks (+3%), IT (+2%, TCS-lift); Financial Services strongest 1-month (SBI Life +4.42% weekly, HDFC Bank Q1 update strong).
+- Cold / rolling over: no clear sector breakdown per weekend reads; broad recovery tape.
+- Today's events: **HCLTECH reports Q1 FY27 post-market (~post 3:30 PM IST)** — sole Nifty 100 print today. No FOMC / RBI / budget. Not a blackout day.
+- Q1 FY27 heavy week ahead: Tue Tata Elxsi/LTTS; Wed Wipro/TechM/BHEL/Polycab/JIOFIN; Thu RIL/Tata Tech/JSWSTEEL/HAVELLS; Fri HDFCBANK/ICICIBANK/AXISBANK/KOTAKBANK.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-13 → Fri 2026-07-17)
+- Concerns: none (no open positions). 14th consecutive silent cycle — routine has been unable to trade since inception due to (a) rules-driven HOLDs in May/Jun, and (b) data-feed outage since 2026-06-29.
+
+### Data feed outage (CRITICAL — 15 days active, still unresolved)
+- Re-verified this cycle: `nse.sh quote RELIANCE` → all-null JSON (nsepython silently failing, likely NSE cookie/API drift). `nse.sh history/momentum` → Yahoo HTTP 429 on `query1.finance.yahoo.com/v8/finance/chart/*.NS` from this container IP.
+- `nse.sh earnings 2026-07-09` and `2026-07-10` return `[]` — earnings calendar feed also stale (missed TCS Jul 9 print; Perplexity confirms TCS did report).
+- Working: `perplexity.sh` (macro/narrative), `universe-cache.sh get` (Screener fundamentals only — no prices, no DMAs).
+- Impact: BOTH triggers unevaluable. PEAD needs live prices to confirm ">+3% on results day + held gain". Momentum needs 50/200/20-DMA, RSI, 12-1 momentum. All fail without live technicals.
+- **This is now blocking the entire Q1 FY27 PEAD window.** 4 mega-cap results days this week (Wed, Thu, Fri × 2) — each represents 2-4 potential PEAD candidates in UNIVERSE. Every day of continued outage forfeits the strategy's primary alpha source.
+
+### Candidates considered
+1. PEAD scan — `nse.sh earnings 2026-07-10` returned `[]`; Perplexity confirms no Nifty 100 names reported Friday. TCS reported Thu 2026-07-09 (still within 1-2 trading day PEAD window). **REJECT TCS** — Perplexity reports: revenue MISSED consensus (flat QoQ USD vs. expected sequential growth), EPS MATCHED (not beat). Per STRATEGY.md must beat BOTH — fails PEAD gate on beat criterion. Separately, TCS 12-1 momentum -28.23% in stale UNIVERSE (worst-ranked). No PEAD candidates today.
+2. Momentum scan — Yahoo 429 durably blocks 50/200/20-DMA, RSI, and live 12-1 momentum for every UNIVERSE name. **REJECT ALL** — gate-data unavailable.
+3. ADANIPOWER (carry-over watchlist) — Screener snapshot price ₹226 (Jun 25 vintage). Cannot re-verify pullback zone (2-7% below 20DMA) without live history. **REJECT** — stale technicals; will not enter blind.
+
+### Decision
+**HOLD.** Forced HOLD for the third consecutive cycle: (a) zero valid PEAD (TCS fails beat gate; no Fri prints); (b) momentum gate unevaluable due to persistent Yahoo 429 + NSE null-quote outage. Default action per STRATEGY.md.
+
+### Notes for market-open routine
+- **Fix data feeds — TOP PRIORITY, blocking everything.** Concrete next steps for operator:
+  - Yahoo 429: this container's egress IP is flagged. Try (1) yfinance Python lib with a session cookie primed from a real browser, (2) route history via NSE bhavcopy (`https://www.nseindia.com/api/reports?archives=daily-reports`), (3) alt provider (Kite Connect, Zerodha, or Screener price API).
+  - NSE null-quote: `nsepython.nse_eq()` is returning `{}` — likely swallowing a 401/403. Instrument the wrapper to log the raw HTTP status; likely needs cookie priming via `nse_get_top_gainers()` warm-up as documented in nsepython issues.
+  - Earnings calendar: `nse.sh earnings` also stale — same NSE cookie issue is likely upstream cause.
+- **Once feeds are back**, execute IN ORDER: (a) `rebuild-universe` (68 days stale — top priority), (b) re-run ADANIPOWER momentum gate, (c) scan for PEAD from any of this week's Q1 heavyweights (HCLTECH tonight; Wipro/TechM/JIOFIN Wed; RIL/JSWSTEEL/HAVELLS Thu; HDFCBANK/ICICIBANK/AXISBANK/KOTAKBANK Fri) at T+1 open using the live intraday reaction on results day.
+- **HCLTECH is in UNIVERSE (IT, mom -8.33% stale but sector now hot on TCS-driven rerating)**. If it beats revenue+EPS tonight AND opens Tue with +3% gap holding, it's this week's first PEAD candidate.
+- VEDL data divergence — still open across 6 cycles. Resolution gated on same Yahoo history feed being restored.
+- Blackout note: no held-position results conflict this week (0 positions), so results-day blackout inactive.
+
