@@ -260,3 +260,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL data divergence — still open across 6 cycles. Resolution gated on same Yahoo history feed being restored.
 - Blackout note: no held-position results conflict this week (0 positions), so results-day blackout inactive.
 
+## 2026-07-13 — EOD
+
+### EOD 2026-07-13
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%). Book 100% cash.
+- vs Nifty 50 (N/A): benchmark unavailable — Perplexity unable to source today's close at 4 PM IST run (only Fri 24,206.90 indexed; Economic Times intraday snippet 24,196.6 mid-day, not a valid close). Alpha calc deferred.
+- Trades today: 0. This week: 0 of 2. Pre-market decision was HOLD (rules-driven): TCS PEAD failed beat gate (revenue miss), momentum gate unevaluable due to Yahoo 429 + NSE null-quote outage (day 15).
+- Data-feed outage still active and blocking. Every additional day forfeits Q1 FY27 PEAD alpha window (HCLTECH tonight; Wipro/TechM/JIOFIN Wed; RIL/JSWSTEEL/HAVELLS Thu; 4× banks Fri).
+- Tomorrow (2026-07-14 Tue) watchlist: HCLTECH results reaction — if beat + 3% gap holding at open, first live PEAD candidate this week; Tata Elxsi + LTTS report post-market. Ops priority order for pre-market: (1) fix feeds (yfinance session-cookie prime; instrument nsepython for 401/403 swallow), (2) rebuild UNIVERSE (68 days stale), (3) HCLTECH PEAD gate live, (4) ADANIPOWER pullback re-scan.
+

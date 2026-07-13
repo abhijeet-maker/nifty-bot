@@ -13,7 +13,8 @@
 | Deployed | ₹0.00 (0%) |
 | Open positions | 0 of 5 max |
 | Trades this week | 0 of 2 max |
-| Week-start (Monday) | [updated weekly] |
+| Week-start (Monday) | 2026-07-13 |
+| Last EOD update | 2026-07-13 |
 
 ## Open positions
 
