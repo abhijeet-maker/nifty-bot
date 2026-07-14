@@ -260,3 +260,15 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL data divergence — still open across 6 cycles. Resolution gated on same Yahoo history feed being restored.
 - Blackout note: no held-position results conflict this week (0 positions), so results-day blackout inactive.
 
+## 2026-07-14 — EOD
+
+### EOD 2026-07-14
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%)
+- vs Nifty 50 (+0.02%): alpha -0.02% (essentially flat tape; near-zero cash drag)
+- Nifty 50 close 24,211.00 (whipsaw: -118 pts intraday, recovered on IT strength +3.60%). Bank Nifty close not confirmed. TCS +5.4%, HCLTECH strong pre-print. Grasim -2%, Tata Steel led losers.
+- Zero positions, zero trades. Midday routine did not fire.
+- Data-feed outage still active: `nse.sh quote` returns all-null (verified). Blocks all entry gates.
+- Tomorrow watchlist (Wed 2026-07-15):
+  - **HCLTECH day-1 post-earnings** — reported tonight post-market. If beat both revenue+EPS AND opens/holds >+3%, this is the first tradeable PEAD candidate since inception. Priority-1 for pre-market.
+  - Wipro / TechM / BHEL / Polycab / JIOFIN report Wed — potential day-0 setup for Thursday's PEAD scan.
+  - Fix feeds (`nse.sh quote` cookie prime; Yahoo/yfinance for history) — top operational priority.
