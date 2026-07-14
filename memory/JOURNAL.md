@@ -260,3 +260,47 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL data divergence — still open across 6 cycles. Resolution gated on same Yahoo history feed being restored.
 - Blackout note: no held-position results conflict this week (0 positions), so results-day blackout inactive.
 
+
+## 2026-07-14 — Pre-market
+
+### Macro
+- Nifty 50: 24,211.00 (Jul 13 close, +0.02%); Sensex flat. GIFT Nifty pre-open not cleanly sourced; setup range 24,000–24,400 with 24,300 as breakout trigger, 23,800 downside pivot.
+- Bank Nifty: 58,131.45 (+0.15%). India VIX +8.4% — rising caution into weekly options expiry today.
+- Hot sectors (1w): Nifty IT +3.6–4.0% (TCS + HCLTECH beats driving re-rating); Refineries +2.4%; Infrastructure +2.0%; Auto Ancillaries +1.9%.
+- Cold / rolling over: FMCG -1.0%, Metal -0.7%, Financial Services -0.1 to -0.3%, Auto -0.2%.
+- Today's events: **No Nifty 100 results today** (LTTS + Tata Elxsi report but are Mid/Small cap, not tradable). Weekly options expiry — range-bound bias. No FOMC / RBI / budget. Not a blackout day.
+- Week ahead: Wed Wipro/TechM/BHEL/Polycab/JIOFIN; Thu RIL/Tata Tech/JSWSTEEL/HAVELLS; Fri HDFCBANK/ICICIBANK/AXISBANK/KOTAKBANK.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-13 → Fri 2026-07-17)
+- Concerns: none (no open positions). 15th consecutive silent cycle.
+
+### Data feed outage (CRITICAL — 16 days active, still unresolved)
+- Re-verified this cycle: `nse.sh quote RELIANCE` → all-null JSON; `nse.sh momentum RELIANCE` → curl 429 from Yahoo (`query1.finance.yahoo.com`); `nse.sh earnings 2026-07-13` → `[]` (calendar feed also stale).
+- Working: `perplexity.sh` (narrative), `universe-cache.sh get` (Screener fundamentals only).
+- Impact: momentum trigger unevaluable. PEAD-price-reaction gate unevaluable. **Only the beat/miss half of PEAD can be confirmed via Perplexity narrative — the gap-and-hold half must be done live by market-open routine.**
+
+### Candidates considered
+1. **HCLTECH (IT) — PEAD** — Results released post-market Mon 2026-07-13. Perplexity confirms: revenue ₹34,579 Cr vs ₹34,327 Cr estimate (**BEAT**); net profit ₹4,624 Cr vs ₹4,530 Cr estimate (**BEAT**); EBIT margin 16.9% (+56 bps YoY, above estimates); management **RETAINED** FY27 guidance (CC rev 1–4%, EBIT 17.5–18.5%); ₹12 interim dividend + ₹3,500 Cr AI datacentre capex announced. IT sector is the hottest 1-week bucket (+3.6–4.0%). In UNIVERSE. Not held. Weekly momentum gate: PARTIALLY MET — beat gate ✓, sector-not-in-drawdown gate ✓, universe/not-held gates ✓, gap-and-hold gate PENDING today's open. **DECISION: WATCH — deferred to market-open for gap confirmation.**
+2. ICICIPRUAMC, NUVOCO, BAJAJCON — also reported Jul 13. NOT in UNIVERSE (ICICIPRUAMC not in Nifty 100; others not in filtered set). **REJECT — not tradable.**
+3. Momentum scan — Yahoo 429 durably blocks 50/200/20-DMA, RSI, 12-1 momentum for every UNIVERSE name. **REJECT ALL — gate-data unavailable.**
+4. ADANIPOWER (carry-over watchlist from 2026-06-18) — Cannot re-verify pullback zone. Power sector not called out as hot this week either. **REJECT — stale technicals + weakening sector edge.**
+
+### Decision
+**HOLD pre-market, WATCH HCLTECH at open.** HCLTECH has cleared the beat gate (both revenue + EPS beat) and the sector gate (IT hottest 1w). If it opens with a >3% gap and holds through 9:45 IST without fading to red, it becomes a live PEAD trigger for market-open to size. Otherwise, HOLD stands.
+
+### Notes for market-open routine
+- **HCLTECH — PRIMARY ACTION ITEM.** At market open:
+  - Fetch quote (via nse.sh if fixed; else via Perplexity intraday narrative + manual cross-check on moneycontrol/NSE web).
+  - Gap check: is open > 3% above ₹1,159.35 (Jul 13 close)? Threshold: > ₹1,194.13.
+  - Hold check: at 9:45 IST, is price still > +3%? Not faded to red?
+  - If BOTH pass: PEAD triggered. Compute position size (max 20% = ~₹1,00,000; ~85 shares at ₹1,195), place PAPER BUY via `paper.sh buy HCLTECH <qty> <fill>`, set 8% stop (~₹1,099), target +20% (~₹1,434), thesis tag `PEAD-Q1FY27-beat`. Update PORTFOLIO.md, journal the entry, Telegram confirm.
+  - If gap present but fades: WAIT — do not chase. Re-evaluate at midday.
+  - If no gap or gaps down: REJECT — market didn't reward the beat; PEAD gate fails.
+- **Data feed fix remains TOP PRIORITY** — Yahoo 429 + NSE null-quote have blocked entries for 16 days. Concrete next steps unchanged from prior journals: (a) swap history source (yfinance session-cookie / NSE bhavcopy / Kite Connect), (b) instrument `nsepython.nse_eq()` to log the swallowed HTTP status, (c) fix earnings calendar (same NSE cookie root cause).
+- **UNIVERSE.md is 69 days stale.** Rebuild is overdue — do it Fri as part of weekly review OR sooner if feeds get fixed. HCLTECH's stale rank (mom -8.33%) will misprice if not refreshed; PEAD gate doesn't care about ranking but momentum trigger does.
+- Rest of week: Wed IT + Financials heavy (Wipro/TechM/JIOFIN); Thu RIL/JSWSTEEL/HAVELLS; Fri all 4 big private banks. Each is a potential PEAD candidate — pre-market Wed–Fri must scan these systematically.
+- VEDL data divergence — still open across 7 cycles; gated on Yahoo history restoration.
+- Blackout note: no held-position results conflict this week (0 positions).
