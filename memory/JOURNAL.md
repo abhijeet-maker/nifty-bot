@@ -260,3 +260,42 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - VEDL data divergence — still open across 6 cycles. Resolution gated on same Yahoo history feed being restored.
 - Blackout note: no held-position results conflict this week (0 positions), so results-day blackout inactive.
 
+
+## 2026-07-15 — Pre-market
+
+### Macro
+- Nifty 50: 24,052.05 (Jul 14 close, **-0.66%**, -158.95 pts); GIFT Nifty pre-open not sourced, but Tue's -0.68% GIFT bias flagged the risk-off tape.
+- Bank Nifty: 57,507.10 (**-1.07%**, -624 pts) — worse than Nifty; PSU/private bank pressure.
+- Hot sectors (YTD & recent): **Metal +14.80%**, **Pharma +12.91%**, **Energy +9.94%**. Recent weekly IT rebounded (+2.4-2.86% wk ended Jul 3) on TCS-driven rerating but HCLTECH's -3.19% Tue reaction reversed that lift.
+- Cold / rolling over: **IT -27.49% YTD** (weakest), PSU Bank pressure, Capital Market -1.51% and Defence -1.65% intraday Tue.
+- Today's events: **NO Nifty 100 Q1 FY27 print scheduled today.** Big-4 IT split: HCLTECH Mon (done, missed price gate), Wipro Thu, TechM Thu. RIL Fri, HDFCBANK/ICICIBANK Fri. Not a blackout day. **NO FOMC / RBI / budget.**
+- Backdrop drag: US-Iran / West Asia escalation → **Brent >$86**, FII selling ₹3,062 cr Mon, rupee **96.22/$** (weak on higher-than-expected Jun retail inflation).
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-13 → Fri 2026-07-17)
+- Concerns: none (no open positions). **15th consecutive silent cycle.**
+
+### Data feed outage (CRITICAL — 17 days active, still unresolved)
+- Re-verified this cycle: `nse.sh quote RELIANCE` → all-null JSON (nsepython silently failing). `nse.sh history RELIANCE 5` → curl 22 / HTTP 429 from Yahoo. `nse.sh momentum HCLTECH` → same 429. `nse.sh earnings 2026-07-14` → `[]` (missed Tata Elxsi/LTTS prints; those are not Nifty 100 anyway).
+- Working: `perplexity.sh` (macro/narrative), `universe-cache.sh get` (Screener fundamentals).
+- Impact unchanged: PEAD needs live price on results day; momentum needs DMAs/RSI. Both gates unevaluable from raw feeds. **Only Perplexity narrative on price reaction saves the PEAD gate today** (see HCLTECH below).
+
+### Candidates considered
+1. **HCLTECH — PEAD (Q1 FY27, Mon 2026-07-13 post-market)** — Beat BOTH gates: revenue ₹34,579 cr (+13.9% YoY), net profit ₹4,624 cr (+20.3%), EPS ₹66.90 — Street polls exceeded. Guidance retained unchanged (revenue 1-4% CC, EBIT 17.5-18.5%). AI bookings record, AI rev +62%. Nomura raised TP to ₹1,290, reiterated Buy. **BUT: stock fell -3.19% Tue on results reaction (open ₹1,204.80, low ₹1,182.60, close ~₹1,185-1,190). Per STRATEGY.md PEAD trigger: "Gapped up >3% on results day and held the gain" — FAILED. Beat-but-fade is the anti-PEAD signature (guidance not raised + risk-off tape absorbed the beat).** REJECT PEAD.
+2. **Other Nifty 100 PEAD** — No Nifty 100 results Mon-Tue beyond HCLTECH. Tata Elxsi + LTTS reported Tue but are Nifty IT mid-caps, NOT Nifty 100 — off-universe, no PEAD signal for us. REJECT — no other candidates.
+3. **Momentum scan** — Yahoo 429 still durably blocks 50/200/20-DMA, RSI, and live 12-1 momentum for every UNIVERSE name. Sector filter would favor VEDL/HINDZINC (Metals hot), DRREDDY/DIVISLAB (Pharma hot), ADANIPOWER/COALINDIA (Energy hot) — but I cannot verify the 2-7% below 20DMA pullback gate or RSI 50-70 gate on any of them without live data. REJECT ALL — gate-data unavailable.
+4. **ADANIPOWER carry-over** — Screener snapshot price ₹226 (Jun 25 vintage, now 20 days stale). Cannot re-verify pullback zone. REJECT — stale technicals; will not enter blind.
+
+### Decision
+**HOLD.** Fourth consecutive HOLD in a row (routine has run four times since 2026-06-29 with same outcome). Today's forced HOLD is doubly justified: (a) the ONE actionable PEAD candidate (HCLTECH) explicitly failed the price-reaction gate — a rule-correct rejection, not a data-shortage rejection; (b) momentum gate remains unevaluable due to persistent 429 outage; (c) risk-off macro backdrop (oil spike, weak rupee, FII outflows) argues for patience regardless. Default action per STRATEGY.md.
+
+### Notes for market-open routine
+- **HCLTECH: DO NOT chase.** Tuesday's beat-fade is a clean STRATEGY.md rejection. Any bounce today is not a PEAD entry (window has closed on the price-gate criterion). If it becomes a momentum-pullback candidate later, that's a separate gate — but IT is the weakest YTD sector, so even a re-qualify would fail the "sector positive 1-month momentum" gate.
+- **Fix data feeds — TOP OPERATIONAL PRIORITY (17-day outage now).** Concrete next steps unchanged from 2026-07-13 note: (1) Yahoo 429 — swap to yfinance with session cookies, or NSE bhavcopy, or Kite Connect; (2) NSE null-quote — instrument nsepython to log HTTP status, add cookie warm-up via `nse_get_top_gainers()`; (3) NSE earnings calendar — likely same cookie issue.
+- **Q1 FY27 heavy calendar this week — every day without feeds is forfeited PEAD alpha.** Big prints landing: Thu Wipro + TechM (IT — cold sector, but PEAD trigger is beat-agnostic to sector cold if reaction is strong); Fri RIL, HDFCBANK, ICICIBANK, AXISBANK, KOTAKBANK (Financial Services — sector strong per weekly). Fri's bank print cluster is the single biggest PEAD opportunity of the quarter for this strategy. **Must have live prices by Friday open** to catch it.
+- **UNIVERSE.md is 70 days stale (last 2026-05-06).** Once feeds are back, rebuild-universe BEFORE any entry. Stale ranking compounds outage risk.
+- **VEDL data divergence — still open across 7 cycles.** Blocked on same Yahoo history feed.
+- No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent.
+
