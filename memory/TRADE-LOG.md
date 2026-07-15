@@ -47,3 +47,15 @@ The agent must treat this as "yesterday's equity" for its first day-over-day cal
 **Trades today:** none. No pre-market routine fired between 2026-06-29 and today (data-feed outage documented 2026-06-29 unresolved; scheduled cycles have been silent for 11 calendar days).
 
 **Notes:** Second live EOD snapshot; book still 100% cash. Nifty 50 closed 24,186.55 (+223.75 / +0.93%) and Bank Nifty ~+0.90% on the day — index has clawed back most of the June drawdown. Opportunity-cost drag today ≈ -₹4,650 vs a fully-deployed index proxy. Cumulative alpha since 2026-06-22 EOD is roughly -1.31% (cash-drag vs Nifty 50's ~+1.31% over the window). Data-feed outage is now the dominant operational risk: `nse.sh quote` still returns all-null and `nse.sh history` still 429s from Yahoo — verified this run. Until feeds recover, entry gates (DMAs, 12-1 momentum, pullback %) cannot be evaluated and no new positions can be vetted. UNIVERSE.md is now ~65 days stale (last rebuild 2026-05-06). ADANIPOWER remains the only unresolved pullback setup from 2026-06-18. Top priorities for next scheduled fire: (1) restore data feeds (see 2026-06-29 pre-market notes for suspected fixes), (2) rebuild UNIVERSE.md, (3) re-scan ADANIPOWER.
+
+## 2026-07-15 — EOD Snapshot
+
+**Equity:** ₹5,00,000.00 | **Cash:** ₹5,00,000.00 (100%) | **Deployed:** 0%
+**Day P&L:** ₹0 (0.00%) | **Nifty 50 day:** unavailable (Perplexity had no verified 2026-07-15 close; NSE feed still 429/null on the 17-day outage) | **Alpha today:** unavailable
+**Phase P&L:** ₹0 (0.00% from ₹5,00,000 start)
+
+**Open positions:** none.
+
+**Trades today:** none. Pre-market decision was HOLD (rule-correct): only Nifty 100 print since Fri was HCLTECH (Mon post-market) and it FAILED the PEAD price-gate — Tue reaction was -3.19% (a beat-fade, opposite of the +3% gap-and-hold PEAD requires). Momentum trigger unevaluable due to the same 17-day Yahoo-429 outage that has blocked live DMA/RSI/12-1 momentum since 2026-06-29.
+
+**Notes:** Third live EOD snapshot; book still 100% cash. Days since prior EOD (2026-07-10) = 5 calendar / 3 trading (Mon 13, Tue 14, Wed 15) — no scheduled routines fired 07-11 through 07-12 (weekend) and pre-market for 07-13, 07-14 also produced HOLDs per JOURNAL. HCLTECH beat-fade is documented for the LESSONS candidacy pool but does not yet meet the "earned by real mistake" bar (we correctly rejected it) so no LESSONS append this cycle. Data-feed outage remains the dominant operational risk — 17 days now and blocking the Q1 FY27 PEAD window that peaks Friday (RIL, HDFCBANK, ICICIBANK, AXISBANK, KOTAKBANK all reporting Fri 2026-07-17). Without live prices by Fri open the biggest single-day PEAD cluster of the quarter will be forfeited. Cumulative alpha since inception continues to erode via cash-drag: rough estimate -1.31% carried from 07-10 snapshot; today's contribution unknown (Nifty close unsourced). UNIVERSE.md now 70 days stale (last rebuild 2026-05-06). Top priorities: (1) restore feeds — Yahoo 429 fix + nsepython cookie priming; (2) rebuild UNIVERSE; (3) prep PEAD gate for Friday's bank/RIL cluster.

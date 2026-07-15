@@ -299,3 +299,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **VEDL data divergence — still open across 7 cycles.** Blocked on same Yahoo history feed.
 - No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent.
 
+
+## 2026-07-15 — EOD
+
+### EOD 2026-07-15
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%). Book 100% cash — zero positions, zero trades today.
+- vs Nifty 50: **unavailable** — Perplexity returned conflicting/no-verified-close data for 2026-07-15 (~30 min post-close publishing lag + NSE feed 17-day outage still active). Alpha today cannot be computed; cash-drag continues to erode cumulative alpha.
+- Pre-market HOLD was rule-correct: HCLTECH failed the PEAD price gate (beat-but-faded -3.19% on Tue reaction). Momentum trigger unevaluable (Yahoo-429). No candidates cleared.
+- **Tomorrow 2026-07-16 watchlist:** Wipro + TechM (Q1 FY27, post-market) — both IT, sector cold YTD (-27.49%) but PEAD is beat-agnostic to sector momentum. Also Tata Tech, JSWSTEEL, HAVELLS (not sure if all Nifty 100 — verify at pre-market). **Fri 2026-07-17 is the biggest PEAD cluster of the quarter: RIL, HDFCBANK, ICICIBANK, AXISBANK, KOTAKBANK all reporting.** Data feeds MUST be restored before Fri open or the alpha window is forfeited.
+- Operational: 17-day feed outage still the dominant risk. UNIVERSE.md 70 days stale. VEDL data divergence open across 7 cycles.
