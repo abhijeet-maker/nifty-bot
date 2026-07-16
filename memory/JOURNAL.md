@@ -299,3 +299,12 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **VEDL data divergence — still open across 7 cycles.** Blocked on same Yahoo history feed.
 - No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent.
 
+## 2026-07-16 — EOD
+
+### EOD 2026-07-16
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%)
+- vs Nifty 50 (+0.06%): alpha -0.06% (cash drag, negligible on flat tape)
+- Bank Nifty +0.51%. Zero positions, zero trades. No pre-market or midday routine fired today — only EOD ran.
+- Tape: PSU Bank +1.81% led; Metal -0.54%, Pharma -0.32% laggards. M&M +2.38%, SBI +1.72% (₹20k cr bond raise), WIPRO +2.18% and TECHM +1.87% ran-in ahead of post-close Q1 prints.
+- Tomorrow watchlist: **Wipro + TechM PEAD reaction at open** (results posted after 3:30 PM today) — verify beat-on-both + opening gap >+3% held. **RIL, HDFCBANK, ICICIBANK, AXISBANK, KOTAKBANK all report Fri afternoon** — set up for Monday PEAD scan on bank cluster (biggest Q1 opportunity of the season for this strategy). Data feed still down (18 days) — will lean on Perplexity narrative if raw feeds not restored by pre-market.
+
