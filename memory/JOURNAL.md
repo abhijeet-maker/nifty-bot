@@ -299,3 +299,43 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **VEDL data divergence — still open across 7 cycles.** Blocked on same Yahoo history feed.
 - No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent.
 
+
+
+## 2026-07-16 — Pre-market
+
+### Macro
+- Nifty 50: 24,078.50 (Jul 15 close, +0.11%, +26.45 pts) — surrendered most of morning gains on profit-booking and rising crude. Sensex 77,185.43 (+0.17%).
+- Bank Nifty: 57,757.85 (+0.51%, +295.55 pts) — outperformed on financials lift.
+- GIFT Nifty (Jul 15 close reference): 24,055; no dedicated pre-open pointer for today captured. Today IS a trading day (verified NSE July 2026 holiday calendar — no weekday holidays; next holiday Ganesh Chaturthi Sep 14).
+- Hot sectors (1-month): **Realty** (Nifty Realty +18.9% 1-m per early-Jul snapshot), **PSU Bank** (+1.8% 1-m), **BSE Bankex** (+6.4% 1-m). Financial Services confirmed strong yesterday.
+- Cold / rolling over: **IT** (BSE IT -8.7% 1-m; TCS/HCLTECH-driven early-July rerating faded post-HCLTECH miss-fade), **Metal** (BSE Metal -8.2% 1-m — despite Nifty Metal being called +14.8% YTD earlier, latest monthly print negative), **FMCG** weak intraday.
+- Today's events: **Q1 FY27 heavy — Wipro + Tech Mahindra + BHEL + Polycab + JIOFIN post-market**. Both WIPRO and TECHM are in current UNIVERSE.md. No FOMC / RBI / budget. Not a blackout day.
+- Backdrop drag persists: **Brent ~$85**, US-Iran / West Asia tension, rupee **96.32/$** (Jul 15 close, -16 paise on the day).
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-13 → Fri 2026-07-17)
+- Concerns: none (no open positions). **16th consecutive silent cycle.**
+
+### Data feed outage (CRITICAL — 18 days active)
+- Re-verified this cycle: `nse.sh quote RELIANCE` → all-null JSON. `nse.sh history RELIANCE 5` → curl 22 / HTTP 429 from Yahoo. `nse.sh earnings 2026-07-15` → `[]` (missed HDFCLIFE / ICICIPRULI / UNIONBANK / HDFCAMC prints).
+- Working: `perplexity.sh` (macro/narrative), `universe-cache.sh get` (Screener fundamentals).
+- Impact unchanged: PEAD price-gate + momentum DMAs/RSI gate both unevaluable from feeds.
+
+### Candidates considered
+1. **PEAD scan — yesterday's (2026-07-15) Nifty 100 prints**: HDFCLIFE, ICICIPRULI, UNIONBANK, HDFCAMC per Perplexity. **NONE are in current filtered UNIVERSE.md** — HDFCLIFE / ICICIPRULI / UNIONBANK all sit in the roster but were filtered out of the tradable 37-name table (universe last rebuilt 2026-05-06, likely by momentum rank cut-off). REJECT ALL on UNIVERSE gate before touching beat/miss. Do not substitute; strategy rules bind.
+2. **PEAD scan — today's post-market prints (WIPRO, TECHM in UNIVERSE)**: results land after 3:30 PM IST today. **PEAD window opens tomorrow morning open (Fri 2026-07-17)**, not today. Also, per STRATEGY.md PEAD gate: "Sector is not in 1-month drawdown" — IT is durably rolling over (-8.7% 1-m; -27.49% YTD, weakest sector). Even a strong beat would fail the sector gate. NOTE for market-open (whichever cycle wakes tomorrow) — do NOT chase Wipro/TechM PEAD even if they beat + gap up; sector-drawdown gate blocks IT.
+3. **Momentum scan**: Yahoo 429 durably blocks 50/200/20-DMA, RSI, live 12-1 momentum. Sector filter would surface DRREDDY / DIVISLAB / CIPLA / SUNPHARMA / APOLLOHOSP (Pharma still positive on longer YTD, but latest weekly not confirmed) and Realty/PSU-Bank names (Realty/PSU-Bank hot, but our UNIVERSE has ZERO Realty names and only LICI/BEL/CGPOWER type PSU/Fin adjacents). VEDL / HINDZINC (Metals) would ordinarily lead by 12-1 momentum in stale UNIVERSE — but Metal sector is now rolling over (-8.2% 1-m), so sector gate fails. **REJECT ALL** — gate data unavailable + sector-gate likely to fail even if data returned.
+4. **ADANIPOWER carry-over**: 22 days stale Screener snapshot ₹226. Cannot re-verify 20DMA pullback zone. Power sector confirmation not called out in latest sector reads. REJECT — stale technicals.
+
+### Decision
+**HOLD.** Fifth consecutive HOLD (2026-06-29, 07-13, 07-15, 07-16). Rule-correct: (a) yesterday's Nifty 100 prints (HDFCLIFE, ICICIPRULI, UNIONBANK) all fail UNIVERSE gate; (b) today's post-market prints (Wipro, TechM) will report AFTER today's routine — Fri open is when PEAD window opens for them, and IT sector-drawdown gate will likely block them; (c) momentum gate unevaluable from feeds; (d) risk-off backdrop (Brent $85, weak rupee, FII outflows) rewards patience.
+
+### Notes for market-open / tomorrow's pre-market routine
+- **DO NOT CHASE WIPRO / TECHM PEAD on Friday even if they beat both revenue + EPS and gap up >3%.** IT sector fails the STRATEGY.md PEAD gate "Sector is not in 1-month drawdown" (-8.7% 1-m, -27.49% YTD). Log the beat but reject on sector gate. If IT reclaims positive 1-month momentum later, revisit.
+- **Friday's real PEAD watch is Reliance (2026-07-17), then Sat 2026-07-18 HDFCBANK / ICICIBANK.** RIL is in Nifty 100 roster but NOT in current filtered UNIVERSE (was dropped in last rebuild — verify with universe-cache once tomorrow). HDFCBANK / ICICIBANK are also NOT in current filtered UNIVERSE despite being Nifty 100 blue chips — this is a UNIVERSE staleness / cut-off artefact (last rebuild 2026-05-06, 71 days ago). **If Universe is not rebuilt before Sat, Fri-Sat's biggest PEAD opportunity of the quarter will be forfeited on a universe technicality, not a rule-correct rejection.**
+- **Fix data feeds — TOP OPERATIONAL PRIORITY (18-day outage now).** Fixes unchanged: (1) Yahoo 429 → yfinance with primed cookies OR NSE bhavcopy OR Kite Connect; (2) NSE nsepython silent null → instrument HTTP status + warm-up cookie via `nse_get_top_gainers()`; (3) NSE earnings calendar → same cookie root cause.
+- **rebuild-universe is now the SECOND top priority after feeds** — 71 days stale, blocking Fri/Sat bank PEAD window even if feeds return.
+- **VEDL data divergence — still open across 8 cycles.** Blocked on same Yahoo history feed.
+- No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent to the operator that hasn't been said 4+ times already (nagging on outage/rebuild by Telegram adds no signal).
