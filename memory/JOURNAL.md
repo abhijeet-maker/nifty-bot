@@ -299,3 +299,45 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **VEDL data divergence — still open across 7 cycles.** Blocked on same Yahoo history feed.
 - No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent.
 
+
+## 2026-07-17 — Pre-market
+
+### Macro
+- Nifty 50: 24,078.50 (Jul 16 close, +0.11%, +26.45 pts); Sensex 77,185 (+0.17%); India VIX 13.27 (-3.49%). GIFT Nifty pre-open bias not sourced (2:47 AM UTC scan too early).
+- Bank Nifty: 57,757.85 (+0.51%, +295.55 pts) — PSU + private bank buying led.
+- Hot sectors (1w): Nifty IT +3.55% (TCS-led rerating held), Nifty Media ~+3.6%, Consumer Durables +1.48% (1w and 1m), Chemicals +1.41%. 1-month: IT +1.65%.
+- Cold / rolling over: Nifty Metal -1.11% Thu (short-term reversal from YTD leadership), Nifty Bank -0.30% Thu (results jitters ahead of Fri/Sat bank prints), PSU Bank -0.46%, Fin Services -0.51%, Realty -0.38%, FMCG -0.49%.
+- Today's events: **Correction to prior week-ahead schedule** — HDFCBANK moved to **Sat 2026-07-18** (official filing; earnings call 4 PM IST Sat). RIL / ICICIBANK / AXISBANK / KOTAKBANK / JSWSTEEL dates unconfirmed by Perplexity for today — likely today or Sat per typical late-July pattern; must reconfirm at market-open. **Not a blackout day** (no FOMC/RBI/budget).
+- Backdrop: Fed rate-cut optimism + firm Wall St overnight lifted Thu's tape despite Brent still elevated post-US/Iran flare-up.
+
+### Portfolio health
+- Total positions: 0 of 5 max
+- Paper equity: ₹5,00,000.00, Cash: ₹5,00,000.00, Deployed: 0%
+- Trades this week: 0 of 2 max (week Mon 2026-07-13 → Fri 2026-07-17 — closes today)
+- Concerns: none (no open positions). **16th consecutive silent cycle** (no fill since inception).
+
+### Data feed outage (CRITICAL — 18 days active, still unresolved)
+- Re-verified this cycle: `nse.sh quote RELIANCE` → all-null JSON. `nse.sh history RELIANCE 5` → curl 22 / HTTP 429 (Yahoo). `nse.sh earnings 2026-07-17` → `[]`.
+- Working: `perplexity.sh` (narrative only), `universe-cache.sh get` (Screener fundamentals).
+- Impact unchanged: PEAD needs live price reaction; momentum needs DMAs/RSI. Both gates unevaluable from raw feeds. Only Perplexity narrative on price reaction is available.
+- **This is the last pre-market of the Q1 FY27 opening week.** Full week (5 cycles) forfeited to outage.
+
+### Candidates considered
+1. **WIPRO — PEAD (Q1 FY27, Thu 2026-07-16 post-market)** — Revenue $2.61B (+0.9% YoY, -1.2% QoQ) in-line/beat vs guided range; net profit ₹3,356 cr flat YoY; EPS ₹3.2 (+6% YoY beat). Interim dividend ₹2/sh. BUT: operating margin **-130 bps QoQ to 16.0%** on wage hikes + AI investment ramp; soft Q2 sequential guidance ($2.574B-2.627B, -1.5% to +5% CC). **ADR fell -1.09% pre-market (to $1.82, near 52w-low $1.80)** — clear beat-fade signature identical to HCLTECH earlier this week. Per STRATEGY.md PEAD gate: "Gapped up >3% on results day and held the gain" — **FAILED**. Also, EPS "beat" is soft (in-line net profit; the 6% YoY EPS reflects buyback share reduction more than core earnings). REJECT PEAD.
+2. **TECHM — PEAD (Q1 FY27, Thu 2026-07-16 post-market)** — Net profit ₹1,465 cr (+28% YoY) but per Perplexity: **EPS MISS vs consensus**. Revenue disclosure incomplete. Per STRATEGY.md must beat BOTH revenue AND EPS — fails EPS beat gate. REJECT PEAD.
+3. **JSWSTEEL / HAVELLS** — Not scheduled today; per Perplexity JSW reports later in July, Havells not on Jul 16 list. Neither prints Thu results — no PEAD signal.
+4. **HDFCBANK / ICICIBANK / AXISBANK / KOTAKBANK / RIL** — All post-market today or Saturday per filings; PEAD window opens Monday earliest. Not evaluable today.
+5. **Momentum scan** — Yahoo 429 still durably blocks 50/200/20-DMA, RSI, and live 12-1 momentum for every UNIVERSE name. Perplexity sector reads support VEDL/HINDZINC (Metals now -1.11% Thu, weakening), BEL/CGPOWER (Cap Goods no fresh read), DRREDDY/DIVISLAB (Pharma flat +0.02% Thu). Cannot verify pullback zone or RSI on any of them. REJECT ALL — gate-data unavailable.
+6. **ADANIPOWER carry-over** — Screener snapshot price ₹226 (Jun 25, now 22 days stale). Cannot re-verify pullback. REJECT — stale technicals.
+
+### Decision
+**HOLD.** Fifth consecutive HOLD. Rule-correct on merits: (a) WIPRO PEAD explicitly failed the price-reaction gate (beat-fade); (b) TECHM PEAD failed the EPS-beat gate; (c) momentum gate unevaluable due to 18-day 429 outage; (d) big-4 banks + RIL not yet reported. Default action per STRATEGY.md.
+
+### Notes for market-open routine
+- **WIPRO: DO NOT chase.** Thursday post-market beat + Friday premarket fade is a clean STRATEGY.md rejection. Second beat-fade in a row for Nifty IT (HCLTECH → WIPRO). If WIPRO opens surprisingly strong (e.g. gap-up >3% and holding by 10:30 AM), it does NOT rescue the trade — the news is public; per LESSONS.md concept, no discretionary override of PEAD gate. Same rule for TECHM.
+- **Fix data feeds — TOP OPERATIONAL PRIORITY (18-day outage).** Concrete steps unchanged: (1) Yahoo 429 → yfinance w/ session cookies OR NSE bhavcopy OR Kite Connect; (2) NSE null-quote → instrument `nsepython.nse_eq()` to log HTTP status, add cookie warm-up; (3) NSE earnings calendar → likely same cookie issue upstream.
+- **Weekly-review runs tonight (Fri 5 PM).** Two mandatory items: (a) UNIVERSE.md rebuild (71 days stale — top priority; will need `rebuild-universe` skill and both universe-cache + momentum wrappers); (b) grade the week (0 fills, 5 forced HOLDs, cash drag vs Nifty).
+- **Big-4 banks + RIL PEAD watch — Monday 2026-07-20 pre-market is the critical gate.** HDFCBANK Sat results digest over weekend; if RIL/ICICIBANK/AXISBANK/KOTAKBANK also print Fri post-market or Sat, Monday open is the T+1 reaction window. This is the single biggest PEAD cluster of the quarter for the strategy. **Live prices are mandatory by Mon 09:15 IST or the entire quarter's core alpha window closes.**
+- **VEDL data divergence — 8th cycle open.** Blocked on same Yahoo feed.
+- No held-position concerns. **No Telegram alert this cycle** — nothing urgent; the outage is stale news (already telegrammed prior weeks per LESSONS discipline of one-alert-per-issue).
+
