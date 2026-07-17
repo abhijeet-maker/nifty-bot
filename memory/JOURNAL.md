@@ -299,3 +299,15 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **VEDL data divergence — still open across 7 cycles.** Blocked on same Yahoo history feed.
 - No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent.
 
+
+
+## 2026-07-17 — EOD
+
+### EOD 2026-07-17
+- Equity ₹5,00,000.00 (day 0.00%, phase 0.00%)
+- vs Nifty 50 (+0.70%, ~24,244): alpha -0.70% (cash drag)
+- Bank Nifty +0.80% (~58,064). Financial stocks led without earnings catalyst (HDFCBANK/ICICIBANK/AXISBANK/KOTAKBANK up 1.5-3% but Perplexity finds NO Q1 FY27 release for any of them today — the big-bank print cluster flagged in 2026-07-15 pre-market did NOT materialise).
+- Zero positions, zero trades. Pre-market + midday routines did NOT fire today — 5th silent cycle this week; entire 2026-07-13→17 week produced 0 trades.
+- Weekly alpha ≈ -0.16% (cash-drag through Nifty ~+0.16% w-o-w).
+- Data-feed outage 19 days active; UNIVERSE 72 days stale.
+- Tomorrow watchlist (Mon 2026-07-20): (a) fix data feeds, (b) confirm whether Fri bank + RIL Q1 prints actually landed & compute PEAD gate on Mon open, (c) rebuild UNIVERSE, (d) re-scan ADANIPOWER carry-over.
