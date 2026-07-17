@@ -299,3 +299,30 @@ _(Seed — first entry will be written by the first pre-market routine firing.)_
 - **VEDL data divergence — still open across 7 cycles.** Blocked on same Yahoo history feed.
 - No held-position concerns (0 positions). No Telegram alert warranted — nothing urgent.
 
+
+## 2026-07-17 — Market-open
+
+### State on wake
+- No pre-market entry logged for 2026-07-17 (Fri). Pre-market routine did NOT fire this morning — 16th silent cycle in a row.
+- Last pre-market decision (2026-07-15) was HOLD. Per market-open workflow STEP 1: HOLD → skip to STEP 6, exit clean, silence.
+- 0 open positions, ₹5,00,000 cash, 0 trades this week. No candidate ticker to re-validate at 9:20 AM.
+
+### Feed re-check at 9:20 IST
+- `nse.sh quote RELIANCE` → all-null (nsepython still silently failing).
+- `nse.sh momentum HDFCBANK` → curl 22 / HTTP 429 (Yahoo still throttled).
+- `nse.sh earnings 2026-07-17` → `[]` (calendar feed stale — Friday IS heavy PEAD day with RIL/HDFCBANK/ICICIBANK/AXISBANK/KOTAKBANK scheduled; the empty return is a feed failure, not a truly empty calendar).
+- 19-day data outage now. No change from 2026-07-15 diagnosis.
+
+### Missed opportunity — flagged for the record
+- **Today is the single biggest scheduled PEAD day of Q1 FY27 for this strategy**: HDFCBANK, ICICIBANK, AXISBANK, KOTAKBANK all reporting (Financial Services was the strongest 1-mo sector per Mon's macro read). Also RIL (Energy — hot YTD).
+- With the outage active, none of these PEAD candidates can be evaluated at T+1 open (Mon 2026-07-20). This is the specific alpha-forfeiture scenario Wed's pre-market note called out ("must have live prices by Friday open").
+- No action possible; documenting so post-outage review can attribute the gap correctly.
+
+### Decision
+**No-op.** No pre-market plan to execute, no live feeds to re-scan against, no held positions to manage. Silent exit per STRATEGY.md default.
+
+### Notes for midday / EOD routines
+- If feeds return before EOD, run `rebuild-universe` FIRST (72 days stale), then scan Friday's earnings prints (RIL/HDFCBANK/ICICIBANK/AXISBANK/KOTAKBANK) for T+1 PEAD setups Monday morning.
+- Do NOT send Telegram on this cycle — pre-market was implicit HOLD, no trade attempted, no operational change. Notification rule: silence on no-op.
+- Data-feed remediation remains the top operational priority. Unchanged next-steps from 2026-07-15 note.
+
