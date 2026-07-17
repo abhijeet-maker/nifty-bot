@@ -47,3 +47,18 @@ The agent must treat this as "yesterday's equity" for its first day-over-day cal
 **Trades today:** none. No pre-market routine fired between 2026-06-29 and today (data-feed outage documented 2026-06-29 unresolved; scheduled cycles have been silent for 11 calendar days).
 
 **Notes:** Second live EOD snapshot; book still 100% cash. Nifty 50 closed 24,186.55 (+223.75 / +0.93%) and Bank Nifty ~+0.90% on the day — index has clawed back most of the June drawdown. Opportunity-cost drag today ≈ -₹4,650 vs a fully-deployed index proxy. Cumulative alpha since 2026-06-22 EOD is roughly -1.31% (cash-drag vs Nifty 50's ~+1.31% over the window). Data-feed outage is now the dominant operational risk: `nse.sh quote` still returns all-null and `nse.sh history` still 429s from Yahoo — verified this run. Until feeds recover, entry gates (DMAs, 12-1 momentum, pullback %) cannot be evaluated and no new positions can be vetted. UNIVERSE.md is now ~65 days stale (last rebuild 2026-05-06). ADANIPOWER remains the only unresolved pullback setup from 2026-06-18. Top priorities for next scheduled fire: (1) restore data feeds (see 2026-06-29 pre-market notes for suspected fixes), (2) rebuild UNIVERSE.md, (3) re-scan ADANIPOWER.
+
+---
+
+## 2026-07-17 — EOD Snapshot (week close)
+
+**Equity:** ₹5,00,000.00 | **Cash:** ₹5,00,000.00 (100%) | **Deployed:** 0%
+**Day P&L:** ₹0 (0.00%) | **Nifty 50 day:** -0.02% | **Alpha today:** +0.02%
+**Phase P&L:** ₹0 (0.00% from ₹5,00,000 start)
+**Week P&L (Mon 07-13 open → Fri 07-17 close):** ₹0 (0.00%) | **Nifty 50 week:** -0.23% | **Alpha week:** +0.23%
+
+**Open positions:** none.
+
+**Trades this week:** 0 of 2 max. HCLTECH (only actionable PEAD candidate — Q1 beat post-market Mon 07-13) was rule-rejected 07-15 on price-gate failure (-3.19% Tue reaction violates "gapped +3% AND held"). All momentum candidates rejected on gate-data unavailable (Yahoo 429 persistent).
+
+**Notes:** Third live EOD snapshot; book still 100% cash. Nifty 50 closed ~24,072.75 for a small weekly loss; cash won +0.23% mechanical alpha for the week. Cumulative alpha since 2026-06-22 EOD is roughly -1.08% (last two snapshots each showed -0.38% and -0.93% cash drag; this week reversed +0.23%). Data-feed outage now 19 days old and blocked the Q1 FY27 peak-earnings week (RIL/HDFCBANK/ICICIBANK/AXISBANK/KOTAKBANK reported Fri, none evaluable). UNIVERSE rebuild deferred this Friday — momentum feed 429'd. Weekly review completed and appended (Grade B).
